@@ -1160,6 +1160,16 @@ body.v3-modal-open{overflow:hidden}
 }
 </style>
 
+
+<style id="catalog-v3-part2a">
+.v3-filter-sheet{position:fixed;inset:0;z-index:1300;background:rgba(0,0,0,.65);backdrop-filter:blur(8px);display:none}
+.v3-filter-sheet.open{display:block}
+.v3-filter-panel{position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:28px 28px 0 0;max-height:85vh;overflow:auto;padding:22px;transform:translateY(100%);transition:.3s}
+.v3-filter-sheet.open .v3-filter-panel{transform:none}
+.v3-filter-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+@media(min-width:721px){.v3-filter-sheet{display:none!important}}
+</style>
+
 </head>
 
 <body>
@@ -1438,7 +1448,15 @@ body.v3-modal-open{overflow:hidden}
   </section>
 
 
-  <div class="toast" id="toast"></div>
+  
+<div class="v3-filter-sheet" id="v3FilterSheet">
+ <div class="v3-filter-panel">
+  <div class="v3-filter-header"><h3>Filtri</h3><button id="v3CloseFilters">✕</button></div>
+  <div id="v3FilterMount"></div>
+ </div>
+</div>
+
+<div class="toast" id="toast"></div>
 
   <!-- Funzioni già esistenti: catalogo, filtri, carrello e preferiti -->
   <script src="assets/app.js"></script>
@@ -1830,6 +1848,27 @@ body.v3-modal-open{overflow:hidden}
     }
   }, 120);
   setTimeout(() => clearInterval(boot), 9000);
+})();
+</script>
+
+
+<script id="catalog-v3-part2a-engine">
+(()=> {
+const t=document.getElementById('mobileFilterToggle');
+const s=document.getElementById('v3FilterSheet');
+const p=document.getElementById('catalogFilterPanels');
+if(t&&s&&p){
+ t.addEventListener('click',()=>{
+   const m=document.getElementById('v3FilterMount');
+   if(!m.hasChildNodes())m.appendChild(p);
+   s.classList.add('open');
+ });
+ document.getElementById('v3CloseFilters').onclick=()=>{
+   document.querySelector('.catalog-shell').insertBefore(p,document.querySelector('.catalog-statusbar'));
+   s.classList.remove('open');
+ };
+ s.addEventListener('click',e=>{if(e.target===s)document.getElementById('v3CloseFilters').click();});
+}
 })();
 </script>
 
