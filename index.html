@@ -1,0 +1,1252 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#050505">
+  <meta name="description" content="ÉLITE LC BRAND: boutique uomo, selezione premium di moda, scarpe, borse e accessori.">
+  <title>ÉLITE LC BRAND | Boutique uomo</title>
+
+  <!-- Mantiene la compatibilità con i file già presenti nel repository -->
+  <link rel="stylesheet" href="assets/styles.css">
+
+  <style>
+    :root{
+      --black:#050505;
+      --black-2:#0b0b0b;
+      --panel:#111;
+      --cream:#f5f0e5;
+      --muted:#aaa59a;
+      --gold:#c99b3c;
+      --gold-light:#f0d88b;
+      --line:rgba(201,155,60,.24);
+      --shadow:0 28px 80px rgba(0,0,0,.34);
+      --radius:24px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--cream);color:#17140f;overflow-x:hidden}
+    img{max-width:100%;display:block}
+    button,a,input,select{font:inherit}
+    button,a{-webkit-tap-highlight-color:transparent}
+
+    /* Schermata di benvenuto */
+    .welcome{
+      position:fixed;inset:0;z-index:10000;
+      display:grid;place-items:center;
+      padding:24px;
+      background:
+        radial-gradient(circle at 50% 38%,rgba(201,155,60,.18),transparent 24rem),
+        linear-gradient(145deg,#030303,#0b0905 58%,#020202);
+      opacity:1;visibility:visible;
+      transition:opacity .8s ease,visibility .8s ease;
+    }
+    .welcome.hide{opacity:0;visibility:hidden;pointer-events:none}
+    .welcome-inner{text-align:center;animation:welcomeUp 1s ease both}
+    .welcome img{
+      width:min(560px,88vw);height:min(285px,38vh);object-fit:contain;
+      margin:auto;filter:drop-shadow(0 22px 55px rgba(201,155,60,.34));
+    }
+    .welcome p{
+      margin:15px 0 5px;color:var(--gold-light);
+      letter-spacing:.35em;text-transform:uppercase;font-size:.74rem
+    }
+    .welcome h1{
+      margin:0;color:#fff;font-family:Georgia,"Times New Roman",serif;
+      font-weight:500;letter-spacing:.055em;font-size:clamp(2.1rem,8vw,5rem)
+    }
+    .welcome-line{
+      width:94px;height:1px;margin:22px auto 0;
+      background:linear-gradient(90deg,transparent,var(--gold-light),transparent)
+    }
+    .welcome small{display:block;color:#878278;margin-top:18px;font-size:.72rem}
+    @keyframes welcomeUp{
+      from{opacity:0;transform:translateY(18px) scale(.98)}
+      to{opacity:1;transform:none}
+    }
+
+    /* Barra superiore e header */
+    .announcement{
+      position:relative;z-index:90;
+      padding:10px 14px;text-align:center;
+      background:#050505;color:var(--gold-light);
+      font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
+      border-bottom:1px solid rgba(201,155,60,.18)
+    }
+    .site-header{
+      position:sticky;top:0;z-index:80;
+      background:rgba(5,5,5,.92);
+      border-bottom:1px solid rgba(201,155,60,.18);
+      backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+      box-shadow:0 14px 38px rgba(0,0,0,.2)
+    }
+    .header-row{
+      width:min(1220px,calc(100% - 24px));min-height:112px;margin:auto;
+      display:grid;grid-template-columns:52px minmax(0,1fr) 112px;
+      align-items:center;gap:12px
+    }
+    .brand{display:grid;place-items:center;text-decoration:none}
+    .brand img{
+      width:min(350px,56vw);height:98px;object-fit:contain;
+      filter:drop-shadow(0 9px 22px rgba(201,155,60,.26))
+    }
+    .header-actions{display:flex;justify-content:flex-end;gap:9px}
+    .round-btn{
+      position:relative;display:grid;place-items:center;
+      width:46px;height:46px;border-radius:50%;
+      color:#fff;background:rgba(255,255,255,.025);
+      border:1px solid rgba(240,216,139,.34);
+      transition:.2s ease
+    }
+    .round-btn:active{transform:scale(.95);background:rgba(201,155,60,.12)}
+    .round-btn span{
+      position:absolute;right:-3px;top:-4px;min-width:19px;height:19px;padding:0 5px;
+      display:grid;place-items:center;border-radius:999px;
+      background:var(--gold-light);color:#191207;font-size:.65rem;font-weight:800
+    }
+    .desktop-nav{
+      display:flex;justify-content:center;gap:clamp(18px,3vw,42px);
+      padding:13px 16px;border-top:1px solid rgba(255,255,255,.045)
+    }
+    .desktop-nav a{
+      position:relative;color:#e6dfd0;text-decoration:none;
+      font-size:.75rem;letter-spacing:.12em;text-transform:uppercase
+    }
+    .desktop-nav a::after{
+      content:"";position:absolute;left:0;right:0;bottom:-7px;height:1px;
+      background:var(--gold-light);transform:scaleX(0);transition:.25s ease
+    }
+    .desktop-nav a:hover::after{transform:scaleX(1)}
+
+    /* Hero */
+    .hero{
+      position:relative;isolation:isolate;overflow:hidden;
+      min-height:min(780px,82svh);
+      display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);
+      align-items:center;gap:38px;padding:clamp(70px,10vw,130px) max(24px,6vw);
+      color:#fff;background:
+        radial-gradient(circle at 72% 30%,rgba(201,155,60,.25),transparent 25rem),
+        radial-gradient(circle at 18% 78%,rgba(201,155,60,.10),transparent 20rem),
+        linear-gradient(130deg,#050505 0%,#151005 48%,#050505 100%)
+    }
+    .hero::after{
+      content:"LC";position:absolute;right:-1vw;bottom:-6vw;z-index:-1;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(14rem,38vw,34rem);line-height:.75;
+      color:rgba(255,255,255,.022)
+    }
+    .hero-content{max-width:720px}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:12px;
+      color:var(--gold-light);letter-spacing:.21em;text-transform:uppercase;font-size:.72rem
+    }
+    .eyebrow::before{content:"";width:42px;height:1px;background:currentColor}
+    .eyebrow.dark{color:#8d691e}
+    .hero h1{
+      max-width:800px;margin:20px 0 18px;
+      font-family:Georgia,"Times New Roman",serif;font-weight:500;
+      font-size:clamp(3.15rem,8vw,7.6rem);line-height:.88;letter-spacing:-.045em
+    }
+    .hero p{max-width:610px;margin:0;color:#ccc5b8;font-size:clamp(1rem,2vw,1.16rem);line-height:1.75}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+    .btn{
+      min-height:50px;padding:14px 22px;border-radius:999px;
+      display:inline-flex;align-items:center;justify-content:center;
+      text-decoration:none;border:1px solid transparent;
+      font-weight:800;letter-spacing:.035em;transition:.22s ease
+    }
+    .btn:active{transform:scale(.98)}
+    .btn-gold{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#181006}
+    .btn-outline{border-color:rgba(240,216,139,.55);color:#fff;background:rgba(255,255,255,.02)}
+    .btn-dark{background:#080808;color:#fff}
+    .hero-showcase{
+      position:relative;min-height:460px;display:grid;place-items:center
+    }
+    .hero-ring{
+      position:absolute;width:min(470px,80vw);aspect-ratio:1;border-radius:50%;
+      border:1px solid rgba(240,216,139,.18);
+      box-shadow:inset 0 0 90px rgba(201,155,60,.08),0 0 100px rgba(201,155,60,.08)
+    }
+    .hero-ring::before,.hero-ring::after{
+      content:"";position:absolute;inset:9%;border-radius:50%;
+      border:1px solid rgba(240,216,139,.10)
+    }
+    .hero-ring::after{inset:20%}
+    .hero-showcase img{
+      position:relative;width:min(420px,78vw);height:290px;object-fit:contain;
+      filter:drop-shadow(0 30px 48px rgba(0,0,0,.55))
+    }
+    .hero-note{
+      position:absolute;right:0;bottom:26px;width:190px;
+      padding:16px;border:1px solid rgba(240,216,139,.22);
+      border-radius:18px;background:rgba(8,8,8,.7);backdrop-filter:blur(12px)
+    }
+    .hero-note b{display:block;color:var(--gold-light);font-family:Georgia,serif;font-size:1.2rem}
+    .hero-note span{display:block;color:#b9b2a5;font-size:.77rem;margin-top:4px}
+
+    /* Vantaggi */
+    .benefits{
+      width:min(1180px,calc(100% - 28px));margin:-34px auto 0;position:relative;z-index:4;
+      display:grid;grid-template-columns:repeat(3,1fr);
+      background:#fff;border:1px solid rgba(20,15,5,.08);
+      border-radius:22px;box-shadow:var(--shadow);overflow:hidden
+    }
+    .benefits div{padding:22px;text-align:center;border-right:1px solid rgba(20,15,5,.08)}
+    .benefits div:last-child{border-right:0}
+    .benefits b{display:block;font-family:Georgia,serif;font-size:1.12rem}
+    .benefits span{display:block;color:#766f63;font-size:.82rem;margin-top:5px}
+
+    /* Sezioni generali */
+    .section{width:min(1220px,calc(100% - 28px));margin:0 auto;padding:clamp(72px,10vw,125px) 0}
+    .section-heading{
+      display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:32px
+    }
+    .section-heading h2{
+      margin:10px 0 0;font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(2.2rem,5vw,4.2rem);font-weight:500;line-height:1
+    }
+    .section-heading p{margin:0;color:#736c60}
+    .section-link{color:#6f4e0d;text-decoration:none;font-weight:800;border-bottom:1px solid currentColor}
+
+    /* Categorie */
+    .category-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .category-grid a{
+      position:relative;overflow:hidden;min-height:250px;padding:24px;
+      display:flex;flex-direction:column;justify-content:flex-end;
+      color:#fff;text-decoration:none;border-radius:22px;
+      border:1px solid rgba(201,155,60,.22);
+      background:
+        radial-gradient(circle at 80% 15%,rgba(201,155,60,.26),transparent 12rem),
+        linear-gradient(145deg,#151515,#090704);
+      transition:.25s ease
+    }
+    .category-grid a:hover{transform:translateY(-6px);box-shadow:0 22px 50px rgba(0,0,0,.18)}
+    .category-grid a::after{
+      content:attr(data-mark);position:absolute;right:10px;top:6px;
+      font-family:Georgia,serif;font-size:7rem;color:rgba(255,255,255,.035)
+    }
+    .category-grid span{color:var(--gold-light);font-size:.72rem;letter-spacing:.16em}
+    .category-grid strong{margin-top:9px;font-family:Georgia,serif;font-size:1.75rem;font-weight:500}
+    .category-grid small{color:#aaa394;margin-top:6px}
+
+    /* Nuovi arrivi e best seller */
+    .dark-section{
+      background:
+        radial-gradient(circle at 8% 20%,rgba(201,155,60,.12),transparent 23rem),
+        #080808;color:#fff
+    }
+    .dark-section .section-heading p{color:#aaa398}
+    .showcase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .showcase-card{
+      overflow:hidden;border-radius:22px;background:#111;
+      border:1px solid rgba(201,155,60,.18)
+    }
+    .showcase-visual{
+      position:relative;min-height:300px;display:grid;place-items:center;overflow:hidden;
+      background:
+        radial-gradient(circle,rgba(201,155,60,.13),transparent 58%),
+        linear-gradient(145deg,#161616,#090909)
+    }
+    .showcase-visual img{width:100%;height:300px;object-fit:cover}
+    .showcase-placeholder{
+      font-family:Georgia,serif;font-size:6rem;color:rgba(240,216,139,.22);letter-spacing:-.08em
+    }
+    .showcase-badge{
+      position:absolute;left:14px;top:14px;padding:7px 11px;border-radius:999px;
+      background:var(--gold-light);color:#171006;font-size:.68rem;font-weight:900;text-transform:uppercase
+    }
+    .showcase-info{padding:18px}
+    .showcase-info small{color:#9e978a;text-transform:uppercase;letter-spacing:.1em}
+    .showcase-info h3{margin:8px 0 6px;font-family:Georgia,serif;font-size:1.35rem;font-weight:500}
+    .showcase-price{color:var(--gold-light);font-weight:900}
+    .showcase-actions{display:flex;gap:9px;margin-top:15px}
+    .showcase-actions a,.showcase-actions button{
+      flex:1;min-height:42px;border-radius:12px;border:1px solid rgba(240,216,139,.25);
+      background:transparent;color:#fff;text-decoration:none;display:grid;place-items:center;font-weight:800
+    }
+    .showcase-actions button{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#181006}
+
+    /* Editorial/banner */
+    .editorial{
+      width:min(1220px,calc(100% - 28px));margin:auto;
+      display:grid;grid-template-columns:.9fr 1.1fr;overflow:hidden;
+      border-radius:28px;background:#090909;color:#fff;box-shadow:var(--shadow)
+    }
+    .editorial-art{
+      min-height:460px;display:grid;place-items:center;position:relative;overflow:hidden;
+      background:
+        radial-gradient(circle at 50% 45%,rgba(201,155,60,.22),transparent 42%),
+        linear-gradient(145deg,#111,#050505)
+    }
+    .editorial-art::before{
+      content:"ÉLITE";position:absolute;transform:rotate(-18deg);
+      font-family:Georgia,serif;font-size:clamp(5rem,13vw,11rem);
+      color:rgba(255,255,255,.026)
+    }
+    .editorial-art img{position:relative;width:min(420px,80%);height:300px;object-fit:contain}
+    .editorial-copy{padding:clamp(38px,7vw,90px);display:flex;flex-direction:column;justify-content:center}
+    .editorial-copy h2{
+      margin:18px 0;font-family:Georgia,serif;font-size:clamp(2.5rem,6vw,5rem);
+      font-weight:500;line-height:.98
+    }
+    .editorial-copy p{color:#aaa398;line-height:1.75;max-width:580px}
+
+    /* Catalogo */
+    .filters{display:grid;grid-template-columns:1.3fr .75fr .75fr;gap:10px;margin-bottom:25px}
+    .filters input,.filters select{
+      width:100%;min-height:52px;padding:0 15px;border-radius:14px;
+      border:1px solid rgba(20,15,5,.14);background:#fff;color:#17140f;outline:none
+    }
+    .filters input:focus,.filters select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,155,60,.12)}
+    .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+    .product-card{
+      overflow:hidden;border-radius:22px;background:#fff;
+      border:1px solid rgba(20,15,5,.08);box-shadow:0 14px 40px rgba(25,18,6,.07)
+    }
+    .product-visual{
+      position:relative;min-height:310px;display:grid;place-items:center;overflow:hidden;
+      background:
+        radial-gradient(circle,rgba(201,155,60,.13),transparent 55%),
+        linear-gradient(145deg,#f5f1e8,#e7dfcf)
+    }
+    .product-visual img{width:100%;height:310px;object-fit:cover}
+    .product-placeholder{font-family:Georgia,serif;font-size:6rem;color:rgba(113,78,14,.22)}
+    .badge{
+      position:absolute;left:14px;top:14px;padding:7px 10px;border-radius:999px;
+      color:#171006;background:var(--gold-light);font-size:.67rem;font-weight:900
+    }
+    .heart{
+      position:absolute;right:13px;top:13px;width:43px;height:43px;border-radius:50%;
+      background:rgba(255,255,255,.9);color:#1a1711;border:1px solid rgba(20,15,5,.1);
+      font-size:1.35rem
+    }
+    .heart.active{color:#9c1c2f}
+    .product-info{padding:18px}
+    .product-info small{color:#81796c;text-transform:uppercase;letter-spacing:.09em}
+    .product-info h3{margin:8px 0;font-family:Georgia,serif;font-size:1.35rem;font-weight:500}
+    .price{font-weight:900;color:#6f4e0d}
+    .product-actions{display:flex;gap:9px;margin-top:16px}
+    .product-actions a,.product-actions button{
+      flex:1;min-height:43px;border-radius:12px;display:grid;place-items:center;
+      text-decoration:none;font-weight:800;border:1px solid rgba(20,15,5,.12)
+    }
+    .product-actions a{color:#17140f;background:#fff}
+    .product-actions button{color:#fff;background:#090909}
+    .empty-state{text-align:center;padding:45px;color:#766f63}
+
+    /* Newsletter / CTA */
+    .cta{
+      width:min(1220px,calc(100% - 28px));margin:0 auto clamp(70px,10vw,120px);
+      padding:clamp(38px,6vw,72px);border-radius:28px;text-align:center;
+      color:#fff;background:
+        radial-gradient(circle at 50% 0%,rgba(201,155,60,.25),transparent 25rem),
+        linear-gradient(145deg,#161006,#050505)
+    }
+    .cta h2{margin:0;font-family:Georgia,serif;font-size:clamp(2.2rem,5vw,4.4rem);font-weight:500}
+    .cta p{max-width:670px;margin:15px auto 24px;color:#aaa398;line-height:1.65}
+
+    /* Footer */
+    footer{
+      padding:55px 20px 28px;text-align:center;color:#cbc4b7;background:#050505;
+      border-top:1px solid rgba(201,155,60,.2)
+    }
+    footer img{width:240px;height:130px;object-fit:contain;margin:auto}
+    footer p{color:#8f887d}
+    footer div{display:flex;justify-content:center;gap:14px 24px;flex-wrap:wrap;margin:20px 0}
+    footer a{color:var(--gold-light);text-decoration:none;font-size:.84rem}
+    footer small{color:#676159}
+
+    /* Drawer e toast: compatibili con assets/app.js */
+    .overlay{
+      position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.62);
+      opacity:0;visibility:hidden;transition:.25s ease
+    }
+    .overlay.show{opacity:1;visibility:visible}
+    .drawer{
+      position:fixed;top:0;bottom:0;z-index:210;width:min(410px,92vw);
+      padding:20px;background:#0a0a0a;color:#fff;
+      box-shadow:0 0 70px rgba(0,0,0,.55);transition:.3s ease;overflow:auto
+    }
+    .menu-drawer{left:0;transform:translateX(-105%)}
+    .cart-drawer,.fav-drawer{right:0;transform:translateX(105%)}
+    .drawer.open{transform:none}
+    .drawer-head{display:flex;align-items:center;justify-content:space-between;gap:15px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+    .drawer-head img{width:170px;height:82px;object-fit:contain}
+    .drawer-head h2{font-family:Georgia,serif;font-weight:500}
+    .close-btn{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:#141414;color:#fff;font-size:1.5rem}
+    .drawer nav{display:grid;padding-top:20px}
+    .drawer nav a{padding:17px 4px;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.08)}
+    .cart-items{padding:20px 0}
+    .cart-line{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+    .cart-line small{color:#aaa398}
+    .cart-line button{border:0;background:none;color:var(--gold-light)}
+    .cart-total{display:flex;justify-content:space-between;padding:18px 0;border-top:1px solid var(--line)}
+    .full{width:100%;border:0}
+    .toast{
+      position:fixed;left:50%;bottom:25px;z-index:300;transform:translate(-50%,18px);
+      opacity:0;pointer-events:none;padding:12px 18px;border-radius:999px;
+      background:#111;color:#fff;border:1px solid var(--line);box-shadow:var(--shadow);transition:.25s ease
+    }
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+
+
+    /* Catalogo Premium V1 */
+    .catalog-shell{
+      position:relative;
+      width:min(1280px,calc(100% - 28px));
+      margin:0 auto;
+      padding:clamp(76px,10vw,126px) 0;
+    }
+    .catalog-shell::before{
+      content:"";
+      position:absolute;
+      z-index:-1;
+      left:50%;
+      top:38px;
+      width:min(1050px,92vw);
+      height:420px;
+      transform:translateX(-50%);
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(201,155,60,.12),transparent 68%);
+      pointer-events:none;
+    }
+    .catalog-hero{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) minmax(280px,.55fr);
+      gap:30px;
+      align-items:end;
+      margin-bottom:30px;
+    }
+    .catalog-title h2{
+      margin:12px 0 15px;
+      max-width:800px;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(2.65rem,6vw,5.7rem);
+      line-height:.94;
+      letter-spacing:-.035em;
+      font-weight:500;
+    }
+    .catalog-title p{
+      max-width:680px;
+      margin:0;
+      color:#766f63;
+      line-height:1.72;
+    }
+    .catalog-summary{
+      justify-self:end;
+      width:min(100%,330px);
+      padding:22px;
+      border:1px solid rgba(20,15,5,.09);
+      border-radius:20px;
+      background:rgba(255,255,255,.72);
+      box-shadow:0 18px 45px rgba(25,18,6,.06);
+      backdrop-filter:blur(12px);
+    }
+    .catalog-summary strong{
+      display:block;
+      font-family:Georgia,serif;
+      font-size:1.8rem;
+      color:#6f4e0d;
+    }
+    .catalog-summary span{
+      display:block;
+      margin-top:5px;
+      color:#756e62;
+      font-size:.84rem;
+    }
+    .catalog-toolbar{
+      position:sticky;
+      top:139px;
+      z-index:32;
+      display:grid;
+      grid-template-columns:minmax(220px,1.45fr) minmax(180px,.75fr) minmax(180px,.75fr);
+      gap:10px;
+      padding:12px;
+      margin-bottom:28px;
+      border:1px solid rgba(20,15,5,.09);
+      border-radius:20px;
+      background:rgba(249,246,239,.91);
+      box-shadow:0 18px 48px rgba(25,18,6,.09);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+    }
+    .search-field{
+      position:relative;
+      min-width:0;
+    }
+    .search-field::before{
+      content:"⌕";
+      position:absolute;
+      left:17px;
+      top:50%;
+      transform:translateY(-52%);
+      color:#8b6b2d;
+      font-size:1.35rem;
+      pointer-events:none;
+    }
+    .catalog-toolbar input,
+    .catalog-toolbar select{
+      width:100%;
+      min-height:54px;
+      padding:0 16px;
+      border:1px solid rgba(20,15,5,.11);
+      border-radius:14px;
+      outline:none;
+      color:#17140f;
+      background:#fff;
+      transition:border-color .2s ease,box-shadow .2s ease;
+    }
+    .catalog-toolbar input{padding-left:47px}
+    .catalog-toolbar input:focus,
+    .catalog-toolbar select:focus{
+      border-color:var(--gold);
+      box-shadow:0 0 0 4px rgba(201,155,60,.11);
+    }
+    .catalog-statusbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin:0 2px 18px;
+    }
+    .result-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      min-height:34px;
+      padding:7px 12px;
+      border:1px solid rgba(111,78,13,.16);
+      border-radius:999px;
+      background:#fff;
+      color:#6f4e0d;
+      font-size:.78rem;
+      font-weight:900;
+    }
+    .result-pill::before{
+      content:"";
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:var(--gold);
+      box-shadow:0 0 0 4px rgba(201,155,60,.13);
+    }
+    .catalog-note{
+      color:#81796c;
+      font-size:.78rem;
+    }
+    .product-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+    }
+    .product-card{
+      position:relative;
+      min-width:0;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      border:1px solid rgba(20,15,5,.085);
+      border-radius:24px;
+      background:#fff;
+      box-shadow:0 15px 44px rgba(25,18,6,.065);
+      transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+    }
+    .product-card:hover{
+      transform:translateY(-7px);
+      border-color:rgba(201,155,60,.25);
+      box-shadow:0 25px 65px rgba(25,18,6,.13);
+    }
+    .product-visual{
+      position:relative;
+      min-height:0;
+      aspect-ratio:4/4.55;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 50% 42%,rgba(201,155,60,.16),transparent 46%),
+        linear-gradient(145deg,#f7f3eb,#e5dccb);
+    }
+    .product-visual::after{
+      content:"";
+      position:absolute;
+      inset:auto 0 0;
+      height:32%;
+      background:linear-gradient(transparent,rgba(18,12,2,.08));
+      pointer-events:none;
+    }
+    .product-visual img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:transform .5s ease;
+    }
+    .product-card:hover .product-visual img{transform:scale(1.035)}
+    .product-placeholder{
+      font-family:Georgia,serif;
+      font-size:clamp(4.2rem,8vw,7rem);
+      letter-spacing:-.08em;
+      color:rgba(113,78,14,.19);
+    }
+    .badge{
+      z-index:2;
+      left:14px;
+      top:14px;
+      padding:8px 11px;
+      border:1px solid rgba(255,255,255,.32);
+      border-radius:999px;
+      color:#171006;
+      background:linear-gradient(135deg,var(--gold-light),var(--gold));
+      box-shadow:0 9px 24px rgba(70,45,2,.15);
+      font-size:.64rem;
+      letter-spacing:.065em;
+      text-transform:uppercase;
+    }
+    .stock-label{
+      position:absolute;
+      z-index:2;
+      left:14px;
+      bottom:14px;
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      padding:7px 10px;
+      border-radius:999px;
+      color:#fff;
+      background:rgba(7,7,7,.72);
+      backdrop-filter:blur(9px);
+      font-size:.66rem;
+      font-weight:800;
+    }
+    .stock-label::before{
+      content:"";
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:#75b87a;
+    }
+    .stock-label.low::before{background:#dfa74a}
+    .stock-label.out::before{background:#bc5964}
+    .heart{
+      z-index:3;
+      right:13px;
+      top:13px;
+      width:44px;
+      height:44px;
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(20,15,5,.1);
+      border-radius:50%;
+      color:#18140d;
+      background:rgba(255,255,255,.91);
+      box-shadow:0 9px 25px rgba(20,15,5,.11);
+      font-size:1.32rem;
+      transition:transform .2s ease,background .2s ease;
+    }
+    .heart:active{transform:scale(.92)}
+    .heart.active{color:#a21d35;background:#fff4f5}
+    .product-info{
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      padding:20px;
+    }
+    .product-info small{
+      color:#8b806f;
+      font-size:.67rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-weight:800;
+    }
+    .product-info h3{
+      min-height:2.6em;
+      margin:9px 0 11px;
+      color:#17140f;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(1.25rem,2vw,1.48rem);
+      line-height:1.3;
+      font-weight:500;
+    }
+    .product-meta-line{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      margin-top:auto;
+    }
+    .price{
+      color:#6f4e0d;
+      font-size:1.08rem;
+      font-weight:900;
+    }
+    .product-ref{
+      max-width:48%;
+      overflow:hidden;
+      color:#a0988c;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+      font-size:.65rem;
+    }
+    .product-actions{
+      display:grid;
+      grid-template-columns:.86fr 1.14fr;
+      gap:9px;
+      margin-top:17px;
+    }
+    .product-actions a,
+    .product-actions button{
+      min-height:46px;
+      border-radius:13px;
+      font-size:.78rem;
+      letter-spacing:.02em;
+    }
+    .product-actions a{
+      color:#17140f;
+      background:#fff;
+      border:1px solid rgba(20,15,5,.13);
+    }
+    .product-actions button{
+      color:#fff;
+      background:#090909;
+      border:1px solid #090909;
+    }
+    .product-actions button:disabled{
+      cursor:not-allowed;
+      color:#8f887d;
+      background:#ddd8cf;
+      border-color:#ddd8cf;
+    }
+    .catalog-skeleton{
+      overflow:hidden;
+      min-height:470px;
+      border-radius:24px;
+      background:linear-gradient(100deg,#eee8dd 20%,#faf7f1 38%,#eee8dd 56%);
+      background-size:220% 100%;
+      animation:skeleton 1.35s linear infinite;
+    }
+    @keyframes skeleton{to{background-position-x:-220%}}
+    .empty-state{
+      padding:60px 24px;
+      border:1px dashed rgba(111,78,13,.25);
+      border-radius:22px;
+      text-align:center;
+      background:rgba(255,255,255,.55);
+      color:#766f63;
+    }
+    @media(max-width:980px){
+      .catalog-toolbar{top:112px}
+      .product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media(max-width:720px){
+      .catalog-shell{width:min(100% - 20px,1280px)}
+      .catalog-hero{grid-template-columns:1fr}
+      .catalog-summary{justify-self:start;width:100%}
+      .catalog-toolbar{
+        position:relative;
+        top:auto;
+        grid-template-columns:1fr;
+        padding:10px;
+        border-radius:18px;
+      }
+      .catalog-statusbar{align-items:flex-start;flex-direction:column}
+      .catalog-note{display:none}
+    }
+    @media(max-width:520px){
+      .product-grid{grid-template-columns:1fr}
+      .product-visual{aspect-ratio:4/4.3}
+      .product-info h3{min-height:auto}
+    }
+
+    /* Animazioni allo scroll */
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    @media(max-width:900px){
+      .desktop-nav{display:none}
+      .hero{grid-template-columns:1fr;padding-top:72px;text-align:left}
+      .hero-showcase{min-height:360px}
+      .hero-note{right:4%;bottom:8px}
+      .category-grid{grid-template-columns:repeat(2,1fr)}
+      .showcase-grid,.product-grid{grid-template-columns:repeat(2,1fr)}
+      .editorial{grid-template-columns:1fr}
+      .editorial-art{min-height:350px}
+    }
+
+    @media(max-width:620px){
+      .announcement{font-size:.58rem;letter-spacing:.09em}
+      .header-row{
+        min-height:98px;grid-template-columns:44px minmax(0,1fr) 94px;
+        width:min(100% - 14px,1220px);gap:7px
+      }
+      .brand img{width:min(255px,53vw);height:84px}
+      .round-btn{width:40px;height:40px}
+      .header-actions{gap:6px}
+      .hero{min-height:76svh;padding:64px 20px 80px}
+      .hero h1{font-size:clamp(3.1rem,15vw,5.2rem)}
+      .hero-showcase{min-height:300px}
+      .hero-showcase img{height:210px}
+      .hero-ring{width:min(310px,82vw)}
+      .hero-note{width:160px;padding:12px}
+      .benefits{grid-template-columns:1fr;margin-top:-24px}
+      .benefits div{border-right:0;border-bottom:1px solid rgba(20,15,5,.08)}
+      .benefits div:last-child{border-bottom:0}
+      .section-heading{align-items:flex-start;flex-direction:column}
+      .category-grid{grid-template-columns:1fr 1fr;gap:10px}
+      .category-grid a{min-height:190px;padding:18px}
+      .category-grid strong{font-size:1.35rem}
+      .showcase-grid,.product-grid{grid-template-columns:1fr}
+      .showcase-visual,.showcase-visual img,.product-visual,.product-visual img{min-height:330px;height:330px}
+      .filters{grid-template-columns:1fr}
+      .editorial-copy{padding:38px 24px}
+      .welcome img{height:220px}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Intro: si chiude automaticamente o toccando lo schermo -->
+  <div class="welcome" id="welcome" aria-label="Benvenuti su ÉLITE LC BRAND">
+    <div class="welcome-inner">
+      <img src="logo-elite-lc-brand.png" alt="Logo ÉLITE LC BRAND">
+      <p>Benvenuti su</p>
+      <h1>ÉLITE LC BRAND</h1>
+      <div class="welcome-line"></div>
+      <small>Tocca per entrare</small>
+    </div>
+  </div>
+
+  <div class="announcement">Spedizione gratuita in Italia · Pagamenti sicuri · Reso entro 14 giorni</div>
+
+  <header class="site-header">
+    <div class="header-row">
+      <button class="round-btn" id="menuBtn" type="button" aria-label="Apri menu">☰</button>
+
+      <a class="brand" href="index.html" aria-label="Homepage ÉLITE LC BRAND">
+        <img src="logo-elite-lc-brand.png" alt="ÉLITE LC BRAND">
+      </a>
+
+      <div class="header-actions">
+        <button class="round-btn" id="favoritesBtn" type="button" aria-label="Preferiti">
+          ♡<span id="favCount">0</span>
+        </button>
+        <button class="round-btn" id="cartBtn" type="button" aria-label="Carrello">
+          🛍<span id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+
+    <nav class="desktop-nav" aria-label="Navigazione principale">
+      <a href="#nuovi-arrivi">Novità</a>
+      <a href="#categorie">Categorie</a>
+      <a href="#best-seller">Best seller</a>
+      <a href="#catalogo">Catalogo</a>
+      <a href="admin.html">Area admin</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content reveal">
+        <span class="eyebrow">Collezione privata 2026</span>
+        <h1>Lo stile che lascia il segno.</h1>
+        <p>
+          Una selezione esclusiva di moda maschile per chi cerca qualità,
+          presenza ed eleganza contemporanea.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="#catalogo">Scopri la collezione</a>
+          <a class="btn btn-outline" href="#nuovi-arrivi">Nuovi arrivi</a>
+        </div>
+      </div>
+
+      <div class="hero-showcase reveal">
+        <div class="hero-ring"></div>
+        <img src="logo-elite-lc-brand.png" alt="Logo ÉLITE LC BRAND">
+        <div class="hero-note">
+          <b>Selezione ÉLITE</b>
+          <span>Stile premium scelto con cura.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits reveal">
+      <div><b>Spedizione gratuita</b><span>In tutta Italia</span></div>
+      <div><b>Selezione premium</b><span>Articoli scelti con cura</span></div>
+      <div><b>Assistenza dedicata</b><span>Prima e dopo l’acquisto</span></div>
+    </section>
+
+    <section class="section reveal" id="categorie">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow dark">Esplora</span>
+          <h2>Categorie in evidenza</h2>
+        </div>
+        <a class="section-link" href="#catalogo">Vedi tutto il catalogo</a>
+      </div>
+
+      <div class="category-grid">
+        <a href="#catalogo" data-category-link="T-shirt" data-mark="01">
+          <span>Categoria 01</span><strong>T-shirt</strong><small>Icone essenziali</small>
+        </a>
+        <a href="#catalogo" data-category-link="Scarpe" data-mark="02">
+          <span>Categoria 02</span><strong>Scarpe</strong><small>Passo deciso</small>
+        </a>
+        <a href="#catalogo" data-category-link="Giacche" data-mark="03">
+          <span>Categoria 03</span><strong>Giacche</strong><small>Presenza sartoriale</small>
+        </a>
+        <a href="#catalogo" data-category-link="Accessori" data-mark="04">
+          <span>Categoria 04</span><strong>Accessori</strong><small>Dettagli distintivi</small>
+        </a>
+      </div>
+    </section>
+
+    <section class="dark-section" id="nuovi-arrivi">
+      <div class="section reveal">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Appena arrivati</span>
+            <h2>Nuovi arrivi</h2>
+          </div>
+          <p>Le ultime proposte inserite nel catalogo.</p>
+        </div>
+        <div class="showcase-grid" id="newArrivalsGrid"></div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="best-seller">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow dark">Scelti dai clienti</span>
+          <h2>Best seller</h2>
+        </div>
+        <p>I prodotti più rappresentativi della selezione ÉLITE.</p>
+      </div>
+      <div class="showcase-grid" id="bestSellerGrid"></div>
+    </section>
+
+    <section class="editorial reveal">
+      <div class="editorial-art">
+        <img src="logo-elite-lc-brand.png" alt="Identità ÉLITE LC BRAND">
+      </div>
+      <div class="editorial-copy">
+        <span class="eyebrow">La nostra identità</span>
+        <h2>Eleganza, selezione, carattere.</h2>
+        <p>
+          Ogni articolo racconta un modo di distinguersi. ÉLITE LC BRAND unisce
+          linee pulite, dettagli premium e un’esperienza pensata per il tuo stile.
+        </p>
+        <div><a class="btn btn-gold" href="#catalogo">Entra nella boutique</a></div>
+      </div>
+    </section>
+
+    <section class="catalog-shell reveal" id="catalogo">
+      <div class="catalog-hero">
+        <div class="catalog-title">
+          <span class="eyebrow dark">Boutique digitale</span>
+          <h2>La selezione ÉLITE, senza distrazioni.</h2>
+          <p>
+            Scopri il catalogo in una griglia più pulita e leggibile, progettata
+            per valorizzare ogni articolo e rendere la ricerca immediata anche da iPhone.
+          </p>
+        </div>
+
+        <div class="catalog-summary">
+          <strong id="catalogTotal">—</strong>
+          <span>articoli disponibili nel catalogo</span>
+        </div>
+      </div>
+
+      <div class="catalog-toolbar" aria-label="Strumenti del catalogo">
+        <div class="search-field">
+          <input id="searchInput" type="search"
+                 placeholder="Cerca prodotto, marchio o categoria"
+                 autocomplete="off" aria-label="Cerca prodotti">
+        </div>
+
+        <select id="categoryFilter" aria-label="Filtra per categoria">
+          <option value="">Tutte le categorie</option>
+        </select>
+
+        <select id="sortFilter" aria-label="Ordina prodotti">
+          <option value="featured">In evidenza</option>
+          <option value="price-asc">Prezzo crescente</option>
+          <option value="price-desc">Prezzo decrescente</option>
+          <option value="name">Nome A-Z</option>
+        </select>
+      </div>
+
+      <div class="catalog-statusbar">
+        <span class="result-pill" id="resultsText">Caricamento prodotti…</span>
+        <span class="catalog-note">Immagini e disponibilità vengono lette da products.json</span>
+      </div>
+
+      <div class="product-grid" id="productGrid" aria-live="polite">
+        <div class="catalog-skeleton"></div>
+        <div class="catalog-skeleton"></div>
+        <div class="catalog-skeleton"></div>
+      </div>
+
+      <div class="empty-state" id="emptyState" hidden>
+        Nessun prodotto corrisponde alla ricerca. Prova a cambiare le parole utilizzate.
+      </div>
+    </section>
+
+    <section class="cta reveal">
+      <h2>Il tuo stile. La tua firma.</h2>
+      <p>
+        Scopri la selezione ÉLITE LC BRAND e salva i tuoi articoli preferiti.
+        Il catalogo viene aggiornato direttamente dal pannello amministratore.
+      </p>
+      <a class="btn btn-gold" href="#catalogo">Esplora adesso</a>
+    </section>
+  </main>
+
+  <footer>
+    <img src="logo-elite-lc-brand.png" alt="ÉLITE LC BRAND">
+    <p>Moda maschile selezionata. Eleganza senza compromessi.</p>
+    <div>
+      <a href="#catalogo">Catalogo</a>
+      <a href="#nuovi-arrivi">Nuovi arrivi</a>
+      <a href="product.html">Pagina prodotto</a>
+      <a href="admin.html">Area amministratore</a>
+      <a href="mailto:info@elitelcbrand.it">Contatti</a>
+    </div>
+    <small>© 2026 ÉLITE LC BRAND</small>
+  </footer>
+
+  <!-- Elementi richiesti da assets/app.js -->
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="drawer menu-drawer" id="menuDrawer" aria-label="Menu">
+    <div class="drawer-head">
+      <img src="logo-elite-lc-brand.png" alt="ÉLITE LC BRAND">
+      <button class="close-btn" type="button" data-close aria-label="Chiudi menu">×</button>
+    </div>
+    <nav>
+      <a href="#nuovi-arrivi">Nuovi arrivi</a>
+      <a href="#best-seller">Best seller</a>
+      <a href="#catalogo">Catalogo</a>
+      <a href="product.html">Pagina prodotto</a>
+      <a href="admin.html">Area amministratore</a>
+    </nav>
+  </aside>
+
+  <aside class="drawer cart-drawer" id="cartDrawer" aria-label="Carrello">
+    <div class="drawer-head">
+      <h2>Il tuo carrello</h2>
+      <button class="close-btn" type="button" data-close aria-label="Chiudi carrello">×</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-total"><span>Totale</span><strong id="cartTotal">€ 0,00</strong></div>
+    <button class="btn btn-gold full" id="checkoutBtn" type="button">Procedi all’ordine</button>
+  </aside>
+
+  <aside class="drawer fav-drawer" id="favDrawer" aria-label="Preferiti">
+    <div class="drawer-head">
+      <h2>I tuoi preferiti</h2>
+      <button class="close-btn" type="button" data-close aria-label="Chiudi preferiti">×</button>
+    </div>
+    <div id="favItems" class="cart-items"></div>
+  </aside>
+
+  <div class="toast" id="toast"></div>
+
+  <!-- Funzioni già esistenti: catalogo, filtri, carrello e preferiti -->
+  <script src="assets/app.js"></script>
+
+  <!-- Catalogo Premium V1: migliora la resa senza cambiare products.json -->
+  <script>
+    (() => {
+      const originalRenderCounts = renderCounts;
+
+      renderCounts = function () {
+        originalRenderCounts();
+        const total = document.getElementById('catalogTotal');
+        if (total) total.textContent = state.products.length;
+      };
+
+      renderProducts = function () {
+        const list = filtered();
+        const grid = document.getElementById('productGrid');
+        const empty = document.getElementById('emptyState');
+        const result = document.getElementById('resultsText');
+        const total = document.getElementById('catalogTotal');
+
+        if (result) {
+          result.textContent = `${list.length} ${list.length === 1 ? 'articolo trovato' : 'articoli trovati'}`;
+        }
+        if (total) total.textContent = state.products.length;
+        if (empty) empty.hidden = Boolean(list.length);
+        if (!grid) return;
+
+        grid.innerHTML = list.map(product => {
+          const favorite = state.favs.includes(product.id);
+          const available = product.available !== false && Number(product.stock ?? 1) > 0;
+          const stock = Number(product.stock ?? 0);
+          const stockClass = !available ? 'out' : stock > 0 && stock <= 2 ? 'low' : '';
+          const stockText = !available
+            ? 'Esaurito'
+            : stock > 0 && stock <= 2
+              ? `Ultimi ${stock}`
+              : 'Disponibile';
+
+          const image = product.image
+            ? `<img src="${esc(product.image)}" alt="${esc(product.name)}" loading="lazy" decoding="async" onerror="this.remove()">`
+            : '<div class="product-placeholder" aria-hidden="true">LC</div>';
+
+          return `
+            <article class="product-card">
+              <div class="product-visual">
+                ${image}
+                ${product.badge ? `<span class="badge">${esc(product.badge)}</span>` : ''}
+                <button class="heart ${favorite ? 'active' : ''}"
+                        type="button"
+                        aria-label="${favorite ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'}"
+                        onclick="toggleFav('${esc(product.id)}')">
+                  ${favorite ? '♥' : '♡'}
+                </button>
+                <span class="stock-label ${stockClass}">${stockText}</span>
+              </div>
+
+              <div class="product-info">
+                <small>${esc(product.brand || product.category || 'ÉLITE Selection')}</small>
+                <h3>${esc(product.name || 'Prodotto senza nome')}</h3>
+
+                <div class="product-meta-line">
+                  <div class="price">${money(product.price)}</div>
+                  <div class="product-ref">Rif. ${esc(product.id)}</div>
+                </div>
+
+                <div class="product-actions">
+                  <a href="product.html?id=${encodeURIComponent(product.id)}">Dettagli</a>
+                  <button type="button"
+                          ${available ? '' : 'disabled'}
+                          onclick="addCart('${esc(product.id)}')">
+                    ${available ? 'Aggiungi' : 'Esaurito'}
+                  </button>
+                </div>
+              </div>
+            </article>`;
+        }).join('');
+      };
+
+      /* Aggiorna la categoria dalla sezione categorie anche se l'opzione
+         non era ancora stata creata al primo tocco. */
+      document.querySelectorAll('[data-category-link]').forEach(link => {
+        link.addEventListener('click', () => {
+          window.setTimeout(() => {
+            const select = document.getElementById('categoryFilter');
+            if (!select) return;
+            const value = link.dataset.categoryLink;
+            const exists = [...select.options].some(option => option.value === value);
+            if (exists) {
+              select.value = value;
+              renderProducts();
+            }
+          }, 0);
+        });
+      });
+    })();
+  </script>
+
+
+  <!-- Funzioni aggiuntive della homepage -->
+  <script>
+    (() => {
+      const moneyHome = value => new Intl.NumberFormat('it-IT', {
+        style: 'currency',
+        currency: 'EUR'
+      }).format(Number(value || 0));
+
+      const escapeHome = value => String(value ?? '').replace(/[&<>"']/g, char => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
+      })[char]);
+
+      function showcaseCard(product) {
+        const image = product.image
+          ? `<img src="${escapeHome(product.image)}" alt="${escapeHome(product.name)}" onerror="this.remove()">`
+          : '<div class="showcase-placeholder">LC</div>';
+
+        return `
+          <article class="showcase-card">
+            <div class="showcase-visual">
+              ${image}
+              ${product.badge ? `<span class="showcase-badge">${escapeHome(product.badge)}</span>` : ''}
+            </div>
+            <div class="showcase-info">
+              <small>${escapeHome(product.brand || product.category || 'ÉLITE Selection')}</small>
+              <h3>${escapeHome(product.name || 'Prodotto')}</h3>
+              <div class="showcase-price">${moneyHome(product.price)}</div>
+              <div class="showcase-actions">
+                <a href="product.html?id=${encodeURIComponent(product.id)}">Dettagli</a>
+                <button type="button" onclick="addCart('${escapeHome(product.id)}')">Aggiungi</button>
+              </div>
+            </div>
+          </article>`;
+      }
+
+      async function populateHomepageCollections() {
+        try {
+          const response = await fetch(`data/products.json?home=${Date.now()}`);
+          if (!response.ok) throw new Error('Catalogo non disponibile');
+
+          const raw = await response.json();
+          const products = (Array.isArray(raw) ? raw : (raw.products || []))
+            .map(product => ({ ...product, price: Number(product.price || 0) }));
+
+          const newest = products.filter(product =>
+            String(product.badge || '').toLowerCase().includes('nuov')
+          );
+          const best = products.filter(product =>
+            String(product.badge || '').toLowerCase().includes('best')
+          );
+
+          const newList = (newest.length ? newest : products).slice(0, 3);
+          const bestList = (best.length ? best : [...products].sort((a, b) => b.price - a.price)).slice(0, 3);
+
+          const newGrid = document.getElementById('newArrivalsGrid');
+          const bestGrid = document.getElementById('bestSellerGrid');
+
+          if (newGrid) {
+            newGrid.innerHTML = newList.length
+              ? newList.map(showcaseCard).join('')
+              : '<p>Nessun nuovo arrivo disponibile.</p>';
+          }
+
+          if (bestGrid) {
+            bestGrid.innerHTML = bestList.length
+              ? bestList.map(showcaseCard).join('')
+              : '<p>Nessun best seller disponibile.</p>';
+          }
+        } catch (error) {
+          const message = '<p>I prodotti saranno mostrati non appena il catalogo sarà disponibile.</p>';
+          const newGrid = document.getElementById('newArrivalsGrid');
+          const bestGrid = document.getElementById('bestSellerGrid');
+          if (newGrid) newGrid.innerHTML = message;
+          if (bestGrid) bestGrid.innerHTML = message;
+        }
+      }
+
+      const welcome = document.getElementById('welcome');
+      if (welcome) {
+        const closeWelcome = () => welcome.classList.add('hide');
+        welcome.addEventListener('click', closeWelcome);
+        setTimeout(closeWelcome, 2500);
+      }
+
+      const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll('.reveal').forEach(element => revealObserver.observe(element));
+      populateHomepageCollections();
+    })();
+  </script>
+</body>
+</html>
