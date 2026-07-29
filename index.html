@@ -1336,6 +1336,14 @@ body.v3-modal-open{overflow:hidden}
 @media(max-width:760px){.v7-arrivals-grid{grid-template-columns:1fr}}
 </style>
 
+
+<style id="catalog-v8-part1">
+.v8-filterbar{margin:40px auto;padding:22px;border-radius:22px;background:#fff;border:1px solid rgba(0,0,0,.08);display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.v8-pill{padding:10px 16px;border-radius:999px;border:1px solid #ddd;background:#fafafa;cursor:pointer}
+.v8-pill.active{background:#111;color:#f0d88b;border-color:#111}
+.v8-status{margin-left:auto;font-size:.9rem;color:#666}
+@media(max-width:760px){.v8-status{width:100%;margin-left:0}}
+</style>
 </head>
 
 <body>
@@ -1626,6 +1634,18 @@ body.v3-modal-open{overflow:hidden}
 <div class="v7-arrival"><span class="v7-badge">TREND</span><strong>Luxury Essentials</strong><p>Capi versatili per ogni occasione.</p><div class="v7-progress"><span style="width:68%"></span></div></div>
 <div class="v7-arrival"><span class="v7-badge">LIMITED</span><strong>Exclusive Drop</strong><p>Disponibilità limitata.</p><div class="v7-progress"><span style="width:94%"></span></div></div>
 </div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v8-filterbar">
+<strong>Filtri rapidi</strong>
+<button class="v8-pill" data-filter="new">Nuovi</button>
+<button class="v8-pill" data-filter="luxury">Luxury</button>
+<button class="v8-pill" data-filter="sale">Promo</button>
+<button class="v8-pill" data-filter="top">Top Rated</button>
+<span class="v8-status" id="v8Status">Nessun filtro selezionato</span>
 </div>
 </section>
 
@@ -2461,5 +2481,24 @@ document.querySelectorAll('.v7-arrival').forEach(card=>{
 })();
 </script>
 
+
+<script id="catalog-v8-part1-engine">
+(()=>{
+const status=document.getElementById('v8Status');
+document.querySelectorAll('.v8-pill').forEach(btn=>{
+ btn.addEventListener('click',()=>{
+   document.querySelectorAll('.v8-pill').forEach(b=>b.classList.remove('active'));
+   btn.classList.add('active');
+   if(status) status.textContent='Filtro attivo: '+btn.textContent;
+   const s=document.getElementById('searchInput');
+   if(s){
+     const m={new:'new',luxury:'luxury',sale:'sale',top:'best'};
+     s.value=m[btn.dataset.filter]||'';
+     s.dispatchEvent(new Event('input',{bubbles:true}));
+   }
+ });
+});
+})();
+</script>
 </body>
 </html>
