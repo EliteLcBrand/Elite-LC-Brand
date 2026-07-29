@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#050505">
   <meta name="description" content="ÉLITE LC BRAND: boutique uomo, selezione premium di moda, scarpe, borse e accessori.">
-  <title>ÉLITE LC BRAND | Boutique uomo</title>
+  <title>ÉLITE LC BRAND | Boutique uomo — Catalogo Premium V3</title>
 
   <!-- Mantiene la compatibilità con i file già presenti nel repository -->
   <link rel="stylesheet" href="assets/styles.css">
@@ -814,7 +814,353 @@
 .search-highlight{background:rgba(240,216,139,.55)}
 @media(max-width:1050px){.advanced-filters{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:720px){.mobile-filter-toggle{display:block}.catalog-filter-panels.collapsed{display:none}.advanced-filters{grid-template-columns:1fr}.filter-chip-bar{overflow-x:auto;flex-wrap:nowrap}.filter-chip{flex:0 0 auto}}
-</style></head>
+</style>
+<style id="catalog-v3-part1-styles">
+/* ÉLITE LC BRAND — Catalogo Premium V3, Parte 1 */
+:root{
+  --v3-ease:cubic-bezier(.22,.61,.36,1);
+  --v3-fast:180ms;
+  --v3-slow:520ms;
+}
+body.v3-modal-open{overflow:hidden}
+.product-card.v3-card{
+  isolation:isolate;
+  transform:translateZ(0);
+}
+.product-card.v3-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  border-radius:inherit;
+  pointer-events:none;
+  background:linear-gradient(145deg,rgba(255,255,255,.38),transparent 38%);
+  opacity:0;
+  transition:opacity var(--v3-fast) ease;
+}
+.product-card.v3-card:hover::before{opacity:1}
+.product-card.v3-card .product-visual{
+  cursor:pointer;
+}
+.product-card.v3-card .product-visual::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:2;
+  pointer-events:none;
+  background:linear-gradient(180deg,transparent 54%,rgba(5,5,5,.22));
+  opacity:0;
+  transition:opacity var(--v3-fast) ease;
+}
+.product-card.v3-card:hover .product-visual::before{opacity:1}
+.v3-image-stack{
+  position:absolute;
+  inset:0;
+}
+.v3-image-stack img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:opacity var(--v3-slow) var(--v3-ease),transform .75s var(--v3-ease);
+}
+.v3-image-stack .v3-image-secondary{opacity:0}
+.product-card.v3-card:hover .v3-image-stack.has-secondary .v3-image-primary{opacity:0}
+.product-card.v3-card:hover .v3-image-stack.has-secondary .v3-image-secondary{opacity:1}
+.product-card.v3-card:hover .v3-image-stack img{transform:scale(1.055)}
+.v3-quick-trigger{
+  position:absolute;
+  z-index:5;
+  left:50%;
+  bottom:17px;
+  min-width:160px;
+  min-height:44px;
+  padding:10px 18px;
+  border:1px solid rgba(255,255,255,.45);
+  border-radius:999px;
+  color:#fff;
+  background:rgba(5,5,5,.78);
+  backdrop-filter:blur(13px);
+  -webkit-backdrop-filter:blur(13px);
+  font-size:.72rem;
+  font-weight:900;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  opacity:0;
+  transform:translate(-50%,14px);
+  transition:opacity var(--v3-fast) ease,transform var(--v3-fast) var(--v3-ease),background var(--v3-fast) ease;
+}
+.v3-quick-trigger:hover{background:#050505}
+.product-card.v3-card:hover .v3-quick-trigger,
+.v3-quick-trigger:focus-visible{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+.v3-card .heart{
+  overflow:visible;
+}
+.v3-card .heart::after{
+  content:"";
+  position:absolute;
+  inset:-7px;
+  border:1px solid rgba(162,29,53,.25);
+  border-radius:50%;
+  opacity:0;
+  transform:scale(.55);
+}
+.v3-card .heart.v3-pop::after{animation:v3HeartRing .55s ease}
+@keyframes v3HeartRing{
+  0%{opacity:.75;transform:scale(.55)}
+  100%{opacity:0;transform:scale(1.35)}
+}
+.v3-card .badge{
+  animation:v3BadgeFloat 3.8s ease-in-out infinite;
+}
+@keyframes v3BadgeFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-3px)}
+}
+.v3-add-btn{
+  position:relative;
+  overflow:hidden;
+}
+.v3-add-btn::after{
+  content:"";
+  position:absolute;
+  top:-40%;
+  bottom:-40%;
+  width:38px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);
+  transform:translateX(-220%) rotate(14deg);
+  transition:transform .65s ease;
+}
+.v3-add-btn:hover::after{transform:translateX(520%) rotate(14deg)}
+.v3-add-btn.v3-added{animation:v3Added .42s ease}
+@keyframes v3Added{
+  0%{transform:scale(1)}
+  50%{transform:scale(.96)}
+  100%{transform:scale(1)}
+}
+.v3-card-enter{
+  animation:v3CardEnter .55s var(--v3-ease) both;
+  animation-delay:calc(var(--v3-index,0) * 42ms);
+}
+@keyframes v3CardEnter{
+  from{opacity:0;transform:translateY(18px) scale(.985)}
+  to{opacity:1;transform:none}
+}
+
+/* Quick View */
+.v3-quickview{
+  position:fixed;
+  inset:0;
+  z-index:1200;
+  display:grid;
+  place-items:center;
+  padding:18px;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity .25s ease,visibility .25s ease;
+}
+.v3-quickview.open{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+}
+.v3-quickview-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(2,2,2,.76);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+.v3-quickview-panel{
+  position:relative;
+  width:min(1020px,100%);
+  max-height:min(780px,92svh);
+  display:grid;
+  grid-template-columns:minmax(0,1.02fr) minmax(320px,.98fr);
+  overflow:hidden;
+  border:1px solid rgba(240,216,139,.25);
+  border-radius:28px;
+  color:#fff;
+  background:#0b0b0b;
+  box-shadow:0 40px 110px rgba(0,0,0,.55);
+  transform:translateY(24px) scale(.985);
+  transition:transform .38s var(--v3-ease);
+}
+.v3-quickview.open .v3-quickview-panel{transform:none}
+.v3-qv-close{
+  position:absolute;
+  z-index:8;
+  right:16px;
+  top:16px;
+  width:46px;
+  height:46px;
+  border:1px solid rgba(240,216,139,.3);
+  border-radius:50%;
+  color:#fff;
+  background:rgba(5,5,5,.74);
+  font-size:1.55rem;
+}
+.v3-qv-media{
+  position:relative;
+  min-height:520px;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 40%,rgba(201,155,60,.18),transparent 46%),
+    linear-gradient(145deg,#191713,#080808);
+}
+.v3-qv-media img{
+  width:100%;
+  height:100%;
+  min-height:520px;
+  object-fit:cover;
+}
+.v3-qv-placeholder{
+  min-height:520px;
+  display:grid;
+  place-items:center;
+  font-family:Georgia,serif;
+  font-size:8rem;
+  color:rgba(240,216,139,.22);
+}
+.v3-qv-thumbs{
+  position:absolute;
+  left:16px;
+  right:16px;
+  bottom:16px;
+  display:flex;
+  gap:9px;
+}
+.v3-qv-thumb{
+  width:60px;
+  height:70px;
+  padding:0;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.36);
+  border-radius:12px;
+  background:#111;
+}
+.v3-qv-thumb.active{outline:2px solid var(--gold-light)}
+.v3-qv-thumb img{min-height:0;width:100%;height:100%;object-fit:cover}
+.v3-qv-content{
+  overflow:auto;
+  padding:clamp(34px,5vw,62px);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.v3-qv-kicker{
+  color:var(--gold-light);
+  font-size:.7rem;
+  font-weight:900;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.v3-qv-title{
+  margin:13px 0 12px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(2rem,4vw,3.65rem);
+  line-height:1.02;
+  font-weight:500;
+}
+.v3-qv-price{
+  color:var(--gold-light);
+  font-size:1.35rem;
+  font-weight:900;
+}
+.v3-qv-stock{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  width:max-content;
+  margin-top:15px;
+  padding:8px 11px;
+  border:1px solid rgba(240,216,139,.2);
+  border-radius:999px;
+  color:#d8d1c3;
+  font-size:.75rem;
+}
+.v3-qv-stock::before{
+  content:"";
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#75b87a;
+}
+.v3-qv-stock.low::before{background:#dfa74a}
+.v3-qv-stock.out::before{background:#bc5964}
+.v3-qv-description{
+  margin:23px 0 0;
+  color:#aaa398;
+  line-height:1.72;
+}
+.v3-qv-ref{
+  margin-top:16px;
+  color:#6f695f;
+  font-size:.72rem;
+}
+.v3-qv-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:28px;
+}
+.v3-qv-actions a,
+.v3-qv-actions button{
+  min-height:50px;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  text-decoration:none;
+  font-weight:900;
+}
+.v3-qv-actions a{
+  color:#fff;
+  border:1px solid rgba(240,216,139,.28);
+  background:transparent;
+}
+.v3-qv-actions button{
+  border:0;
+  color:#171006;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));
+}
+.v3-qv-actions button:disabled{
+  color:#827c71;
+  background:#302e2a;
+}
+@media(max-width:760px){
+  .v3-quick-trigger{
+    opacity:1;
+    transform:translate(-50%,0);
+    bottom:13px;
+    min-width:145px;
+  }
+  .v3-quickview{padding:0}
+  .v3-quickview-panel{
+    width:100%;
+    height:100%;
+    max-height:none;
+    grid-template-columns:1fr;
+    grid-template-rows:minmax(300px,44svh) 1fr;
+    border:0;
+    border-radius:0;
+  }
+  .v3-qv-media,.v3-qv-media img,.v3-qv-placeholder{min-height:300px}
+  .v3-qv-content{padding:28px 20px 36px}
+}
+@media(prefers-reduced-motion:reduce){
+  .v3-card-enter,.v3-card .badge{animation:none}
+  .product-card.v3-card,
+  .v3-image-stack img,
+  .v3-quickview-panel{transition:none}
+}
+</style>
+
+</head>
 
 <body>
   <!-- Intro: si chiude automaticamente o toccando lo schermo -->
@@ -1069,12 +1415,35 @@
     <div id="favItems" class="cart-items"></div>
   </aside>
 
+
+  <!-- Quick View Luxury — Catalogo Premium V3 Parte 1 -->
+  <section class="v3-quickview" id="v3QuickView" aria-hidden="true" aria-label="Anteprima prodotto">
+    <div class="v3-quickview-backdrop" data-v3-qv-close></div>
+    <article class="v3-quickview-panel" role="dialog" aria-modal="true" aria-labelledby="v3QvTitle">
+      <button class="v3-qv-close" type="button" data-v3-qv-close aria-label="Chiudi anteprima">×</button>
+      <div class="v3-qv-media" id="v3QvMedia"></div>
+      <div class="v3-qv-content">
+        <span class="v3-qv-kicker" id="v3QvBrand">ÉLITE Selection</span>
+        <h2 class="v3-qv-title" id="v3QvTitle">Prodotto</h2>
+        <div class="v3-qv-price" id="v3QvPrice">€ 0,00</div>
+        <span class="v3-qv-stock" id="v3QvStock">Disponibile</span>
+        <p class="v3-qv-description" id="v3QvDescription"></p>
+        <div class="v3-qv-ref" id="v3QvRef"></div>
+        <div class="v3-qv-actions">
+          <a id="v3QvDetails" href="product.html">Scheda completa</a>
+          <button id="v3QvAdd" type="button">Aggiungi al carrello</button>
+        </div>
+      </div>
+    </article>
+  </section>
+
+
   <div class="toast" id="toast"></div>
 
   <!-- Funzioni già esistenti: catalogo, filtri, carrello e preferiti -->
   <script src="assets/app.js"></script>
 
-  <!-- Catalogo Premium V2 completo -->
+  <!-- Catalogo Premium V2 completo (base compatibile) -->
   <script id="catalog-v2-engine">
   (() => {
     const norm=v=>String(v??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
@@ -1212,5 +1581,257 @@
       populateHomepageCollections();
     })();
   </script>
+
+<script id="catalog-v3-part1-engine">
+(() => {
+  'use strict';
+
+  const byId = id => document.getElementById(id);
+  const qv = byId('v3QuickView');
+  if (!qv) return;
+
+  const qvMedia = byId('v3QvMedia');
+  const qvBrand = byId('v3QvBrand');
+  const qvTitle = byId('v3QvTitle');
+  const qvPrice = byId('v3QvPrice');
+  const qvStock = byId('v3QvStock');
+  const qvDescription = byId('v3QvDescription');
+  const qvRef = byId('v3QvRef');
+  const qvDetails = byId('v3QvDetails');
+  const qvAdd = byId('v3QvAdd');
+  let activeProduct = null;
+  let lastFocused = null;
+
+  const safe = value => typeof esc === 'function'
+    ? esc(value)
+    : String(value ?? '').replace(/[&<>"']/g, c => ({
+        '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'
+      })[c]);
+
+  const isAvailable = product =>
+    product && product.available !== false && Number(product.stock ?? 1) > 0;
+
+  const getImages = product => {
+    const candidates = [
+      product?.image,
+      product?.image2,
+      product?.secondaryImage,
+      ...(Array.isArray(product?.gallery) ? product.gallery : []),
+      ...(Array.isArray(product?.images) ? product.images : [])
+    ];
+    return [...new Set(candidates.map(v => String(v || '').trim()).filter(Boolean))];
+  };
+
+  const availabilityData = product => {
+    const ok = isAvailable(product);
+    const stock = Number(product?.stock ?? 0);
+    if (!ok) return { text:'Esaurito', cls:'out' };
+    if (stock > 0 && stock <= 2) return { text:`Ultimi ${stock}`, cls:'low' };
+    return { text:'Disponibile', cls:'' };
+  };
+
+  function setMainQuickImage(src, button) {
+    const main = qvMedia.querySelector('[data-v3-qv-main]');
+    if (main) {
+      main.src = src;
+      qvMedia.querySelectorAll('.v3-qv-thumb').forEach(el => el.classList.remove('active'));
+      button?.classList.add('active');
+    }
+  }
+
+  function openQuickView(id, trigger) {
+    if (!window.state || !Array.isArray(state.products)) return;
+    const product = state.products.find(item => String(item.id) === String(id));
+    if (!product) return;
+
+    activeProduct = product;
+    lastFocused = trigger || document.activeElement;
+    const images = getImages(product);
+    const stock = availabilityData(product);
+    const mainImage = images[0];
+
+    if (mainImage) {
+      qvMedia.innerHTML = `
+        <img data-v3-qv-main src="${safe(mainImage)}" alt="${safe(product.name || 'Prodotto')}" decoding="async">
+        ${images.length > 1 ? `<div class="v3-qv-thumbs">${images.map((src, index) => `
+          <button class="v3-qv-thumb ${index === 0 ? 'active' : ''}" type="button" data-v3-thumb="${safe(src)}" aria-label="Mostra immagine ${index + 1}">
+            <img src="${safe(src)}" alt="" loading="lazy">
+          </button>`).join('')}</div>` : ''}
+      `;
+    } else {
+      qvMedia.innerHTML = '<div class="v3-qv-placeholder">LC</div>';
+    }
+
+    qvBrand.textContent = product.brand || product.category || 'ÉLITE Selection';
+    qvTitle.textContent = product.name || 'Prodotto';
+    qvPrice.textContent = typeof money === 'function' ? money(product.price) : `€ ${Number(product.price || 0).toFixed(2)}`;
+    qvStock.textContent = stock.text;
+    qvStock.className = `v3-qv-stock ${stock.cls}`.trim();
+    qvDescription.textContent = product.description || 'Una proposta selezionata da ÉLITE LC BRAND, pensata per uno stile contemporaneo e distintivo.';
+    qvRef.textContent = `Rif. ${product.id ?? '—'}`;
+    qvDetails.href = `product.html?id=${encodeURIComponent(product.id)}`;
+    qvAdd.disabled = !isAvailable(product);
+    qvAdd.textContent = isAvailable(product) ? 'Aggiungi al carrello' : 'Esaurito';
+
+    qv.classList.add('open');
+    qv.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('v3-modal-open');
+    setTimeout(() => qv.querySelector('.v3-qv-close')?.focus(), 30);
+  }
+
+  function closeQuickView() {
+    qv.classList.remove('open');
+    qv.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('v3-modal-open');
+    activeProduct = null;
+    lastFocused?.focus?.();
+  }
+
+  qv.addEventListener('click', event => {
+    const close = event.target.closest('[data-v3-qv-close]');
+    if (close) {
+      closeQuickView();
+      return;
+    }
+    const thumb = event.target.closest('[data-v3-thumb]');
+    if (thumb) setMainQuickImage(thumb.dataset.v3Thumb, thumb);
+  });
+
+  qvAdd.addEventListener('click', () => {
+    if (!activeProduct || !isAvailable(activeProduct)) return;
+    if (typeof addCart === 'function') addCart(String(activeProduct.id));
+    qvAdd.classList.add('v3-added');
+    qvAdd.textContent = 'Aggiunto ✓';
+    setTimeout(() => {
+      qvAdd.classList.remove('v3-added');
+      if (activeProduct) qvAdd.textContent = 'Aggiungi al carrello';
+    }, 950);
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && qv.classList.contains('open')) closeQuickView();
+  });
+
+  window.openV3QuickView = openQuickView;
+  window.closeV3QuickView = closeQuickView;
+
+  const previousRenderProducts = window.renderProducts;
+
+  function renderV3Products() {
+    if (!window.state || !Array.isArray(state.products) || typeof filtered !== 'function') {
+      if (typeof previousRenderProducts === 'function') previousRenderProducts();
+      return;
+    }
+
+    const list = filtered();
+    const search = byId('searchInput')?.value?.trim() || '';
+    const controls = {
+      category: byId('categoryFilter'),
+      brand: byId('brandFilter'),
+      price: byId('priceFilter'),
+      availability: byId('availabilityFilter'),
+      badge: byId('badgeFilter')
+    };
+
+    const resultsText = byId('resultsText');
+    const catalogTotal = byId('catalogTotal');
+    const emptyState = byId('emptyState');
+    const productGrid = byId('productGrid');
+    const activeFilterSummary = byId('activeFilterSummary');
+
+    if (!productGrid) return;
+    if (resultsText) resultsText.textContent = `${list.length} ${list.length === 1 ? 'articolo trovato' : 'articoli trovati'}`;
+    if (catalogTotal) catalogTotal.textContent = state.products.length;
+    if (emptyState) emptyState.hidden = Boolean(list.length);
+
+    const active = [
+      search && `Ricerca: “${search}”`,
+      controls.category?.value,
+      controls.brand?.value,
+      controls.price?.value && controls.price.selectedOptions[0]?.text,
+      controls.availability?.value && controls.availability.selectedOptions[0]?.text,
+      controls.badge?.value && controls.badge.selectedOptions[0]?.text
+    ].filter(Boolean);
+    if (activeFilterSummary) activeFilterSummary.textContent = active.length ? active.join(' · ') : 'Nessun filtro attivo';
+
+    productGrid.innerHTML = list.map((product, index) => {
+      const favorite = state.favs.includes(product.id);
+      const available = isAvailable(product);
+      const stock = availabilityData(product);
+      const images = getImages(product);
+      const imageMarkup = images.length
+        ? `<div class="v3-image-stack ${images.length > 1 ? 'has-secondary' : ''}">
+             <img class="v3-image-primary" src="${safe(images[0])}" alt="${safe(product.name)}" loading="lazy" decoding="async" onerror="this.remove()">
+             ${images[1] ? `<img class="v3-image-secondary" src="${safe(images[1])}" alt="" loading="lazy" decoding="async" onerror="this.remove()">` : ''}
+           </div>`
+        : '<div class="product-placeholder">LC</div>';
+
+      return `
+        <article class="product-card v3-card v3-card-enter" style="--v3-index:${Math.min(index, 10)}">
+          <div class="product-visual" role="group" aria-label="${safe(product.name || 'Prodotto')}">
+            ${imageMarkup}
+            ${product.badge ? `<span class="badge">${safe(product.badge)}</span>` : ''}
+            <button class="heart ${favorite ? 'active' : ''}" type="button"
+              aria-label="${favorite ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'}"
+              data-v3-fav="${safe(product.id)}">${favorite ? '♥' : '♡'}</button>
+            <span class="stock-label ${stock.cls}">${stock.text}</span>
+            <button class="v3-quick-trigger" type="button" data-v3-quick="${safe(product.id)}">Quick View</button>
+          </div>
+          <div class="product-info">
+            <small>${safe(product.brand || product.category || 'ÉLITE Selection')}</small>
+            <h3>${safe(product.name || 'Prodotto')}</h3>
+            <div class="product-meta-line">
+              <div class="price">${typeof money === 'function' ? money(product.price) : safe(product.price)}</div>
+              <div class="product-ref">Rif. ${safe(product.id)}</div>
+            </div>
+            <div class="product-actions">
+              <a href="product.html?id=${encodeURIComponent(product.id)}">Dettagli</a>
+              <button class="v3-add-btn" type="button" ${available ? '' : 'disabled'} data-v3-add="${safe(product.id)}">${available ? 'Aggiungi' : 'Esaurito'}</button>
+            </div>
+          </div>
+        </article>`;
+    }).join('');
+  }
+
+  window.renderProducts = renderV3Products;
+
+  document.addEventListener('click', event => {
+    const quick = event.target.closest('[data-v3-quick]');
+    if (quick) {
+      openQuickView(quick.dataset.v3Quick, quick);
+      return;
+    }
+
+    const favorite = event.target.closest('[data-v3-fav]');
+    if (favorite) {
+      favorite.classList.add('v3-pop');
+      setTimeout(() => favorite.classList.remove('v3-pop'), 600);
+      if (typeof toggleFav === 'function') toggleFav(favorite.dataset.v3Fav);
+      return;
+    }
+
+    const add = event.target.closest('[data-v3-add]');
+    if (add && !add.disabled) {
+      if (typeof addCart === 'function') addCart(add.dataset.v3Add);
+      add.classList.add('v3-added');
+      const previous = add.textContent;
+      add.textContent = 'Aggiunto ✓';
+      setTimeout(() => {
+        add.classList.remove('v3-added');
+        add.textContent = previous;
+      }, 950);
+    }
+  });
+
+  const boot = setInterval(() => {
+    if (window.state && Array.isArray(state.products)) {
+      clearInterval(boot);
+      renderV3Products();
+    }
+  }, 120);
+  setTimeout(() => clearInterval(boot), 9000);
+})();
+</script>
+
 </body>
 </html>
