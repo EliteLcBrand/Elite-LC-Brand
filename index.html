@@ -1352,6 +1352,15 @@ body.v3-modal-open{overflow:hidden}
 .v8-table{width:100%;border-collapse:collapse;margin-top:18px}
 .v8-table th,.v8-table td{padding:12px;border-bottom:1px solid #eee;text-align:left}
 </style>
+
+<style id="catalog-v9-part1">
+.v9-ai{margin:42px auto;padding:32px;border-radius:28px;background:linear-gradient(135deg,#0b0b0b,#22180c);color:#fff}
+.v9-ai h2{margin:0 0 10px;font-family:Georgia,serif}
+.v9-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.v9-btn{padding:11px 18px;border-radius:999px;border:1px solid rgba(240,216,139,.35);background:rgba(255,255,255,.06);color:#fff;cursor:pointer}
+.v9-result{margin-top:18px;padding:18px;border-radius:18px;background:rgba(255,255,255,.08);min-height:64px}
+</style>
+
 </head>
 
 <body>
@@ -1654,6 +1663,21 @@ body.v3-modal-open{overflow:hidden}
 <button class="v8-pill" data-filter="sale">Promo</button>
 <button class="v8-pill" data-filter="top">Top Rated</button>
 <span class="v8-status" id="v8Status">Nessun filtro selezionato</span>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v9-ai">
+<h2>Luxury Style Advisor</h2>
+<p>Ricevi un suggerimento immediato in base all'occasione.</p>
+<div class="v9-actions">
+<button class="v9-btn" data-tip="business">Business</button>
+<button class="v9-btn" data-tip="ceremony">Cerimonia</button>
+<button class="v9-btn" data-tip="weekend">Weekend</button>
+<button class="v9-btn" data-tip="travel">Viaggio</button>
+</div>
+<div class="v9-result" id="v9Result">Seleziona un'occasione per visualizzare un consiglio.</div>
 </div>
 </section>
 
@@ -2537,5 +2561,23 @@ if(modal){
 }
 })();
 </script>
+
+<script id="catalog-v9-part1-engine">
+(()=>{
+const tips={
+business:"Blazer, camicia e mocassini per un look elegante e professionale.",
+ceremony:"Abito sartoriale con accessori coordinati per un outfit raffinato.",
+weekend:"Polo, chino e sneaker premium per comfort e stile.",
+travel:"Giacca leggera, t-shirt e borsa da viaggio coordinata."
+};
+const out=document.getElementById('v9Result');
+document.querySelectorAll('.v9-btn').forEach(b=>{
+ b.addEventListener('click',()=>{
+   out.textContent=tips[b.dataset.tip]||"";
+ });
+});
+})();
+</script>
+
 </body>
 </html>
