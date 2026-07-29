@@ -1286,6 +1286,15 @@ body.v3-modal-open{overflow:hidden}
 .v5-chip.active{background:linear-gradient(135deg,#f0d88b,#c99b3c);color:#171006;font-weight:700}
 </style>
 
+
+<style id="catalog-v5-part2">
+.v5-outfit{margin:40px auto;padding:28px;border:1px solid rgba(201,155,60,.18);border-radius:24px;background:#fff;box-shadow:0 18px 40px rgba(0,0,0,.05)}
+.v5-outfit h2{margin:0 0 10px;font-family:Georgia,serif;font-weight:500}
+.v5-outfit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+.v5-outfit-card{padding:18px;border-radius:18px;background:linear-gradient(145deg,#f7f3eb,#ece2cf);border:1px solid rgba(20,15,5,.08)}
+.v5-score{display:inline-block;margin-top:8px;padding:5px 10px;border-radius:999px;background:#111;color:#f0d88b;font-size:.75rem}
+@media(max-width:700px){.v5-outfit-grid{grid-template-columns:1fr}}
+</style>
 </head>
 
 <body>
@@ -1511,6 +1520,19 @@ body.v3-modal-open{overflow:hidden}
 <button class="v5-chip" data-style="business">Business</button>
 <button class="v5-chip" data-style="luxury">Luxury</button>
 <button class="v5-chip" data-style="street">Street</button>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v5-outfit">
+<h2>Outfit consigliati</h2>
+<p>Combinazioni create per ispirare il tuo prossimo acquisto.</p>
+<div class="v5-outfit-grid" id="v5OutfitGrid">
+<div class="v5-outfit-card"><strong>Look Business</strong><br>Giacca + Camicia + Scarpe<div class="v5-score">Compatibilità 96%</div></div>
+<div class="v5-outfit-card"><strong>Look Luxury</strong><br>Polo + Pantalone + Accessori<div class="v5-score">Compatibilità 94%</div></div>
+<div class="v5-outfit-card"><strong>Look Weekend</strong><br>T-shirt + Sneaker + Borsa<div class="v5-score">Compatibilità 92%</div></div>
 </div>
 </div>
 </section>
@@ -2273,5 +2295,24 @@ if(q){
 });})();
 </script>
 
+
+<script id="catalog-v5-part2-engine">
+(()=> {
+ const chips=document.querySelectorAll('.v5-chip');
+ const grid=document.getElementById('v5OutfitGrid');
+ if(!grid) return;
+ const looks={
+  casual:[['Relax','T-shirt + Jeans + Sneaker',95],['Urban','Felpa + Sneaker',93],['Travel','Polo + Borsa',91]],
+  business:[['Executive','Giacca + Camicia + Derby',97],['Office','Blazer + Chino',94],['Meeting','Cappotto + Mocassini',92]],
+  luxury:[['Signature','Blazer + Accessori Premium',98],['Evening','Camicia + Orologio',95],['Elite','Total Black',93]],
+  street:[['City','Hoodie + Sneaker',96],['Modern','Bomber + Cargo',94],['Daily','Cap + Backpack',92]]
+ };
+ chips.forEach(c=>c.addEventListener('click',()=>{
+   const data=looks[c.dataset.style];
+   if(!data) return;
+   grid.innerHTML=data.map(x=>`<div class="v5-outfit-card"><strong>${x[0]}</strong><br>${x[1]}<div class="v5-score">Compatibilità ${x[2]}%</div></div>`).join('');
+ }));
+})();
+</script>
 </body>
 </html>
