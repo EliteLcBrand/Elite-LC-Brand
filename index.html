@@ -1380,6 +1380,17 @@ body.v3-modal-open{overflow:hidden}
 .v10-note{font-size:.9rem;color:#ddd}
 @media(max-width:760px){.v10-grid{grid-template-columns:1fr}}
 </style>
+
+<style id="catalog-v10-part2">
+.v10-order{margin:42px auto;padding:30px;border-radius:28px;background:#faf8f2;border:1px solid rgba(0,0,0,.08)}
+.v10-order h2{margin:0 0 18px;font-family:Georgia,serif}
+.v10-order-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.v10-card{background:#fff;padding:20px;border-radius:18px;box-shadow:0 10px 24px rgba(0,0,0,.05)}
+.v10-label{font-size:.8rem;color:#777}
+.v10-value{font-size:1.1rem;font-weight:700;margin-top:6px}
+@media(max-width:760px){.v10-order-grid{grid-template-columns:1fr}}
+</style>
+
 </head>
 
 <body>
@@ -1724,6 +1735,29 @@ body.v3-modal-open{overflow:hidden}
 <strong>Riepilogo</strong>
 <p class="v10-note">Articoli: <span id="v10Items">0</span></p>
 <p class="v10-note">Preferiti: <span id="v10Favs">0</span></p>
+</div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v10-order">
+<h2>Riepilogo Ordine Premium</h2>
+<div class="v10-order-grid">
+<div class="v10-card">
+<div class="v10-label">Metodo di spedizione</div>
+<div class="v10-value">Express 24/48h</div>
+</div>
+<div class="v10-card">
+<div class="v10-label">Pagamento</div>
+<div class="v10-value">Carta / Apple Pay</div>
+</div>
+<div class="v10-card">
+<div class="v10-label">Codice promo</div>
+<div class="v10-value" id="v10Promo">Nessuno</div>
+<input id="v10PromoInput" placeholder="Inserisci codice" style="margin-top:12px;width:100%;padding:10px;border-radius:10px;border:1px solid #ddd">
+<button id="v10ApplyPromo" style="margin-top:10px;padding:10px 14px;border:0;border-radius:999px;cursor:pointer">Applica</button>
 </div>
 </div>
 </div>
@@ -2674,5 +2708,24 @@ document.getElementById('v10CheckoutBtn')?.addEventListener('click',()=>{
 });
 })();
 </script>
+
+<script id="catalog-v10-part2-engine">
+(()=>{
+const input=document.getElementById('v10PromoInput');
+const btn=document.getElementById('v10ApplyPromo');
+const out=document.getElementById('v10Promo');
+if(btn){
+ btn.addEventListener('click',()=>{
+   const code=(input.value||'').trim();
+   if(!code){alert('Inserisci un codice promo');return;}
+   localStorage.setItem('elitePromoCode',code);
+   out.textContent=code;
+ });
+}
+const saved=localStorage.getItem('elitePromoCode');
+if(saved && out){out.textContent=saved;}
+})();
+</script>
+
 </body>
 </html>
