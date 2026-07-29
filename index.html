@@ -1170,6 +1170,26 @@ body.v3-modal-open{overflow:hidden}
 @media(min-width:721px){.v3-filter-sheet{display:none!important}}
 </style>
 
+
+<style id="catalog-v3-part2b1">
+.v3-qv-media{overflow:hidden}
+.v3-qv-media img{transition:transform .35s ease;cursor:zoom-in}
+.v3-qv-media.zoom img{transform:scale(1.8);cursor:zoom-out}
+.v3-qv-thumbs{display:flex}
+.v3-qv-thumb{opacity:.6;transition:.2s}
+.v3-qv-thumb.active,.v3-qv-thumb:hover{opacity:1}
+</style>
+
+
+<style id="catalog-v3-part2b2">
+.v3-add-success{position:fixed;right:18px;bottom:18px;z-index:1500;padding:14px 18px;background:#111;color:#fff;border-radius:14px;opacity:0;transform:translateY(20px);transition:.25s}
+.v3-add-success.show{opacity:1;transform:none}
+.v3-card .heart.active{animation:v3Pulse .35s}
+@keyframes v3Pulse{0%{transform:scale(1)}50%{transform:scale(1.2)}100%{transform:scale(1)}}
+.product-card{transition:transform .25s ease,box-shadow .25s ease}
+.product-card:hover{transform:translateY(-8px)}
+</style>
+
 </head>
 
 <body>
@@ -1455,6 +1475,9 @@ body.v3-modal-open{overflow:hidden}
   <div id="v3FilterMount"></div>
  </div>
 </div>
+
+
+<div class="v3-add-success" id="v3AddSuccess">✔ Prodotto aggiunto al carrello</div>
 
 <div class="toast" id="toast"></div>
 
@@ -1869,6 +1892,45 @@ if(t&&s&&p){
  };
  s.addEventListener('click',e=>{if(e.target===s)document.getElementById('v3CloseFilters').click();});
 }
+})();
+</script>
+
+
+<script id="catalog-v3-part2b1-engine">
+(()=> {
+const media=document.getElementById('v3QvMedia');
+if(media){
+ media.addEventListener('click',e=>{
+   if(e.target.tagName==='IMG'){media.classList.toggle('zoom');}
+ });
+}
+window.v3SetGallery=function(images=[]){
+ if(!media)return;
+ const list=images.filter(Boolean);
+ if(!list.length)return;
+ media.innerHTML='<img src="'+list[0]+'" alt=""><div class="v3-qv-thumbs">'+
+ list.map((u,i)=>'<button class="v3-qv-thumb'+(i==0?' active':'')+'" data-src="'+u+'"><img src="'+u+'"></button>').join('')
+ +'</div>';
+ media.querySelectorAll('.v3-qv-thumb').forEach(b=>b.onclick=()=>{
+   media.querySelector('img').src=b.dataset.src;
+   media.querySelectorAll('.v3-qv-thumb').forEach(x=>x.classList.remove('active'));
+   b.classList.add('active');
+ });
+}
+})();
+</script>
+
+
+<script id="catalog-v3-part2b2-engine">
+(()=>{
+const toast=document.getElementById('v3AddSuccess');
+document.addEventListener('click',e=>{
+ const b=e.target.closest('.v3-add-btn,.product-actions button,#v3QvAdd');
+ if(!b||!toast)return;
+ toast.classList.add('show');
+ clearTimeout(window.__eliteToast);
+ window.__eliteToast=setTimeout(()=>toast.classList.remove('show'),1800);
+});
 })();
 </script>
 
