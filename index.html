@@ -1391,6 +1391,16 @@ body.v3-modal-open{overflow:hidden}
 @media(max-width:760px){.v10-order-grid{grid-template-columns:1fr}}
 </style>
 
+
+<style id="catalog-v11-part1">
+.v11-profile{margin:42px auto;padding:30px;border-radius:28px;background:linear-gradient(135deg,#ffffff,#f4efe4);border:1px solid rgba(0,0,0,.08)}
+.v11-head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.v11-badge{padding:8px 14px;border-radius:999px;background:#111;color:#f0d88b;font-weight:700}
+.v11-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.v11-card{background:#fff;border-radius:18px;padding:18px;box-shadow:0 10px 24px rgba(0,0,0,.05)}
+@media(max-width:760px){.v11-grid{grid-template-columns:1fr}}
+</style>
+
 </head>
 
 <body>
@@ -1758,6 +1768,36 @@ body.v3-modal-open{overflow:hidden}
 <div class="v10-value" id="v10Promo">Nessuno</div>
 <input id="v10PromoInput" placeholder="Inserisci codice" style="margin-top:12px;width:100%;padding:10px;border-radius:10px;border:1px solid #ddd">
 <button id="v10ApplyPromo" style="margin-top:10px;padding:10px 14px;border:0;border-radius:999px;cursor:pointer">Applica</button>
+</div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v11-profile">
+<div class="v11-head">
+<div>
+<h2 style="margin:0;font-family:Georgia,serif;">Area Cliente ÉLITE</h2>
+<p style="margin:.4rem 0 0;color:#666;">Panoramica del tuo account premium.</p>
+</div>
+<div class="v11-badge" id="v11Tier">MEMBER</div>
+</div>
+
+<div class="v11-grid">
+<div class="v11-card">
+<strong>Storico Visite</strong>
+<p><span id="v11Viewed">0</span> prodotti consultati.</p>
+</div>
+
+<div class="v11-card">
+<strong>Wishlist</strong>
+<p><span id="v11Wishlist">0</span> articoli salvati.</p>
+</div>
+
+<div class="v11-card">
+<strong>Codice Promo</strong>
+<p id="v11Promo">Nessuno</p>
 </div>
 </div>
 </div>
@@ -2724,6 +2764,24 @@ if(btn){
 }
 const saved=localStorage.getItem('elitePromoCode');
 if(saved && out){out.textContent=saved;}
+})();
+</script>
+
+
+<script id="catalog-v11-part1-engine">
+(()=>{
+function update(){
+ const viewed=JSON.parse(localStorage.getItem('recentlyViewed')||'[]');
+ const wish=JSON.parse(localStorage.getItem('wishlist')||'[]');
+ const promo=localStorage.getItem('elitePromoCode')||'Nessuno';
+ document.getElementById('v11Viewed').textContent=viewed.length;
+ document.getElementById('v11Wishlist').textContent=wish.length;
+ document.getElementById('v11Promo').textContent=promo;
+ const tier=document.getElementById('v11Tier');
+ tier.textContent=wish.length>=10?'VIP GOLD':wish.length>=5?'VIP':'MEMBER';
+}
+document.addEventListener('DOMContentLoaded',update);
+setTimeout(update,600);
 })();
 </script>
 
