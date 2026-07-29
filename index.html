@@ -1344,6 +1344,14 @@ body.v3-modal-open{overflow:hidden}
 .v8-status{margin-left:auto;font-size:.9rem;color:#666}
 @media(max-width:760px){.v8-status{width:100%;margin-left:0}}
 </style>
+
+<style id="catalog-v8-part2">
+.v8-compare-modal{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;align-items:center;justify-content:center;z-index:3000}
+.v8-compare-panel{width:min(900px,92vw);background:#fff;border-radius:24px;padding:28px;max-height:80vh;overflow:auto}
+.v8-close{float:right;border:0;background:#111;color:#fff;border-radius:999px;padding:8px 14px;cursor:pointer}
+.v8-table{width:100%;border-collapse:collapse;margin-top:18px}
+.v8-table th,.v8-table td{padding:12px;border-bottom:1px solid #eee;text-align:left}
+</style>
 </head>
 
 <body>
@@ -2498,6 +2506,35 @@ document.querySelectorAll('.v8-pill').forEach(btn=>{
    }
  });
 });
+})();
+</script>
+
+<div class="v8-compare-modal" id="v8CompareModal">
+  <div class="v8-compare-panel">
+    <button class="v8-close" id="v8CloseCompare">Chiudi</button>
+    <h2>Confronto prodotti</h2>
+    <table class="v8-table">
+      <thead><tr><th>Caratteristica</th><th>Prodotto A</th><th>Prodotto B</th></tr></thead>
+      <tbody id="v8CompareBody">
+        <tr><td>Prezzo</td><td>—</td><td>—</td></tr>
+        <tr><td>Brand</td><td>—</td><td>—</td></tr>
+        <tr><td>Categoria</td><td>—</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script id="catalog-v8-part2-engine">
+(()=>{
+const modal=document.getElementById('v8CompareModal');
+if(modal){
+ document.getElementById('v8CloseCompare').onclick=()=>modal.style.display='none';
+ document.addEventListener('click',e=>{
+   const btn=e.target.closest('.v4-compare-bar button');
+   if(btn){ modal.style.display='flex'; }
+ });
+ modal.addEventListener('click',e=>{if(e.target===modal) modal.style.display='none';});
+}
 })();
 </script>
 </body>
