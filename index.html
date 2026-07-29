@@ -1314,6 +1314,16 @@ body.v3-modal-open{overflow:hidden}
 @media(max-width:760px){.v6-stats{grid-template-columns:repeat(2,1fr)}}
 </style>
 
+
+<style id="catalog-v7-part1">
+.v7-services{margin:42px auto;padding:30px;border-radius:28px;background:linear-gradient(180deg,#fff,#f7f4ee);border:1px solid rgba(0,0,0,.08)}
+.v7-services h2{font-family:Georgia,serif;margin:0 0 18px}
+.v7-service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.v7-service{padding:20px;border-radius:18px;background:#fff;box-shadow:0 12px 28px rgba(0,0,0,.06)}
+.v7-service .tag{display:inline-block;padding:4px 10px;border-radius:999px;background:#111;color:#f0d88b;font-size:.75rem;margin-bottom:10px}
+@media(max-width:760px){.v7-service-grid{grid-template-columns:1fr}}
+</style>
+
 </head>
 
 <body>
@@ -1578,6 +1588,18 @@ body.v3-modal-open{overflow:hidden}
 <div class="v6-stat"><b id="v6Wish">0</b>Preferiti</div>
 <div class="v6-stat"><b>VIP</b>Livello account</div>
 <div class="v6-stat"><b>24h</b>Assistenza prioritaria</div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v7-services">
+<h2>Servizi Esclusivi</h2>
+<div class="v7-service-grid">
+<div class="v7-service"><span class="tag">NOVITÀ</span><h3>Click & Collect</h3><p>Ritiro rapido in boutique quando disponibile.</p></div>
+<div class="v7-service"><span class="tag">VIP</span><h3>Prenota un appuntamento</h3><p>Consulenza dedicata con Personal Shopper.</p></div>
+<div class="v7-service"><span class="tag">PREMIUM</span><h3>Gift Experience</h3><p>Messaggio personalizzato e confezione elegante.</p></div>
 </div>
 </div>
 </section>
@@ -2383,6 +2405,23 @@ function update(){
 document.addEventListener('DOMContentLoaded',update);
 window.addEventListener('storage',update);
 setTimeout(update,800);
+})();
+</script>
+
+
+<script id="catalog-v7-part1-engine">
+(()=>{
+document.querySelectorAll('.v7-service').forEach(card=>{
+ card.style.transition='transform .25s ease, box-shadow .25s ease';
+ card.addEventListener('mouseenter',()=>{
+   card.style.transform='translateY(-8px)';
+   card.style.boxShadow='0 20px 40px rgba(0,0,0,.12)';
+ });
+ card.addEventListener('mouseleave',()=>{
+   card.style.transform='';
+   card.style.boxShadow='';
+ });
+});
 })();
 </script>
 
