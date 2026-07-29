@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#070707">
+  <title>ÉLITE LC BRAND | Moda maschile di lusso</title>
+  <meta name="description" content="ÉLITE LC BRAND: selezione esclusiva di moda maschile, abbigliamento e accessori firmati.">
+  <link rel="stylesheet" href="assets/styles.css">
+
+  <style>
+    /* Aggiornamento V3.1 Premium: tutto incluso in questo file */
+    body.menu-open, body.cart-open { overflow: hidden; }
+
+    .premium-header .header-inner {
+      min-height: 92px;
+      grid-template-columns: 52px minmax(0,1fr) 92px;
+      gap: .7rem;
+    }
+
+    .brand-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .brand-logo img {
+      display: block;
+      width: min(250px, 46vw);
+      height: 72px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 14px rgba(189,139,46,.18));
+    }
+
+    .icon-button {
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 50%;
+      background: transparent;
+      color: #fff;
+      display: inline-grid;
+      place-items: center;
+      font-size: 1.25rem;
+      position: relative;
+    }
+
+    .header-tools {
+      display: flex;
+      justify-content: flex-end;
+      gap: .45rem;
+    }
+
+    .count-badge {
+      position: absolute;
+      right: -4px;
+      top: -5px;
+      min-width: 19px;
+      height: 19px;
+      padding: 0 5px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: #bd8b2e;
+      color: #fff;
+      font-size: .62rem;
+      font-weight: 800;
+    }
+
+    .premium-nav {
+      scrollbar-width: none;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .premium-nav::-webkit-scrollbar { display: none; }
+
+    .premium-hero {
+      min-height: 78svh;
+      background:
+        linear-gradient(180deg,rgba(0,0,0,.16),rgba(0,0,0,.72)),
+        url('images/lv-firma-01-indossata.jpeg') center 25%/cover no-repeat;
+    }
+
+    .premium-hero .hero-card {
+      padding: 2rem 1.2rem;
+      text-shadow: 0 3px 24px rgba(0,0,0,.35);
+    }
+
+    .premium-hero h1 {
+      letter-spacing: .025em;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: .75rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .hero-actions .btn-light {
+      background: rgba(255,255,255,.08);
+      color: #fff;
+      border-color: rgba(255,255,255,.72);
+      backdrop-filter: blur(9px);
+    }
+
+    .luxury-divider {
+      width: 58px;
+      height: 1px;
+      background: linear-gradient(90deg,transparent,#dcb75e,transparent);
+      margin: 1rem auto;
+    }
+
+    .category-card {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+    }
+
+    .category-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(180deg,transparent,rgba(0,0,0,.72));
+    }
+
+    .category-card:nth-child(1) { background: url('images/lv-firma-02-frontale.jpeg') center/cover; }
+    .category-card:nth-child(2) { background: linear-gradient(135deg,#161616,#5e4930); }
+    .category-card:nth-child(3) { background: linear-gradient(135deg,#262626,#71614c); }
+    .category-card:nth-child(4) { background: linear-gradient(135deg,#111,#886b32); }
+
+    .section-soft { background: #faf8f4; }
+
+    .usp-row {
+      max-width: 1450px;
+      margin: auto;
+      padding: 1.1rem 4vw;
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      border-top: 1px solid #e8e0d4;
+      border-bottom: 1px solid #e8e0d4;
+      text-align: center;
+      gap: 1rem;
+      font-size: .72rem;
+      letter-spacing: .08em;
+      font-weight: 800;
+    }
+
+    .drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      background: rgba(0,0,0,.58);
+      opacity: 0;
+      visibility: hidden;
+      transition: .25s;
+    }
+
+    .drawer {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      z-index: 90;
+      width: min(88vw,390px);
+      padding: 1.3rem;
+      background: #080808;
+      color: #fff;
+      transition: transform .28s ease;
+      overflow-y: auto;
+    }
+
+    .menu-drawer { left: 0; transform: translateX(-103%); }
+    .cart-drawer { right: 0; transform: translateX(103%); background: #fff; color: #161616; }
+
+    body.menu-open .drawer-backdrop,
+    body.cart-open .drawer-backdrop {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    body.menu-open .menu-drawer,
+    body.cart-open .cart-drawer { transform: translateX(0); }
+
+    .drawer-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,.15);
+    }
+
+    .cart-drawer .drawer-head { border-color: #e8e0d4; }
+
+    .drawer-logo {
+      width: 190px;
+      height: 72px;
+      object-fit: contain;
+    }
+
+    .drawer-close {
+      width: 42px;
+      height: 42px;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      background: transparent;
+      color: inherit;
+      font-size: 1.3rem;
+    }
+
+    .drawer-links {
+      display: grid;
+      margin-top: 1rem;
+    }
+
+    .drawer-links a {
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.6rem;
+    }
+
+    .cart-empty {
+      padding: 3rem 0;
+      text-align: center;
+      color: #6d6a65;
+    }
+
+    .cart-summary {
+      margin-top: 1.2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e8e0d4;
+      display: flex;
+      justify-content: space-between;
+      font-weight: 800;
+    }
+
+    .floating-top {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 40;
+      width: 46px;
+      height: 46px;
+      border: 0;
+      border-radius: 50%;
+      background: #090909;
+      color: #fff;
+      box-shadow: 0 12px 30px rgba(0,0,0,.2);
+      opacity: 0;
+      visibility: hidden;
+      transition: .2s;
+    }
+    .floating-top.show { opacity: 1; visibility: visible; }
+
+    @media (max-width: 720px) {
+      .topbar { font-size: .6rem; }
+      .premium-header .header-inner {
+        min-height: 80px;
+        grid-template-columns: 44px minmax(0,1fr) 86px;
+        padding-left: .8rem;
+        padding-right: .8rem;
+      }
+      .brand-logo img {
+        width: min(205px, 45vw);
+        height: 62px;
+      }
+      .icon-button { width: 40px; height: 40px; }
+      .premium-nav { display: none; }
+      .premium-hero { min-height: 72svh; }
+      .premium-hero h1 { font-size: clamp(3.3rem,18vw,5.4rem); }
+      .usp-row { grid-template-columns: 1fr; padding: 1rem; }
+      .section-title { align-items: start; flex-direction: column; }
+    }
+  
+    /* V4 stabile — compatibile con assets/app.js e data/products.json già presenti */
+    .welcome-screen{
+      position:fixed; inset:0; z-index:9999;
+      display:grid; place-items:center;
+      background:
+        radial-gradient(circle at 50% 35%, rgba(189,139,46,.16), transparent 24rem),
+        #050505;
+      transition:opacity .75s ease, visibility .75s ease;
+    }
+    .welcome-screen.hide{opacity:0;visibility:hidden}
+    .welcome-inner{text-align:center;padding:2rem;animation:welcomeIn 1s ease both}
+    .welcome-inner img{
+      width:min(520px,82vw);height:min(280px,38vh);object-fit:contain;
+      filter:drop-shadow(0 18px 45px rgba(189,139,46,.33));
+    }
+    .welcome-inner p{
+      margin:1rem 0 .2rem;color:#d7b85f;
+      letter-spacing:.34em;text-transform:uppercase;font-size:.72rem
+    }
+    .welcome-inner h1{
+      margin:0;color:#fff;font-family:"Cormorant Garamond",Georgia,serif;
+      font-size:clamp(2.1rem,8vw,5.2rem);font-weight:500;letter-spacing:.05em
+    }
+    .welcome-line{
+      width:86px;height:1px;margin:1.25rem auto 0;
+      background:linear-gradient(90deg,transparent,#d7b85f,transparent)
+    }
+    @keyframes welcomeIn{
+      from{opacity:0;transform:translateY(18px) scale(.97)}
+      to{opacity:1;transform:none}
+    }
+
+    .premium-header{
+      background:rgba(6,6,6,.9);
+      backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+    }
+    .premium-header .header-inner{min-height:108px}
+    .brand-logo img{
+      width:min(315px,54vw);height:92px;
+      transform:scale(1.08);
+      filter:drop-shadow(0 10px 26px rgba(189,139,46,.28))
+    }
+    .premium-hero{
+      min-height:82svh;
+      background:
+        radial-gradient(circle at 72% 25%,rgba(189,139,46,.24),transparent 26rem),
+        linear-gradient(135deg,#090909 0%,#17120a 45%,#050505 100%);
+    }
+    .premium-hero::after{
+      content:"LC";position:absolute;right:4vw;bottom:-4vw;
+      font-family:"Cormorant Garamond",Georgia,serif;
+      font-size:clamp(11rem,34vw,32rem);line-height:.75;
+      color:rgba(255,255,255,.025);pointer-events:none
+    }
+    .hero-card{position:relative;z-index:1}
+    .category-card{
+      min-height:170px;
+      background:linear-gradient(145deg,#111,#20180b);
+      border:1px solid rgba(189,139,46,.24);
+      display:flex;align-items:flex-end;padding:1.4rem;
+      transition:transform .25s ease,border-color .25s ease
+    }
+    .category-card:hover{transform:translateY(-5px);border-color:#bd8b2e}
+    .category-card strong{font-size:1.35rem;color:#fff}
+    .story-img{
+      display:grid;place-items:center;min-height:390px;
+      background:
+        radial-gradient(circle,rgba(189,139,46,.18),transparent 55%),
+        linear-gradient(145deg,#111,#050505)
+    }
+    .story-img img{width:min(390px,80%);height:260px;object-fit:contain}
+    .footer{
+      padding:3rem 1rem;
+      background:#050505;border-top:1px solid rgba(189,139,46,.22);
+      color:#d2cec5;text-align:center
+    }
+    .footer-links{
+      display:flex;justify-content:center;gap:1rem 1.6rem;flex-wrap:wrap;
+      margin:1rem 0 1.4rem
+    }
+    .footer-links a{color:#d7b85f;text-decoration:none;font-size:.85rem}
+    @media(max-width:720px){
+      .premium-header .header-inner{min-height:94px}
+      .brand-logo img{width:min(245px,53vw);height:80px}
+      .premium-hero{min-height:76svh}
+      .welcome-inner img{width:min(390px,86vw)}
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="welcome-screen" id="welcomeScreen" aria-label="Benvenuti su ÉLITE LC BRAND">
+    <div class="welcome-inner">
+      <img src="logo-elite-lc-brand.png" alt="Logo ÉLITE LC BRAND">
+      <p>Benvenuti su</p>
+      <h1>ÉLITE LC BRAND</h1>
+      <div class="welcome-line"></div>
+    </div>
+  </div>
+
+  <div class="topbar">SPEDIZIONE GRATUITA IN ITALIA · PAGAMENTI SICURI · RESO ENTRO 14 GIORNI</div>
+
+  <header class="header premium-header">
+    <div class="header-inner">
+      <button class="icon-button" type="button" aria-label="Apri menu" onclick="openMenu()">☰</button>
+
+      <a class="brand-logo" href="index.html" aria-label="ÉLITE LC BRAND - Home">
+        <img src="logo-elite-lc-brand.png" alt="ÉLITE LC BRAND">
+      </a>
+
+      <div class="header-tools">
+        <button class="icon-button" type="button" aria-label="Preferiti" onclick="toast('Preferiti salvati sul dispositivo')">♡</button>
+        <button class="icon-button" type="button" aria-label="Apri carrello" onclick="openCart()">
+          🛍
+          <span class="count-badge" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+
+    <nav class="nav premium-nav" aria-label="Categorie principali">
+      <a href="#shop">T-shirt</a>
+      <a href="#shop">Scarpe</a>
+      <a href="#shop">Pantaloni</a>
+      <a href="#shop">Felpe e Maglie</a>
+      <a href="#shop">Camicie</a>
+      <a href="#shop">Giacche</a>
+      <a href="#shop">Coordinati</a>
+      <a href="#shop">Borse</a>
+      <a href="#shop">Accessori</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero premium-hero">
+      <div class="hero-card">
+        <div class="eyebrow">COLLEZIONE 2026</div>
+        <div class="luxury-divider"></div>
+        <h1>ÉLITE LC<br>BRAND</h1>
+        <p>Una selezione esclusiva di moda maschile per chi cerca qualità, eleganza e presenza.</p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="#shop">Scopri la collezione</a>
+          <a class="btn btn-light" href="product.html">Articolo in evidenza</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="usp-row">
+      <div>SELEZIONE ESCLUSIVA</div>
+      <div>SPEDIZIONE GRATUITA</div>
+      <div>ASSISTENZA DEDICATA</div>
+    </div>
+
+    <section class="section">
+      <div class="section-title">
+        <div>
+          <span class="eyebrow">ESPLORA</span>
+          <h2>Categorie</h2>
+        </div>
+        <p>Scopri una selezione curata per costruire un guardaroba riconoscibile e contemporaneo.</p>
+      </div>
+
+      <div class="category-strip">
+        <a class="category-card" href="#shop"><strong>T-shirt</strong></a>
+        <a class="category-card" href="#shop"><strong>Scarpe</strong></a>
+        <a class="category-card" href="#shop"><strong>Giacche</strong></a>
+        <a class="category-card" href="#shop"><strong>Accessori</strong></a>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="shop">
+      <div class="section-title">
+        <div>
+          <span class="eyebrow">BOUTIQUE</span>
+          <h2>Catalogo</h2>
+        </div>
+        <p>Ricerca, filtra e ordina gli articoli della boutique ÉLITE LC BRAND.</p>
+      </div>
+
+      <div class="filters">
+        <input id="search" type="search" placeholder="Cerca prodotto o marchio" aria-label="Cerca nel catalogo">
+        <select id="category" aria-label="Categoria">
+          <option value="">Tutte le categorie</option>
+          <option>T-shirt</option>
+          <option>Scarpe</option>
+          <option>Pantaloni</option>
+          <option>Giacche</option>
+        </select>
+        <select id="brand" aria-label="Marchio">
+          <option value="">Tutti i marchi</option>
+          <option>Louis Vuitton</option>
+          <option>Gucci</option>
+          <option>Dior</option>
+          <option>Fendi</option>
+        </select>
+        <select id="sort" aria-label="Ordina">
+          <option value="featured">In evidenza</option>
+          <option value="low">Prezzo crescente</option>
+          <option value="high">Prezzo decrescente</option>
+          <option value="az">Nome A-Z</option>
+        </select>
+      </div>
+
+      <div id="productGrid" class="grid"></div>
+    </section>
+
+    <section class="story">
+      <div class="story-grid">
+        <div class="story-img">
+          <img src="logo-elite-lc-brand.png" alt="Selezione ÉLITE LC BRAND">
+        </div>
+        <div class="story-copy">
+          <span class="eyebrow">IL NOSTRO STILE</span>
+          <h2>Eleganza, selezione e identità.</h2>
+          <p>Ogni articolo viene presentato con fotografie complete, informazioni chiare e un’esperienza studiata per smartphone.</p>
+          <a class="btn btn-dark" href="#shop">Vai al catalogo</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="trust">
+    <div>SPEDIZIONE GRATUITA</div>
+    <div>PAGAMENTI SICURI</div>
+    <div>RESO FACILE</div>
+    <div>ASSISTENZA 24/7</div>
+  </section>
+
+  <footer class="footer">
+    <img src="logo-elite-lc-brand.png" alt="ÉLITE LC BRAND" style="width:220px;height:120px;object-fit:contain">
+    <div class="footer-links">
+      <a href="#shop">Catalogo</a>
+      <a href="product.html">Prodotto in evidenza</a>
+      <a href="admin.html">Area amministratore</a>
+    </div>
+    <div>© 2026 ÉLITE LC BRAND · Boutique uomo</div>
+  </footer>
+
+  <div class="drawer-backdrop" onclick="closeDrawers()"></div>
+
+  <aside class="drawer menu-drawer" aria-label="Menu mobile">
+    <div class="drawer-head">
+      <img class="drawer-logo" src="logo-elite-lc-brand.png" alt="ÉLITE LC BRAND">
+      <button class="drawer-close" onclick="closeDrawers()" aria-label="Chiudi menu">×</button>
+    </div>
+    <nav class="drawer-links">
+      <a href="#shop" onclick="closeDrawers()">T-shirt</a>
+      <a href="#shop" onclick="closeDrawers()">Scarpe</a>
+      <a href="#shop" onclick="closeDrawers()">Pantaloni</a>
+      <a href="#shop" onclick="closeDrawers()">Felpe e Maglie</a>
+      <a href="#shop" onclick="closeDrawers()">Camicie</a>
+      <a href="#shop" onclick="closeDrawers()">Giacche</a>
+      <a href="#shop" onclick="closeDrawers()">Coordinati</a>
+      <a href="#shop" onclick="closeDrawers()">Borse</a>
+      <a href="#shop" onclick="closeDrawers()">Accessori</a>
+    </nav>
+  </aside>
+
+  <aside class="drawer cart-drawer" aria-label="Carrello">
+    <div class="drawer-head">
+      <strong style="font-family:'Cormorant Garamond',serif;font-size:2rem">Il tuo carrello</strong>
+      <button class="drawer-close" onclick="closeDrawers()" aria-label="Chiudi carrello">×</button>
+    </div>
+    <div id="cartDrawerContent"></div>
+  </aside>
+
+  <button class="floating-top" id="backToTop" onclick="scrollTo({top:0,behavior:'smooth'})" aria-label="Torna in alto">↑</button>
+  <div id="toast" class="toast"></div>
+
+  <script src="assets/app.js"></script>
+  <script>
+    function openMenu() {
+      document.body.classList.remove('cart-open');
+      document.body.classList.add('menu-open');
+    }
+
+    function openCart() {
+      document.body.classList.remove('menu-open');
+      document.body.classList.add('cart-open');
+      renderCartDrawer();
+    }
+
+    function closeDrawers() {
+      document.body.classList.remove('menu-open', 'cart-open');
+    }
+
+    function getCart() {
+      try { return JSON.parse(localStorage.getItem('eliteCart') || '[]'); }
+      catch (_) { return []; }
+    }
+
+    function updateCartCount() {
+      const total = getCart().reduce((sum, item) => sum + Number(item.qty || 1), 0);
+      document.getElementById('cartCount').textContent = total;
+    }
+
+    function renderCartDrawer() {
+      const cart = getCart();
+      const box = document.getElementById('cartDrawerContent');
+
+      if (!cart.length) {
+        box.innerHTML = '<div class="cart-empty"><p>Il tuo carrello è vuoto.</p><a class="btn btn-dark" href="#shop" onclick="closeDrawers()">Scopri il catalogo</a></div>';
+        return;
+      }
+
+      const totalQty = cart.reduce((sum, item) => sum + Number(item.qty || 1), 0);
+      box.innerHTML = `
+        <div style="padding:1.4rem 0;line-height:1.8">
+          <p>Hai <strong>${totalQty}</strong> ${totalQty === 1 ? 'articolo' : 'articoli'} nel carrello.</p>
+          <p style="color:#6d6a65">Il riepilogo completo e il checkout saranno collegati nella fase successiva.</p>
+        </div>
+        <div class="cart-summary"><span>Articoli</span><span>${totalQty}</span></div>
+        <button class="btn btn-dark" style="width:100%;margin-top:1rem" onclick="toast('Checkout in preparazione')">Vai al checkout</button>
+      `;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+      const welcomeScreen = document.getElementById('welcomeScreen');
+      if (welcomeScreen) {
+        setTimeout(() => welcomeScreen.classList.add('hide'), 2400);
+        welcomeScreen.addEventListener('click', () => welcomeScreen.classList.add('hide'));
+      }
+
+      updateCartCount();
+      setTimeout(updateCartCount, 800);
+
+      const topButton = document.getElementById('backToTop');
+      addEventListener('scroll', () => topButton.classList.toggle('show', scrollY > 500), { passive: true });
+
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeDrawers();
+      });
+    });
+
+    addEventListener('storage', updateCartCount);
+  </script>
+</body>
+</html>
