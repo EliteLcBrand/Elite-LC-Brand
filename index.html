@@ -1361,6 +1361,15 @@ body.v3-modal-open{overflow:hidden}
 .v9-result{margin-top:18px;padding:18px;border-radius:18px;background:rgba(255,255,255,.08);min-height:64px}
 </style>
 
+
+<style id="catalog-v9-part2">
+.v9-reco{margin:42px auto;padding:30px;border-radius:26px;background:linear-gradient(180deg,#fcfbf8,#f2eadb);border:1px solid rgba(0,0,0,.08)}
+.v9-reco h2{margin:0 0 8px;font-family:Georgia,serif}
+.v9-reco-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+.v9-reco-card{padding:18px;border-radius:18px;background:#fff;box-shadow:0 10px 26px rgba(0,0,0,.06)}
+.v9-match{display:inline-block;margin-top:10px;padding:4px 10px;border-radius:999px;background:#111;color:#f0d88b;font-size:.75rem}
+@media(max-width:760px){.v9-reco-grid{grid-template-columns:1fr}}
+</style>
 </head>
 
 <body>
@@ -1678,6 +1687,17 @@ body.v3-modal-open{overflow:hidden}
 <button class="v9-btn" data-tip="travel">Viaggio</button>
 </div>
 <div class="v9-result" id="v9Result">Seleziona un'occasione per visualizzare un consiglio.</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v9-reco">
+<h2>Suggerimenti personalizzati</h2>
+<p>I consigli vengono aggiornati in base allo stile selezionato nel Luxury Style Advisor.</p>
+<div class="v9-reco-grid" id="v9RecoGrid">
+<div class="v9-reco-card"><strong>Look Premium</strong><p>Seleziona un'occasione per ricevere suggerimenti.</p></div>
+</div>
 </div>
 </section>
 
@@ -2579,5 +2599,35 @@ document.querySelectorAll('.v9-btn').forEach(b=>{
 })();
 </script>
 
+
+<script id="catalog-v9-part2-engine">
+(()=>{
+const grid=document.getElementById('v9RecoGrid');
+const data={
+business:[
+['Blazer Sartoriale','Perfetto per ufficio',97],
+['Camicia Premium','Cotone elegante',95],
+['Mocassini','Finitura classica',93]],
+ceremony:[
+['Abito Elegance','Taglio moderno',98],
+['Cravatta Seta','Dettaglio raffinato',95],
+['Scarpa Oxford','Linea formale',94]],
+weekend:[
+['Polo Luxury','Comfort quotidiano',96],
+['Sneaker Premium','Design urbano',94],
+['Jeans Slim','Vestibilità moderna',92]],
+travel:[
+['Borsone','Capienza ideale',97],
+['Giacca Leggera','Pratica e versatile',94],
+['Sneaker Travel','Comfort prolungato',93]]
+};
+document.querySelectorAll('.v9-btn').forEach(btn=>{
+ btn.addEventListener('click',()=>{
+   const items=data[btn.dataset.tip]||[];
+   grid.innerHTML=items.map(i=>`<div class="v9-reco-card"><strong>${i[0]}</strong><p>${i[1]}</p><span class="v9-match">Compatibilità ${i[2]}%</span></div>`).join('');
+ });
+});
+})();
+</script>
 </body>
 </html>
