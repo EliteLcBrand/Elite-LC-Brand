@@ -1304,6 +1304,16 @@ body.v3-modal-open{overflow:hidden}
 .v6-box strong{display:block;margin-bottom:8px;color:#f0d88b}
 @media(max-width:760px){.v6-grid{grid-template-columns:1fr}}
 </style>
+
+<style id="catalog-v6-part2">
+.v6-dashboard{margin:42px auto;padding:30px;border-radius:26px;background:#faf8f3;border:1px solid rgba(0,0,0,.08)}
+.v6-dashboard h2{margin:0 0 16px;font-family:Georgia,serif}
+.v6-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.v6-stat{padding:18px;border-radius:18px;background:#fff;text-align:center;box-shadow:0 10px 24px rgba(0,0,0,.05)}
+.v6-stat b{display:block;font-size:1.5rem;margin-bottom:6px}
+@media(max-width:760px){.v6-stats{grid-template-columns:repeat(2,1fr)}}
+</style>
+
 </head>
 
 <body>
@@ -1555,6 +1565,19 @@ body.v3-modal-open{overflow:hidden}
 <div class="v6-box"><strong>Consulenza</strong>Personal shopper e suggerimenti dedicati.</div>
 <div class="v6-box"><strong>Packaging Premium</strong>Confezione elegante pronta da regalare.</div>
 <div class="v6-box"><strong>Spedizione Prioritaria</strong>Preparazione rapida degli ordini disponibili.</div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v6-dashboard">
+<h2>Dashboard Cliente</h2>
+<div class="v6-stats">
+<div class="v6-stat"><b id="v6Viewed">0</b>Prodotti visti</div>
+<div class="v6-stat"><b id="v6Wish">0</b>Preferiti</div>
+<div class="v6-stat"><b>VIP</b>Livello account</div>
+<div class="v6-stat"><b>24h</b>Assistenza prioritaria</div>
 </div>
 </div>
 </section>
@@ -2344,5 +2367,24 @@ if(q){
  b.style.transition='transform .25s ease';
 });})();
 </script>
+
+<script id="catalog-v6-part2-engine">
+(()=>{
+function update(){
+ try{
+   const viewed=JSON.parse(localStorage.getItem('recentlyViewed')||'[]');
+   const wish=JSON.parse(localStorage.getItem('wishlist')||'[]');
+   const v=document.getElementById('v6Viewed');
+   const w=document.getElementById('v6Wish');
+   if(v)v.textContent=viewed.length;
+   if(w)w.textContent=wish.length;
+ }catch(e){}
+}
+document.addEventListener('DOMContentLoaded',update);
+window.addEventListener('storage',update);
+setTimeout(update,800);
+})();
+</script>
+
 </body>
 </html>
