@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#050505">
   <meta name="description" content="ÉLITE LC BRAND: boutique uomo, selezione premium di moda, scarpe, borse e accessori.">
-  <title>ÉLITE LC BRAND | Boutique uomo — Catalogo Premium V3</title>
+  <title>ÉLITE LC BRAND | Boutique uomo — Catalogo Premium V4 — Parte 1</title>
 
   <!-- Mantiene la compatibilità con i file già presenti nel repository -->
   <link rel="stylesheet" href="assets/styles.css">
@@ -1190,6 +1190,92 @@ body.v3-modal-open{overflow:hidden}
 .product-card:hover{transform:translateY(-8px)}
 </style>
 
+
+<style id="catalog-v4-part1-styles">
+/* ÉLITE LC BRAND — Premium V4 Parte 1 */
+:root{--v4-ease:cubic-bezier(.22,.61,.36,1)}
+.v4-search-wrap{position:relative;min-width:0}
+.v4-search-suggestions{
+  position:absolute;left:0;right:0;top:calc(100% + 8px);z-index:80;
+  overflow:hidden;display:none;border:1px solid rgba(20,15,5,.11);
+  border-radius:16px;background:rgba(255,255,255,.98);
+  box-shadow:0 24px 65px rgba(25,18,6,.16);backdrop-filter:blur(16px)
+}
+.v4-search-suggestions.open{display:block;animation:v4Drop .2s var(--v4-ease)}
+@keyframes v4Drop{from{opacity:0;transform:translateY(-7px)}to{opacity:1;transform:none}}
+.v4-suggestion{
+  width:100%;display:grid;grid-template-columns:50px minmax(0,1fr) auto;
+  gap:12px;align-items:center;padding:10px 12px;border:0;border-bottom:1px solid rgba(20,15,5,.07);
+  background:transparent;text-align:left;color:#17140f
+}
+.v4-suggestion:last-child{border-bottom:0}
+.v4-suggestion:active,.v4-suggestion:hover{background:#f6f0e5}
+.v4-suggestion-media{
+  width:50px;height:56px;overflow:hidden;display:grid;place-items:center;
+  border-radius:10px;background:#eee7da;color:#8d691e;font-family:Georgia,serif
+}
+.v4-suggestion-media img{width:100%;height:100%;object-fit:cover}
+.v4-suggestion-copy{min-width:0}
+.v4-suggestion-copy b,.v4-suggestion-copy small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.v4-suggestion-copy small{margin-top:3px;color:#81796c}
+.v4-suggestion-price{color:#6f4e0d;font-weight:900;font-size:.82rem}
+.v4-suggestion-empty{padding:16px;color:#766f63;font-size:.83rem}
+.v4-smart-hint{display:block;margin:7px 4px 0;color:#8b806f;font-size:.68rem}
+
+.v4-personal-section{
+  width:min(1280px,calc(100% - 28px));margin:0 auto;
+  padding:0 0 clamp(78px,10vw,120px)
+}
+.v4-personal-block{margin-top:46px}
+.v4-personal-head{display:flex;justify-content:space-between;align-items:end;gap:18px;margin-bottom:20px}
+.v4-personal-head h2{margin:8px 0 0;font:500 clamp(2rem,4vw,3.6rem)/1 Georgia,serif}
+.v4-personal-head p{margin:0;color:#766f63;max-width:440px}
+.v4-mini-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.v4-mini-card{
+  overflow:hidden;border:1px solid rgba(20,15,5,.08);border-radius:20px;background:#fff;
+  box-shadow:0 14px 38px rgba(25,18,6,.065);transition:.25s var(--v4-ease)
+}
+.v4-mini-card:hover{transform:translateY(-6px);box-shadow:0 23px 55px rgba(25,18,6,.12)}
+.v4-mini-media{aspect-ratio:4/4.4;overflow:hidden;display:grid;place-items:center;background:linear-gradient(145deg,#f5f1e8,#e7dfcf)}
+.v4-mini-media img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--v4-ease)}
+.v4-mini-card:hover .v4-mini-media img{transform:scale(1.045)}
+.v4-mini-placeholder{font:500 4rem Georgia,serif;color:rgba(113,78,14,.2)}
+.v4-mini-copy{padding:15px}
+.v4-mini-copy small{color:#8b806f;text-transform:uppercase;letter-spacing:.09em}
+.v4-mini-copy h3{margin:7px 0 9px;font:500 1.15rem/1.25 Georgia,serif}
+.v4-mini-bottom{display:flex;align-items:center;justify-content:space-between;gap:9px}
+.v4-mini-bottom strong{color:#6f4e0d}
+.v4-mini-bottom a{
+  padding:8px 11px;border-radius:999px;color:#fff;background:#0b0b0b;
+  text-decoration:none;font-size:.72rem;font-weight:900
+}
+.v4-empty-personal{padding:24px;border:1px dashed rgba(111,78,13,.22);border-radius:18px;color:#766f63;background:rgba(255,255,255,.5)}
+
+.menu-drawer{transition:transform .38s var(--v4-ease)}
+.menu-drawer nav a{position:relative;transition:padding-left .22s ease,color .22s ease}
+.menu-drawer nav a::before{content:"";position:absolute;left:2px;top:50%;width:0;height:1px;background:var(--gold-light);transition:.22s ease}
+.menu-drawer nav a:hover{padding-left:24px;color:var(--gold-light)}
+.menu-drawer nav a:hover::before{width:14px}
+
+@media(max-width:900px){.v4-mini-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){
+  .v4-search-suggestions{position:fixed;left:10px;right:10px;top:150px;max-height:58svh;overflow:auto}
+  .v4-personal-head{align-items:flex-start;flex-direction:column}
+  .v4-mini-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px}
+  .v4-mini-card{flex:0 0 min(78vw,300px);scroll-snap-align:start}
+}
+@media(prefers-reduced-motion:reduce){
+  .v4-search-suggestions,.v4-mini-card,.v4-mini-media img,.menu-drawer{animation:none;transition:none}
+}
+</style>
+
+
+<style id="catalog-v4-part2">
+.v4-compare-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:1600;background:#0b0b0b;color:#fff;padding:14px 18px;border-radius:18px;display:none;gap:12px;align-items:center;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.v4-compare-bar.show{display:flex}
+.v4-compare-btn{position:absolute;left:12px;bottom:12px;width:42px;height:42px;border-radius:50%;border:0;background:#fff;font-weight:900}
+.v4-look{margin-top:12px;padding:10px;border-top:1px solid rgba(20,15,5,.08);font-size:.75rem;color:#766f63}
+</style>
 </head>
 
 <body>
@@ -1387,7 +1473,25 @@ body.v3-modal-open{overflow:hidden}
       </div>
     </section>
 
-    <section class="cta reveal">
+    
+<section class="v4-personal-section reveal" id="v4PersonalArea">
+  <div class="v4-personal-block" id="v4RecentBlock" hidden>
+    <div class="v4-personal-head">
+      <div><span class="eyebrow dark">La tua selezione</span><h2>Visti di recente</h2></div>
+      <p>Riprendi rapidamente gli articoli che hai esplorato.</p>
+    </div>
+    <div class="v4-mini-grid" id="v4RecentGrid"></div>
+  </div>
+  <div class="v4-personal-block" id="v4RecommendedBlock" hidden>
+    <div class="v4-personal-head">
+      <div><span class="eyebrow dark">Scelti per te</span><h2>Potrebbero piacerti</h2></div>
+      <p>Una selezione dinamica ispirata ai prodotti che hai visualizzato.</p>
+    </div>
+    <div class="v4-mini-grid" id="v4RecommendedGrid"></div>
+  </div>
+</section>
+
+<section class="cta reveal">
       <h2>Il tuo stile. La tua firma.</h2>
       <p>
         Scopri la selezione ÉLITE LC BRAND e salva i tuoi articoli preferiti.
@@ -1934,5 +2038,201 @@ document.addEventListener('click',e=>{
 })();
 </script>
 
+
+<script id="catalog-v4-part1-engine">
+(() => {
+  const STORAGE_KEY = "elite_v4_recent";
+  const maxRecent = 8;
+  const norm = v => String(v ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+  const euro = value => new Intl.NumberFormat("it-IT",{style:"currency",currency:"EUR"}).format(Number(value)||0);
+  const safe = value => String(value ?? "").replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[ch]));
+  const productImage = p => {
+    const values = [p.image,p.image2,p.images?.[0]].flat().filter(Boolean);
+    return values[0] || "";
+  };
+  const productUrl = p => `product.html?id=${encodeURIComponent(p.id ?? "")}`;
+
+  function products(){
+    return window.state && Array.isArray(window.state.products) ? window.state.products : [];
+  }
+
+  function recentIds(){
+    try{
+      const value = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+      return Array.isArray(value) ? value.map(String) : [];
+    }catch{return []}
+  }
+
+  function remember(id){
+    if(id === undefined || id === null || id === "") return;
+    const next = [String(id), ...recentIds().filter(x => x !== String(id))].slice(0,maxRecent);
+    try{localStorage.setItem(STORAGE_KEY,JSON.stringify(next))}catch{}
+    renderPersonal();
+  }
+
+  function miniCard(p){
+    const image = productImage(p);
+    return `<article class="v4-mini-card">
+      <a class="v4-mini-media" href="${productUrl(p)}" data-v4-product="${safe(p.id)}">
+        ${image ? `<img src="${safe(image)}" alt="${safe(p.name || "Prodotto")}" loading="lazy">` : `<span class="v4-mini-placeholder">É</span>`}
+      </a>
+      <div class="v4-mini-copy">
+        <small>${safe(p.brand || p.category || "ÉLITE Selection")}</small>
+        <h3>${safe(p.name || "Prodotto")}</h3>
+        <div class="v4-mini-bottom"><strong>${euro(p.price)}</strong><a href="${productUrl(p)}" data-v4-product="${safe(p.id)}">Scopri</a></div>
+      </div>
+    </article>`;
+  }
+
+  function renderPersonal(){
+    const list = products();
+    if(!list.length) return;
+    const map = new Map(list.map(p => [String(p.id),p]));
+    const recent = recentIds().map(id => map.get(id)).filter(Boolean).slice(0,4);
+    const recentBlock = document.getElementById("v4RecentBlock");
+    const recentGrid = document.getElementById("v4RecentGrid");
+    if(recentBlock && recentGrid){
+      recentBlock.hidden = !recent.length;
+      recentGrid.innerHTML = recent.map(miniCard).join("");
+    }
+
+    const last = recent[0];
+    let recommended = [];
+    if(last){
+      recommended = list.filter(p => String(p.id)!==String(last.id) && (
+        (last.category && p.category===last.category) || (last.brand && p.brand===last.brand)
+      ));
+    }
+    if(recommended.length < 4){
+      const used = new Set(recommended.map(p=>String(p.id)));
+      list.forEach(p => {
+        if(recommended.length < 4 && !used.has(String(p.id)) && (!last || String(p.id)!==String(last.id))){
+          used.add(String(p.id)); recommended.push(p);
+        }
+      });
+    }
+    const block = document.getElementById("v4RecommendedBlock");
+    const grid = document.getElementById("v4RecommendedGrid");
+    if(block && grid){
+      block.hidden = !recommended.length;
+      grid.innerHTML = recommended.slice(0,4).map(miniCard).join("");
+    }
+  }
+
+  function installSearch(){
+    const input = document.getElementById("searchInput");
+    if(!input || input.dataset.v4Ready) return;
+    input.dataset.v4Ready = "1";
+    const parent = input.closest(".search-field");
+    if(!parent) return;
+    parent.classList.add("v4-search-wrap");
+    const box = document.createElement("div");
+    box.className = "v4-search-suggestions";
+    box.id = "v4SearchSuggestions";
+    box.setAttribute("role","listbox");
+    parent.appendChild(box);
+    const hint = document.createElement("small");
+    hint.className = "v4-smart-hint";
+    hint.textContent = "Suggerimenti istantanei per nome, brand e categoria";
+    parent.appendChild(hint);
+
+    const close = () => box.classList.remove("open");
+    const update = () => {
+      const q = norm(input.value);
+      if(q.length < 2){close();box.innerHTML="";return}
+      const matches = products().filter(p => norm([p.name,p.brand,p.category,p.description].join(" ")).includes(q)).slice(0,5);
+      box.innerHTML = matches.length ? matches.map(p => {
+        const image = productImage(p);
+        return `<button type="button" class="v4-suggestion" role="option" data-id="${safe(p.id)}">
+          <span class="v4-suggestion-media">${image?`<img src="${safe(image)}" alt="" loading="lazy">`:"É"}</span>
+          <span class="v4-suggestion-copy"><b>${safe(p.name || "Prodotto")}</b><small>${safe(p.brand || p.category || "ÉLITE Selection")}</small></span>
+          <span class="v4-suggestion-price">${euro(p.price)}</span>
+        </button>`;
+      }).join("") : `<div class="v4-suggestion-empty">Nessun suggerimento immediato.</div>`;
+      box.classList.add("open");
+    };
+    input.addEventListener("input",update);
+    input.addEventListener("focus",update);
+    box.addEventListener("click",e => {
+      const item = e.target.closest(".v4-suggestion");
+      if(!item) return;
+      const p = products().find(x => String(x.id)===String(item.dataset.id));
+      if(!p) return;
+      input.value = p.name || "";
+      input.dispatchEvent(new Event("input",{bubbles:true}));
+      close();
+      const qv = document.querySelector(`.v3-quick-trigger[data-id="${CSS.escape(String(p.id))}"]`);
+      if(qv) qv.click(); else location.href = productUrl(p);
+    });
+    document.addEventListener("click",e => {if(!parent.contains(e.target))close()});
+    input.addEventListener("keydown",e => {if(e.key==="Escape")close()});
+  }
+
+  document.addEventListener("click",e => {
+    const direct = e.target.closest("[data-v4-product]");
+    if(direct) remember(direct.dataset.v4Product);
+    const quick = e.target.closest(".v3-quick-trigger");
+    if(quick) remember(quick.dataset.id);
+    const details = e.target.closest(".product-actions a");
+    if(details){
+      const card = details.closest(".product-card");
+      const trigger = card && card.querySelector(".v3-quick-trigger[data-id]");
+      if(trigger) remember(trigger.dataset.id);
+    }
+  });
+
+  let attempts = 0;
+  const boot = setInterval(() => {
+    attempts++;
+    installSearch();
+    renderPersonal();
+    if((products().length && document.getElementById("searchInput")) || attempts > 80) clearInterval(boot);
+  },250);
+  window.addEventListener("load",() => {installSearch();renderPersonal()});
+})();
+</script>
+
+
+<script id="catalog-v4-part2-engine">
+(()=>{
+const selected=new Set();
+const bar=document.createElement('div');
+bar.className='v4-compare-bar';
+bar.innerHTML='<span id="v4CmpTxt">0 prodotti selezionati</span><button>Confronta</button>';
+document.body.appendChild(bar);
+function refresh(){
+ const t=document.getElementById('v4CmpTxt');
+ t.textContent=selected.size+' prodotti selezionati';
+ bar.classList.toggle('show',selected.size>0);
+}
+document.addEventListener('click',e=>{
+ const b=e.target.closest('.v4-compare-btn');
+ if(!b)return;
+ const id=b.dataset.id;
+ if(selected.has(id)){selected.delete(id);b.textContent='+';}
+ else{selected.add(id);b.textContent='✓';}
+ refresh();
+});
+const boot=setInterval(()=>{
+ document.querySelectorAll('.product-card').forEach((c,i)=>{
+   if(c.querySelector('.v4-compare-btn'))return;
+   const id=(c.querySelector('.v3-quick-trigger')?.dataset.id)||('p'+i);
+   const btn=document.createElement('button');
+   btn.className='v4-compare-btn';
+   btn.dataset.id=id;
+   btn.textContent='+';
+   c.querySelector('.product-visual')?.appendChild(btn);
+   const info=c.querySelector('.product-info');
+   if(info&&!info.querySelector('.v4-look')){
+      const d=document.createElement('div');
+      d.className='v4-look';
+      d.textContent='Shop the Look: suggerimenti coordinati disponibili.';
+      info.appendChild(d);
+   }
+ });
+ if(document.querySelector('.product-card'))clearInterval(boot);
+},300);
+})();
+</script>
 </body>
 </html>
