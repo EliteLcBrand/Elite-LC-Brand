@@ -1,0 +1,3523 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#050505">
+  <meta name="description" content="ÉLITE LC BRAND: boutique uomo, selezione premium di moda, scarpe, borse e accessori.">
+  <title>ÉLITE LC BRAND | Boutique uomo — Catalogo Premium V4 — Parte 1</title>
+
+  <!-- Mantiene la compatibilità con i file già presenti nel repository -->
+  <link rel="stylesheet" href="assets/styles.css">
+
+  <style>
+    :root{
+      --black:#050505;
+      --black-2:#0b0b0b;
+      --panel:#111;
+      --cream:#f5f0e5;
+      --muted:#aaa59a;
+      --gold:#c99b3c;
+      --gold-light:#f0d88b;
+      --line:rgba(201,155,60,.24);
+      --shadow:0 28px 80px rgba(0,0,0,.34);
+      --radius:24px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--cream);color:#17140f;overflow-x:hidden}
+    img{max-width:100%;display:block}
+    button,a,input,select{font:inherit}
+    button,a{-webkit-tap-highlight-color:transparent}
+
+    /* Schermata di benvenuto */
+    .welcome{
+      position:fixed;inset:0;z-index:10000;
+      display:grid;place-items:center;
+      padding:24px;
+      background:
+        radial-gradient(circle at 50% 38%,rgba(201,155,60,.18),transparent 24rem),
+        linear-gradient(145deg,#030303,#0b0905 58%,#020202);
+      opacity:1;visibility:visible;
+      transition:opacity .8s ease,visibility .8s ease;
+    }
+    .welcome.hide{opacity:0;visibility:hidden;pointer-events:none}
+    .welcome-inner{text-align:center;animation:welcomeUp 1s ease both}
+    .welcome img{
+      width:min(560px,88vw);height:min(285px,38vh);object-fit:contain;
+      margin:auto;filter:drop-shadow(0 22px 55px rgba(201,155,60,.34));
+    }
+    .welcome p{
+      margin:15px 0 5px;color:var(--gold-light);
+      letter-spacing:.35em;text-transform:uppercase;font-size:.74rem
+    }
+    .welcome h1{
+      margin:0;color:#fff;font-family:Georgia,"Times New Roman",serif;
+      font-weight:500;letter-spacing:.055em;font-size:clamp(2.1rem,8vw,5rem)
+    }
+    .welcome-line{
+      width:94px;height:1px;margin:22px auto 0;
+      background:linear-gradient(90deg,transparent,var(--gold-light),transparent)
+    }
+    .welcome small{display:block;color:#878278;margin-top:18px;font-size:.72rem}
+    @keyframes welcomeUp{
+      from{opacity:0;transform:translateY(18px) scale(.98)}
+      to{opacity:1;transform:none}
+    }
+
+    /* Barra superiore e header */
+    .announcement{
+      position:relative;z-index:90;
+      padding:10px 14px;text-align:center;
+      background:#050505;color:var(--gold-light);
+      font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
+      border-bottom:1px solid rgba(201,155,60,.18)
+    }
+    .site-header{
+      position:sticky;top:0;z-index:80;
+      background:rgba(5,5,5,.92);
+      border-bottom:1px solid rgba(201,155,60,.18);
+      backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+      box-shadow:0 14px 38px rgba(0,0,0,.2)
+    }
+    .header-row{
+      width:min(1220px,calc(100% - 24px));min-height:112px;margin:auto;
+      display:grid;grid-template-columns:52px minmax(0,1fr) 112px;
+      align-items:center;gap:12px
+    }
+    .brand{display:grid;place-items:center;text-decoration:none}
+    .brand img{
+      width:min(350px,56vw);height:98px;object-fit:contain;
+      filter:drop-shadow(0 9px 22px rgba(201,155,60,.26))
+    }
+    .header-actions{display:flex;justify-content:flex-end;gap:9px}
+    .round-btn{
+      position:relative;display:grid;place-items:center;
+      width:46px;height:46px;border-radius:50%;
+      color:#fff;background:rgba(255,255,255,.025);
+      border:1px solid rgba(240,216,139,.34);
+      transition:.2s ease
+    }
+    .round-btn:active{transform:scale(.95);background:rgba(201,155,60,.12)}
+    .round-btn span{
+      position:absolute;right:-3px;top:-4px;min-width:19px;height:19px;padding:0 5px;
+      display:grid;place-items:center;border-radius:999px;
+      background:var(--gold-light);color:#191207;font-size:.65rem;font-weight:800
+    }
+    .desktop-nav{
+      display:flex;justify-content:center;gap:clamp(18px,3vw,42px);
+      padding:13px 16px;border-top:1px solid rgba(255,255,255,.045)
+    }
+    .desktop-nav a{
+      position:relative;color:#e6dfd0;text-decoration:none;
+      font-size:.75rem;letter-spacing:.12em;text-transform:uppercase
+    }
+    .desktop-nav a::after{
+      content:"";position:absolute;left:0;right:0;bottom:-7px;height:1px;
+      background:var(--gold-light);transform:scaleX(0);transition:.25s ease
+    }
+    .desktop-nav a:hover::after{transform:scaleX(1)}
+
+    /* Hero */
+    .hero{
+      position:relative;isolation:isolate;overflow:hidden;
+      min-height:min(780px,82svh);
+      display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);
+      align-items:center;gap:38px;padding:clamp(70px,10vw,130px) max(24px,6vw);
+      color:#fff;background:
+        radial-gradient(circle at 72% 30%,rgba(201,155,60,.25),transparent 25rem),
+        radial-gradient(circle at 18% 78%,rgba(201,155,60,.10),transparent 20rem),
+        linear-gradient(130deg,#050505 0%,#151005 48%,#050505 100%)
+    }
+    .hero::after{
+      content:"LC";position:absolute;right:-1vw;bottom:-6vw;z-index:-1;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(14rem,38vw,34rem);line-height:.75;
+      color:rgba(255,255,255,.022)
+    }
+    .hero-content{max-width:720px}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:12px;
+      color:var(--gold-light);letter-spacing:.21em;text-transform:uppercase;font-size:.72rem
+    }
+    .eyebrow::before{content:"";width:42px;height:1px;background:currentColor}
+    .eyebrow.dark{color:#8d691e}
+    .hero h1{
+      max-width:800px;margin:20px 0 18px;
+      font-family:Georgia,"Times New Roman",serif;font-weight:500;
+      font-size:clamp(3.15rem,8vw,7.6rem);line-height:.88;letter-spacing:-.045em
+    }
+    .hero p{max-width:610px;margin:0;color:#ccc5b8;font-size:clamp(1rem,2vw,1.16rem);line-height:1.75}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+    .btn{
+      min-height:50px;padding:14px 22px;border-radius:999px;
+      display:inline-flex;align-items:center;justify-content:center;
+      text-decoration:none;border:1px solid transparent;
+      font-weight:800;letter-spacing:.035em;transition:.22s ease
+    }
+    .btn:active{transform:scale(.98)}
+    .btn-gold{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#181006}
+    .btn-outline{border-color:rgba(240,216,139,.55);color:#fff;background:rgba(255,255,255,.02)}
+    .btn-dark{background:#080808;color:#fff}
+    .hero-showcase{
+      position:relative;min-height:460px;display:grid;place-items:center
+    }
+    .hero-ring{
+      position:absolute;width:min(470px,80vw);aspect-ratio:1;border-radius:50%;
+      border:1px solid rgba(240,216,139,.18);
+      box-shadow:inset 0 0 90px rgba(201,155,60,.08),0 0 100px rgba(201,155,60,.08)
+    }
+    .hero-ring::before,.hero-ring::after{
+      content:"";position:absolute;inset:9%;border-radius:50%;
+      border:1px solid rgba(240,216,139,.10)
+    }
+    .hero-ring::after{inset:20%}
+    .hero-showcase img{
+      position:relative;width:min(420px,78vw);height:290px;object-fit:contain;
+      filter:drop-shadow(0 30px 48px rgba(0,0,0,.55))
+    }
+    .hero-note{
+      position:absolute;right:0;bottom:26px;width:190px;
+      padding:16px;border:1px solid rgba(240,216,139,.22);
+      border-radius:18px;background:rgba(8,8,8,.7);backdrop-filter:blur(12px)
+    }
+    .hero-note b{display:block;color:var(--gold-light);font-family:Georgia,serif;font-size:1.2rem}
+    .hero-note span{display:block;color:#b9b2a5;font-size:.77rem;margin-top:4px}
+
+    /* Vantaggi */
+    .benefits{
+      width:min(1180px,calc(100% - 28px));margin:-34px auto 0;position:relative;z-index:4;
+      display:grid;grid-template-columns:repeat(3,1fr);
+      background:#fff;border:1px solid rgba(20,15,5,.08);
+      border-radius:22px;box-shadow:var(--shadow);overflow:hidden
+    }
+    .benefits div{padding:22px;text-align:center;border-right:1px solid rgba(20,15,5,.08)}
+    .benefits div:last-child{border-right:0}
+    .benefits b{display:block;font-family:Georgia,serif;font-size:1.12rem}
+    .benefits span{display:block;color:#766f63;font-size:.82rem;margin-top:5px}
+
+    /* Sezioni generali */
+    .section{width:min(1220px,calc(100% - 28px));margin:0 auto;padding:clamp(72px,10vw,125px) 0}
+    .section-heading{
+      display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:32px
+    }
+    .section-heading h2{
+      margin:10px 0 0;font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(2.2rem,5vw,4.2rem);font-weight:500;line-height:1
+    }
+    .section-heading p{margin:0;color:#736c60}
+    .section-link{color:#6f4e0d;text-decoration:none;font-weight:800;border-bottom:1px solid currentColor}
+
+    /* Categorie */
+    .category-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .category-grid a{
+      position:relative;overflow:hidden;min-height:250px;padding:24px;
+      display:flex;flex-direction:column;justify-content:flex-end;
+      color:#fff;text-decoration:none;border-radius:22px;
+      border:1px solid rgba(201,155,60,.22);
+      background:
+        radial-gradient(circle at 80% 15%,rgba(201,155,60,.26),transparent 12rem),
+        linear-gradient(145deg,#151515,#090704);
+      transition:.25s ease
+    }
+    .category-grid a:hover{transform:translateY(-6px);box-shadow:0 22px 50px rgba(0,0,0,.18)}
+    .category-grid a::after{
+      content:attr(data-mark);position:absolute;right:10px;top:6px;
+      font-family:Georgia,serif;font-size:7rem;color:rgba(255,255,255,.035)
+    }
+    .category-grid span{color:var(--gold-light);font-size:.72rem;letter-spacing:.16em}
+    .category-grid strong{margin-top:9px;font-family:Georgia,serif;font-size:1.75rem;font-weight:500}
+    .category-grid small{color:#aaa394;margin-top:6px}
+
+    /* Nuovi arrivi e best seller */
+    .dark-section{
+      background:
+        radial-gradient(circle at 8% 20%,rgba(201,155,60,.12),transparent 23rem),
+        #080808;color:#fff
+    }
+    .dark-section .section-heading p{color:#aaa398}
+    .showcase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .showcase-card{
+      overflow:hidden;border-radius:22px;background:#111;
+      border:1px solid rgba(201,155,60,.18)
+    }
+    .showcase-visual{
+      position:relative;min-height:300px;display:grid;place-items:center;overflow:hidden;
+      background:
+        radial-gradient(circle,rgba(201,155,60,.13),transparent 58%),
+        linear-gradient(145deg,#161616,#090909)
+    }
+    .showcase-visual img{width:100%;height:300px;object-fit:cover}
+    .showcase-placeholder{
+      font-family:Georgia,serif;font-size:6rem;color:rgba(240,216,139,.22);letter-spacing:-.08em
+    }
+    .showcase-badge{
+      position:absolute;left:14px;top:14px;padding:7px 11px;border-radius:999px;
+      background:var(--gold-light);color:#171006;font-size:.68rem;font-weight:900;text-transform:uppercase
+    }
+    .showcase-info{padding:18px}
+    .showcase-info small{color:#9e978a;text-transform:uppercase;letter-spacing:.1em}
+    .showcase-info h3{margin:8px 0 6px;font-family:Georgia,serif;font-size:1.35rem;font-weight:500}
+    .showcase-price{color:var(--gold-light);font-weight:900}
+    .showcase-actions{display:flex;gap:9px;margin-top:15px}
+    .showcase-actions a,.showcase-actions button{
+      flex:1;min-height:42px;border-radius:12px;border:1px solid rgba(240,216,139,.25);
+      background:transparent;color:#fff;text-decoration:none;display:grid;place-items:center;font-weight:800
+    }
+    .showcase-actions button{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#181006}
+
+    /* Editorial/banner */
+    .editorial{
+      width:min(1220px,calc(100% - 28px));margin:auto;
+      display:grid;grid-template-columns:.9fr 1.1fr;overflow:hidden;
+      border-radius:28px;background:#090909;color:#fff;box-shadow:var(--shadow)
+    }
+    .editorial-art{
+      min-height:460px;display:grid;place-items:center;position:relative;overflow:hidden;
+      background:
+        radial-gradient(circle at 50% 45%,rgba(201,155,60,.22),transparent 42%),
+        linear-gradient(145deg,#111,#050505)
+    }
+    .editorial-art::before{
+      content:"ÉLITE";position:absolute;transform:rotate(-18deg);
+      font-family:Georgia,serif;font-size:clamp(5rem,13vw,11rem);
+      color:rgba(255,255,255,.026)
+    }
+    .editorial-art img{position:relative;width:min(420px,80%);height:300px;object-fit:contain}
+    .editorial-copy{padding:clamp(38px,7vw,90px);display:flex;flex-direction:column;justify-content:center}
+    .editorial-copy h2{
+      margin:18px 0;font-family:Georgia,serif;font-size:clamp(2.5rem,6vw,5rem);
+      font-weight:500;line-height:.98
+    }
+    .editorial-copy p{color:#aaa398;line-height:1.75;max-width:580px}
+
+    /* Catalogo */
+    .filters{display:grid;grid-template-columns:1.3fr .75fr .75fr;gap:10px;margin-bottom:25px}
+    .filters input,.filters select{
+      width:100%;min-height:52px;padding:0 15px;border-radius:14px;
+      border:1px solid rgba(20,15,5,.14);background:#fff;color:#17140f;outline:none
+    }
+    .filters input:focus,.filters select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,155,60,.12)}
+    .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+    .product-card{
+      overflow:hidden;border-radius:22px;background:#fff;
+      border:1px solid rgba(20,15,5,.08);box-shadow:0 14px 40px rgba(25,18,6,.07)
+    }
+    .product-visual{
+      position:relative;min-height:310px;display:grid;place-items:center;overflow:hidden;
+      background:
+        radial-gradient(circle,rgba(201,155,60,.13),transparent 55%),
+        linear-gradient(145deg,#f5f1e8,#e7dfcf)
+    }
+    .product-visual img{width:100%;height:310px;object-fit:cover}
+    .product-placeholder{font-family:Georgia,serif;font-size:6rem;color:rgba(113,78,14,.22)}
+    .badge{
+      position:absolute;left:14px;top:14px;padding:7px 10px;border-radius:999px;
+      color:#171006;background:var(--gold-light);font-size:.67rem;font-weight:900
+    }
+    .heart{
+      position:absolute;right:13px;top:13px;width:43px;height:43px;border-radius:50%;
+      background:rgba(255,255,255,.9);color:#1a1711;border:1px solid rgba(20,15,5,.1);
+      font-size:1.35rem
+    }
+    .heart.active{color:#9c1c2f}
+    .product-info{padding:18px}
+    .product-info small{color:#81796c;text-transform:uppercase;letter-spacing:.09em}
+    .product-info h3{margin:8px 0;font-family:Georgia,serif;font-size:1.35rem;font-weight:500}
+    .price{font-weight:900;color:#6f4e0d}
+    .product-actions{display:flex;gap:9px;margin-top:16px}
+    .product-actions a,.product-actions button{
+      flex:1;min-height:43px;border-radius:12px;display:grid;place-items:center;
+      text-decoration:none;font-weight:800;border:1px solid rgba(20,15,5,.12)
+    }
+    .product-actions a{color:#17140f;background:#fff}
+    .product-actions button{color:#fff;background:#090909}
+    .empty-state{text-align:center;padding:45px;color:#766f63}
+
+    /* Newsletter / CTA */
+    .cta{
+      width:min(1220px,calc(100% - 28px));margin:0 auto clamp(70px,10vw,120px);
+      padding:clamp(38px,6vw,72px);border-radius:28px;text-align:center;
+      color:#fff;background:
+        radial-gradient(circle at 50% 0%,rgba(201,155,60,.25),transparent 25rem),
+        linear-gradient(145deg,#161006,#050505)
+    }
+    .cta h2{margin:0;font-family:Georgia,serif;font-size:clamp(2.2rem,5vw,4.4rem);font-weight:500}
+    .cta p{max-width:670px;margin:15px auto 24px;color:#aaa398;line-height:1.65}
+
+    /* Footer */
+    footer{
+      padding:55px 20px 28px;text-align:center;color:#cbc4b7;background:#050505;
+      border-top:1px solid rgba(201,155,60,.2)
+    }
+    footer img{width:240px;height:130px;object-fit:contain;margin:auto}
+    footer p{color:#8f887d}
+    footer div{display:flex;justify-content:center;gap:14px 24px;flex-wrap:wrap;margin:20px 0}
+    footer a{color:var(--gold-light);text-decoration:none;font-size:.84rem}
+    footer small{color:#676159}
+
+    /* Drawer e toast: compatibili con assets/app.js */
+    .overlay{
+      position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.62);
+      opacity:0;visibility:hidden;transition:.25s ease
+    }
+    .overlay.show{opacity:1;visibility:visible}
+    .drawer{
+      position:fixed;top:0;bottom:0;z-index:210;width:min(410px,92vw);
+      padding:20px;background:#0a0a0a;color:#fff;
+      box-shadow:0 0 70px rgba(0,0,0,.55);transition:.3s ease;overflow:auto
+    }
+    .menu-drawer{left:0;transform:translateX(-105%)}
+    .cart-drawer,.fav-drawer{right:0;transform:translateX(105%)}
+    .drawer.open{transform:none}
+    .drawer-head{display:flex;align-items:center;justify-content:space-between;gap:15px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+    .drawer-head img{width:170px;height:82px;object-fit:contain}
+    .drawer-head h2{font-family:Georgia,serif;font-weight:500}
+    .close-btn{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:#141414;color:#fff;font-size:1.5rem}
+    .drawer nav{display:grid;padding-top:20px}
+    .drawer nav a{padding:17px 4px;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.08)}
+    .cart-items{padding:20px 0}
+    .cart-line{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+    .cart-line small{color:#aaa398}
+    .cart-line button{border:0;background:none;color:var(--gold-light)}
+    .cart-total{display:flex;justify-content:space-between;padding:18px 0;border-top:1px solid var(--line)}
+    .full{width:100%;border:0}
+    .toast{
+      position:fixed;left:50%;bottom:25px;z-index:300;transform:translate(-50%,18px);
+      opacity:0;pointer-events:none;padding:12px 18px;border-radius:999px;
+      background:#111;color:#fff;border:1px solid var(--line);box-shadow:var(--shadow);transition:.25s ease
+    }
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+
+
+    /* Catalogo Premium V1 */
+    .catalog-shell{
+      position:relative;
+      width:min(1280px,calc(100% - 28px));
+      margin:0 auto;
+      padding:clamp(76px,10vw,126px) 0;
+    }
+    .catalog-shell::before{
+      content:"";
+      position:absolute;
+      z-index:-1;
+      left:50%;
+      top:38px;
+      width:min(1050px,92vw);
+      height:420px;
+      transform:translateX(-50%);
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(201,155,60,.12),transparent 68%);
+      pointer-events:none;
+    }
+    .catalog-hero{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) minmax(280px,.55fr);
+      gap:30px;
+      align-items:end;
+      margin-bottom:30px;
+    }
+    .catalog-title h2{
+      margin:12px 0 15px;
+      max-width:800px;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(2.65rem,6vw,5.7rem);
+      line-height:.94;
+      letter-spacing:-.035em;
+      font-weight:500;
+    }
+    .catalog-title p{
+      max-width:680px;
+      margin:0;
+      color:#766f63;
+      line-height:1.72;
+    }
+    .catalog-summary{
+      justify-self:end;
+      width:min(100%,330px);
+      padding:22px;
+      border:1px solid rgba(20,15,5,.09);
+      border-radius:20px;
+      background:rgba(255,255,255,.72);
+      box-shadow:0 18px 45px rgba(25,18,6,.06);
+      backdrop-filter:blur(12px);
+    }
+    .catalog-summary strong{
+      display:block;
+      font-family:Georgia,serif;
+      font-size:1.8rem;
+      color:#6f4e0d;
+    }
+    .catalog-summary span{
+      display:block;
+      margin-top:5px;
+      color:#756e62;
+      font-size:.84rem;
+    }
+    .catalog-toolbar{
+      position:sticky;
+      top:139px;
+      z-index:32;
+      display:grid;
+      grid-template-columns:minmax(220px,1.45fr) minmax(180px,.75fr) minmax(180px,.75fr);
+      gap:10px;
+      padding:12px;
+      margin-bottom:28px;
+      border:1px solid rgba(20,15,5,.09);
+      border-radius:20px;
+      background:rgba(249,246,239,.91);
+      box-shadow:0 18px 48px rgba(25,18,6,.09);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+    }
+    .search-field{
+      position:relative;
+      min-width:0;
+    }
+    .search-field::before{
+      content:"⌕";
+      position:absolute;
+      left:17px;
+      top:50%;
+      transform:translateY(-52%);
+      color:#8b6b2d;
+      font-size:1.35rem;
+      pointer-events:none;
+    }
+    .catalog-toolbar input,
+    .catalog-toolbar select{
+      width:100%;
+      min-height:54px;
+      padding:0 16px;
+      border:1px solid rgba(20,15,5,.11);
+      border-radius:14px;
+      outline:none;
+      color:#17140f;
+      background:#fff;
+      transition:border-color .2s ease,box-shadow .2s ease;
+    }
+    .catalog-toolbar input{padding-left:47px}
+    .catalog-toolbar input:focus,
+    .catalog-toolbar select:focus{
+      border-color:var(--gold);
+      box-shadow:0 0 0 4px rgba(201,155,60,.11);
+    }
+    .catalog-statusbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin:0 2px 18px;
+    }
+    .result-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      min-height:34px;
+      padding:7px 12px;
+      border:1px solid rgba(111,78,13,.16);
+      border-radius:999px;
+      background:#fff;
+      color:#6f4e0d;
+      font-size:.78rem;
+      font-weight:900;
+    }
+    .result-pill::before{
+      content:"";
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:var(--gold);
+      box-shadow:0 0 0 4px rgba(201,155,60,.13);
+    }
+    .catalog-note{
+      color:#81796c;
+      font-size:.78rem;
+    }
+    .product-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+    }
+    .product-card{
+      position:relative;
+      min-width:0;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      border:1px solid rgba(20,15,5,.085);
+      border-radius:24px;
+      background:#fff;
+      box-shadow:0 15px 44px rgba(25,18,6,.065);
+      transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+    }
+    .product-card:hover{
+      transform:translateY(-7px);
+      border-color:rgba(201,155,60,.25);
+      box-shadow:0 25px 65px rgba(25,18,6,.13);
+    }
+    .product-visual{
+      position:relative;
+      min-height:0;
+      aspect-ratio:4/4.55;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 50% 42%,rgba(201,155,60,.16),transparent 46%),
+        linear-gradient(145deg,#f7f3eb,#e5dccb);
+    }
+    .product-visual::after{
+      content:"";
+      position:absolute;
+      inset:auto 0 0;
+      height:32%;
+      background:linear-gradient(transparent,rgba(18,12,2,.08));
+      pointer-events:none;
+    }
+    .product-visual img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:transform .5s ease;
+    }
+    .product-card:hover .product-visual img{transform:scale(1.035)}
+    .product-placeholder{
+      font-family:Georgia,serif;
+      font-size:clamp(4.2rem,8vw,7rem);
+      letter-spacing:-.08em;
+      color:rgba(113,78,14,.19);
+    }
+    .badge{
+      z-index:2;
+      left:14px;
+      top:14px;
+      padding:8px 11px;
+      border:1px solid rgba(255,255,255,.32);
+      border-radius:999px;
+      color:#171006;
+      background:linear-gradient(135deg,var(--gold-light),var(--gold));
+      box-shadow:0 9px 24px rgba(70,45,2,.15);
+      font-size:.64rem;
+      letter-spacing:.065em;
+      text-transform:uppercase;
+    }
+    .stock-label{
+      position:absolute;
+      z-index:2;
+      left:14px;
+      bottom:14px;
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      padding:7px 10px;
+      border-radius:999px;
+      color:#fff;
+      background:rgba(7,7,7,.72);
+      backdrop-filter:blur(9px);
+      font-size:.66rem;
+      font-weight:800;
+    }
+    .stock-label::before{
+      content:"";
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:#75b87a;
+    }
+    .stock-label.low::before{background:#dfa74a}
+    .stock-label.out::before{background:#bc5964}
+    .heart{
+      z-index:3;
+      right:13px;
+      top:13px;
+      width:44px;
+      height:44px;
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(20,15,5,.1);
+      border-radius:50%;
+      color:#18140d;
+      background:rgba(255,255,255,.91);
+      box-shadow:0 9px 25px rgba(20,15,5,.11);
+      font-size:1.32rem;
+      transition:transform .2s ease,background .2s ease;
+    }
+    .heart:active{transform:scale(.92)}
+    .heart.active{color:#a21d35;background:#fff4f5}
+    .product-info{
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      padding:20px;
+    }
+    .product-info small{
+      color:#8b806f;
+      font-size:.67rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-weight:800;
+    }
+    .product-info h3{
+      min-height:2.6em;
+      margin:9px 0 11px;
+      color:#17140f;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(1.25rem,2vw,1.48rem);
+      line-height:1.3;
+      font-weight:500;
+    }
+    .product-meta-line{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      margin-top:auto;
+    }
+    .price{
+      color:#6f4e0d;
+      font-size:1.08rem;
+      font-weight:900;
+    }
+    .product-ref{
+      max-width:48%;
+      overflow:hidden;
+      color:#a0988c;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+      font-size:.65rem;
+    }
+    .product-actions{
+      display:grid;
+      grid-template-columns:.86fr 1.14fr;
+      gap:9px;
+      margin-top:17px;
+    }
+    .product-actions a,
+    .product-actions button{
+      min-height:46px;
+      border-radius:13px;
+      font-size:.78rem;
+      letter-spacing:.02em;
+    }
+    .product-actions a{
+      color:#17140f;
+      background:#fff;
+      border:1px solid rgba(20,15,5,.13);
+    }
+    .product-actions button{
+      color:#fff;
+      background:#090909;
+      border:1px solid #090909;
+    }
+    .product-actions button:disabled{
+      cursor:not-allowed;
+      color:#8f887d;
+      background:#ddd8cf;
+      border-color:#ddd8cf;
+    }
+    .catalog-skeleton{
+      overflow:hidden;
+      min-height:470px;
+      border-radius:24px;
+      background:linear-gradient(100deg,#eee8dd 20%,#faf7f1 38%,#eee8dd 56%);
+      background-size:220% 100%;
+      animation:skeleton 1.35s linear infinite;
+    }
+    @keyframes skeleton{to{background-position-x:-220%}}
+    .empty-state{
+      padding:60px 24px;
+      border:1px dashed rgba(111,78,13,.25);
+      border-radius:22px;
+      text-align:center;
+      background:rgba(255,255,255,.55);
+      color:#766f63;
+    }
+    @media(max-width:980px){
+      .catalog-toolbar{top:112px}
+      .product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media(max-width:720px){
+      .catalog-shell{width:min(100% - 20px,1280px)}
+      .catalog-hero{grid-template-columns:1fr}
+      .catalog-summary{justify-self:start;width:100%}
+      .catalog-toolbar{
+        position:relative;
+        top:auto;
+        grid-template-columns:1fr;
+        padding:10px;
+        border-radius:18px;
+      }
+      .catalog-statusbar{align-items:flex-start;flex-direction:column}
+      .catalog-note{display:none}
+    }
+    @media(max-width:520px){
+      .product-grid{grid-template-columns:1fr}
+      .product-visual{aspect-ratio:4/4.3}
+      .product-info h3{min-height:auto}
+    }
+
+    /* Animazioni allo scroll */
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    @media(max-width:900px){
+      .desktop-nav{display:none}
+      .hero{grid-template-columns:1fr;padding-top:72px;text-align:left}
+      .hero-showcase{min-height:360px}
+      .hero-note{right:4%;bottom:8px}
+      .category-grid{grid-template-columns:repeat(2,1fr)}
+      .showcase-grid,.product-grid{grid-template-columns:repeat(2,1fr)}
+      .editorial{grid-template-columns:1fr}
+      .editorial-art{min-height:350px}
+    }
+
+    @media(max-width:620px){
+      .announcement{font-size:.58rem;letter-spacing:.09em}
+      .header-row{
+        min-height:98px;grid-template-columns:44px minmax(0,1fr) 94px;
+        width:min(100% - 14px,1220px);gap:7px
+      }
+      .brand img{width:min(255px,53vw);height:84px}
+      .round-btn{width:40px;height:40px}
+      .header-actions{gap:6px}
+      .hero{min-height:76svh;padding:64px 20px 80px}
+      .hero h1{font-size:clamp(3.1rem,15vw,5.2rem)}
+      .hero-showcase{min-height:300px}
+      .hero-showcase img{height:210px}
+      .hero-ring{width:min(310px,82vw)}
+      .hero-note{width:160px;padding:12px}
+      .benefits{grid-template-columns:1fr;margin-top:-24px}
+      .benefits div{border-right:0;border-bottom:1px solid rgba(20,15,5,.08)}
+      .benefits div:last-child{border-bottom:0}
+      .section-heading{align-items:flex-start;flex-direction:column}
+      .category-grid{grid-template-columns:1fr 1fr;gap:10px}
+      .category-grid a{min-height:190px;padding:18px}
+      .category-grid strong{font-size:1.35rem}
+      .showcase-grid,.product-grid{grid-template-columns:1fr}
+      .showcase-visual,.showcase-visual img,.product-visual,.product-visual img{min-height:330px;height:330px}
+      .filters{grid-template-columns:1fr}
+      .editorial-copy{padding:38px 24px}
+      .welcome img{height:220px}
+    }
+  </style>
+<style id="v2-complete-extra">
+.advanced-filters{display:grid;grid-template-columns:repeat(4,minmax(145px,1fr)) auto;gap:10px;padding:12px;margin:0 0 14px;border:1px solid rgba(20,15,5,.09);border-radius:20px;background:rgba(255,255,255,.72)}
+.advanced-filters select,.reset-filters{min-height:50px;padding:0 14px;border:1px solid rgba(20,15,5,.11);border-radius:14px;background:#fff;color:#17140f}
+.reset-filters{background:#0b0b0b;color:#fff;font-weight:800}
+.filter-chip-bar{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 20px}
+.filter-chip{min-height:38px;padding:8px 14px;border:1px solid rgba(111,78,13,.22);border-radius:999px;background:#fff;color:#6f4e0d;font-weight:800}
+.filter-chip.active{background:#111;color:#fff}
+.mobile-filter-toggle{display:none;width:100%;min-height:48px;margin-bottom:10px;border:1px solid rgba(111,78,13,.2);border-radius:14px;background:#fff;font-weight:900}
+.active-filter-summary{color:#766f63;font-size:.76rem}
+.search-highlight{background:rgba(240,216,139,.55)}
+@media(max-width:1050px){.advanced-filters{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:720px){.mobile-filter-toggle{display:block}.catalog-filter-panels.collapsed{display:none}.advanced-filters{grid-template-columns:1fr}.filter-chip-bar{overflow-x:auto;flex-wrap:nowrap}.filter-chip{flex:0 0 auto}}
+</style>
+<style id="catalog-v3-part1-styles">
+/* ÉLITE LC BRAND — Catalogo Premium V3, Parte 1 */
+:root{
+  --v3-ease:cubic-bezier(.22,.61,.36,1);
+  --v3-fast:180ms;
+  --v3-slow:520ms;
+}
+body.v3-modal-open{overflow:hidden}
+.product-card.v3-card{
+  isolation:isolate;
+  transform:translateZ(0);
+}
+.product-card.v3-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  border-radius:inherit;
+  pointer-events:none;
+  background:linear-gradient(145deg,rgba(255,255,255,.38),transparent 38%);
+  opacity:0;
+  transition:opacity var(--v3-fast) ease;
+}
+.product-card.v3-card:hover::before{opacity:1}
+.product-card.v3-card .product-visual{
+  cursor:pointer;
+}
+.product-card.v3-card .product-visual::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:2;
+  pointer-events:none;
+  background:linear-gradient(180deg,transparent 54%,rgba(5,5,5,.22));
+  opacity:0;
+  transition:opacity var(--v3-fast) ease;
+}
+.product-card.v3-card:hover .product-visual::before{opacity:1}
+.v3-image-stack{
+  position:absolute;
+  inset:0;
+}
+.v3-image-stack img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:opacity var(--v3-slow) var(--v3-ease),transform .75s var(--v3-ease);
+}
+.v3-image-stack .v3-image-secondary{opacity:0}
+.product-card.v3-card:hover .v3-image-stack.has-secondary .v3-image-primary{opacity:0}
+.product-card.v3-card:hover .v3-image-stack.has-secondary .v3-image-secondary{opacity:1}
+.product-card.v3-card:hover .v3-image-stack img{transform:scale(1.055)}
+.v3-quick-trigger{
+  position:absolute;
+  z-index:5;
+  left:50%;
+  bottom:17px;
+  min-width:160px;
+  min-height:44px;
+  padding:10px 18px;
+  border:1px solid rgba(255,255,255,.45);
+  border-radius:999px;
+  color:#fff;
+  background:rgba(5,5,5,.78);
+  backdrop-filter:blur(13px);
+  -webkit-backdrop-filter:blur(13px);
+  font-size:.72rem;
+  font-weight:900;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  opacity:0;
+  transform:translate(-50%,14px);
+  transition:opacity var(--v3-fast) ease,transform var(--v3-fast) var(--v3-ease),background var(--v3-fast) ease;
+}
+.v3-quick-trigger:hover{background:#050505}
+.product-card.v3-card:hover .v3-quick-trigger,
+.v3-quick-trigger:focus-visible{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+.v3-card .heart{
+  overflow:visible;
+}
+.v3-card .heart::after{
+  content:"";
+  position:absolute;
+  inset:-7px;
+  border:1px solid rgba(162,29,53,.25);
+  border-radius:50%;
+  opacity:0;
+  transform:scale(.55);
+}
+.v3-card .heart.v3-pop::after{animation:v3HeartRing .55s ease}
+@keyframes v3HeartRing{
+  0%{opacity:.75;transform:scale(.55)}
+  100%{opacity:0;transform:scale(1.35)}
+}
+.v3-card .badge{
+  animation:v3BadgeFloat 3.8s ease-in-out infinite;
+}
+@keyframes v3BadgeFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-3px)}
+}
+.v3-add-btn{
+  position:relative;
+  overflow:hidden;
+}
+.v3-add-btn::after{
+  content:"";
+  position:absolute;
+  top:-40%;
+  bottom:-40%;
+  width:38px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);
+  transform:translateX(-220%) rotate(14deg);
+  transition:transform .65s ease;
+}
+.v3-add-btn:hover::after{transform:translateX(520%) rotate(14deg)}
+.v3-add-btn.v3-added{animation:v3Added .42s ease}
+@keyframes v3Added{
+  0%{transform:scale(1)}
+  50%{transform:scale(.96)}
+  100%{transform:scale(1)}
+}
+.v3-card-enter{
+  animation:v3CardEnter .55s var(--v3-ease) both;
+  animation-delay:calc(var(--v3-index,0) * 42ms);
+}
+@keyframes v3CardEnter{
+  from{opacity:0;transform:translateY(18px) scale(.985)}
+  to{opacity:1;transform:none}
+}
+
+/* Quick View */
+.v3-quickview{
+  position:fixed;
+  inset:0;
+  z-index:1200;
+  display:grid;
+  place-items:center;
+  padding:18px;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity .25s ease,visibility .25s ease;
+}
+.v3-quickview.open{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+}
+.v3-quickview-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(2,2,2,.76);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+.v3-quickview-panel{
+  position:relative;
+  width:min(1020px,100%);
+  max-height:min(780px,92svh);
+  display:grid;
+  grid-template-columns:minmax(0,1.02fr) minmax(320px,.98fr);
+  overflow:hidden;
+  border:1px solid rgba(240,216,139,.25);
+  border-radius:28px;
+  color:#fff;
+  background:#0b0b0b;
+  box-shadow:0 40px 110px rgba(0,0,0,.55);
+  transform:translateY(24px) scale(.985);
+  transition:transform .38s var(--v3-ease);
+}
+.v3-quickview.open .v3-quickview-panel{transform:none}
+.v3-qv-close{
+  position:absolute;
+  z-index:8;
+  right:16px;
+  top:16px;
+  width:46px;
+  height:46px;
+  border:1px solid rgba(240,216,139,.3);
+  border-radius:50%;
+  color:#fff;
+  background:rgba(5,5,5,.74);
+  font-size:1.55rem;
+}
+.v3-qv-media{
+  position:relative;
+  min-height:520px;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 40%,rgba(201,155,60,.18),transparent 46%),
+    linear-gradient(145deg,#191713,#080808);
+}
+.v3-qv-media img{
+  width:100%;
+  height:100%;
+  min-height:520px;
+  object-fit:cover;
+}
+.v3-qv-placeholder{
+  min-height:520px;
+  display:grid;
+  place-items:center;
+  font-family:Georgia,serif;
+  font-size:8rem;
+  color:rgba(240,216,139,.22);
+}
+.v3-qv-thumbs{
+  position:absolute;
+  left:16px;
+  right:16px;
+  bottom:16px;
+  display:flex;
+  gap:9px;
+}
+.v3-qv-thumb{
+  width:60px;
+  height:70px;
+  padding:0;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.36);
+  border-radius:12px;
+  background:#111;
+}
+.v3-qv-thumb.active{outline:2px solid var(--gold-light)}
+.v3-qv-thumb img{min-height:0;width:100%;height:100%;object-fit:cover}
+.v3-qv-content{
+  overflow:auto;
+  padding:clamp(34px,5vw,62px);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.v3-qv-kicker{
+  color:var(--gold-light);
+  font-size:.7rem;
+  font-weight:900;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.v3-qv-title{
+  margin:13px 0 12px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(2rem,4vw,3.65rem);
+  line-height:1.02;
+  font-weight:500;
+}
+.v3-qv-price{
+  color:var(--gold-light);
+  font-size:1.35rem;
+  font-weight:900;
+}
+.v3-qv-stock{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  width:max-content;
+  margin-top:15px;
+  padding:8px 11px;
+  border:1px solid rgba(240,216,139,.2);
+  border-radius:999px;
+  color:#d8d1c3;
+  font-size:.75rem;
+}
+.v3-qv-stock::before{
+  content:"";
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#75b87a;
+}
+.v3-qv-stock.low::before{background:#dfa74a}
+.v3-qv-stock.out::before{background:#bc5964}
+.v3-qv-description{
+  margin:23px 0 0;
+  color:#aaa398;
+  line-height:1.72;
+}
+.v3-qv-ref{
+  margin-top:16px;
+  color:#6f695f;
+  font-size:.72rem;
+}
+.v3-qv-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:28px;
+}
+.v3-qv-actions a,
+.v3-qv-actions button{
+  min-height:50px;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  text-decoration:none;
+  font-weight:900;
+}
+.v3-qv-actions a{
+  color:#fff;
+  border:1px solid rgba(240,216,139,.28);
+  background:transparent;
+}
+.v3-qv-actions button{
+  border:0;
+  color:#171006;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));
+}
+.v3-qv-actions button:disabled{
+  color:#827c71;
+  background:#302e2a;
+}
+@media(max-width:760px){
+  .v3-quick-trigger{
+    opacity:1;
+    transform:translate(-50%,0);
+    bottom:13px;
+    min-width:145px;
+  }
+  .v3-quickview{padding:0}
+  .v3-quickview-panel{
+    width:100%;
+    height:100%;
+    max-height:none;
+    grid-template-columns:1fr;
+    grid-template-rows:minmax(300px,44svh) 1fr;
+    border:0;
+    border-radius:0;
+  }
+  .v3-qv-media,.v3-qv-media img,.v3-qv-placeholder{min-height:300px}
+  .v3-qv-content{padding:28px 20px 36px}
+}
+@media(prefers-reduced-motion:reduce){
+  .v3-card-enter,.v3-card .badge{animation:none}
+  .product-card.v3-card,
+  .v3-image-stack img,
+  .v3-quickview-panel{transition:none}
+}
+</style>
+
+
+<style id="catalog-v3-part2a">
+.v3-filter-sheet{position:fixed;inset:0;z-index:1300;background:rgba(0,0,0,.65);backdrop-filter:blur(8px);display:none}
+.v3-filter-sheet.open{display:block}
+.v3-filter-panel{position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:28px 28px 0 0;max-height:85vh;overflow:auto;padding:22px;transform:translateY(100%);transition:.3s}
+.v3-filter-sheet.open .v3-filter-panel{transform:none}
+.v3-filter-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+@media(min-width:721px){.v3-filter-sheet{display:none!important}}
+</style>
+
+
+<style id="catalog-v3-part2b1">
+.v3-qv-media{overflow:hidden}
+.v3-qv-media img{transition:transform .35s ease;cursor:zoom-in}
+.v3-qv-media.zoom img{transform:scale(1.8);cursor:zoom-out}
+.v3-qv-thumbs{display:flex}
+.v3-qv-thumb{opacity:.6;transition:.2s}
+.v3-qv-thumb.active,.v3-qv-thumb:hover{opacity:1}
+</style>
+
+
+<style id="catalog-v3-part2b2">
+.v3-add-success{position:fixed;right:18px;bottom:18px;z-index:1500;padding:14px 18px;background:#111;color:#fff;border-radius:14px;opacity:0;transform:translateY(20px);transition:.25s}
+.v3-add-success.show{opacity:1;transform:none}
+.v3-card .heart.active{animation:v3Pulse .35s}
+@keyframes v3Pulse{0%{transform:scale(1)}50%{transform:scale(1.2)}100%{transform:scale(1)}}
+.product-card{transition:transform .25s ease,box-shadow .25s ease}
+.product-card:hover{transform:translateY(-8px)}
+</style>
+
+
+<style id="catalog-v4-part1-styles">
+/* ÉLITE LC BRAND — Premium V4 Parte 1 */
+:root{--v4-ease:cubic-bezier(.22,.61,.36,1)}
+.v4-search-wrap{position:relative;min-width:0}
+.v4-search-suggestions{
+  position:absolute;left:0;right:0;top:calc(100% + 8px);z-index:80;
+  overflow:hidden;display:none;border:1px solid rgba(20,15,5,.11);
+  border-radius:16px;background:rgba(255,255,255,.98);
+  box-shadow:0 24px 65px rgba(25,18,6,.16);backdrop-filter:blur(16px)
+}
+.v4-search-suggestions.open{display:block;animation:v4Drop .2s var(--v4-ease)}
+@keyframes v4Drop{from{opacity:0;transform:translateY(-7px)}to{opacity:1;transform:none}}
+.v4-suggestion{
+  width:100%;display:grid;grid-template-columns:50px minmax(0,1fr) auto;
+  gap:12px;align-items:center;padding:10px 12px;border:0;border-bottom:1px solid rgba(20,15,5,.07);
+  background:transparent;text-align:left;color:#17140f
+}
+.v4-suggestion:last-child{border-bottom:0}
+.v4-suggestion:active,.v4-suggestion:hover{background:#f6f0e5}
+.v4-suggestion-media{
+  width:50px;height:56px;overflow:hidden;display:grid;place-items:center;
+  border-radius:10px;background:#eee7da;color:#8d691e;font-family:Georgia,serif
+}
+.v4-suggestion-media img{width:100%;height:100%;object-fit:cover}
+.v4-suggestion-copy{min-width:0}
+.v4-suggestion-copy b,.v4-suggestion-copy small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.v4-suggestion-copy small{margin-top:3px;color:#81796c}
+.v4-suggestion-price{color:#6f4e0d;font-weight:900;font-size:.82rem}
+.v4-suggestion-empty{padding:16px;color:#766f63;font-size:.83rem}
+.v4-smart-hint{display:block;margin:7px 4px 0;color:#8b806f;font-size:.68rem}
+
+.v4-personal-section{
+  width:min(1280px,calc(100% - 28px));margin:0 auto;
+  padding:0 0 clamp(78px,10vw,120px)
+}
+.v4-personal-block{margin-top:46px}
+.v4-personal-head{display:flex;justify-content:space-between;align-items:end;gap:18px;margin-bottom:20px}
+.v4-personal-head h2{margin:8px 0 0;font:500 clamp(2rem,4vw,3.6rem)/1 Georgia,serif}
+.v4-personal-head p{margin:0;color:#766f63;max-width:440px}
+.v4-mini-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.v4-mini-card{
+  overflow:hidden;border:1px solid rgba(20,15,5,.08);border-radius:20px;background:#fff;
+  box-shadow:0 14px 38px rgba(25,18,6,.065);transition:.25s var(--v4-ease)
+}
+.v4-mini-card:hover{transform:translateY(-6px);box-shadow:0 23px 55px rgba(25,18,6,.12)}
+.v4-mini-media{aspect-ratio:4/4.4;overflow:hidden;display:grid;place-items:center;background:linear-gradient(145deg,#f5f1e8,#e7dfcf)}
+.v4-mini-media img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--v4-ease)}
+.v4-mini-card:hover .v4-mini-media img{transform:scale(1.045)}
+.v4-mini-placeholder{font:500 4rem Georgia,serif;color:rgba(113,78,14,.2)}
+.v4-mini-copy{padding:15px}
+.v4-mini-copy small{color:#8b806f;text-transform:uppercase;letter-spacing:.09em}
+.v4-mini-copy h3{margin:7px 0 9px;font:500 1.15rem/1.25 Georgia,serif}
+.v4-mini-bottom{display:flex;align-items:center;justify-content:space-between;gap:9px}
+.v4-mini-bottom strong{color:#6f4e0d}
+.v4-mini-bottom a{
+  padding:8px 11px;border-radius:999px;color:#fff;background:#0b0b0b;
+  text-decoration:none;font-size:.72rem;font-weight:900
+}
+.v4-empty-personal{padding:24px;border:1px dashed rgba(111,78,13,.22);border-radius:18px;color:#766f63;background:rgba(255,255,255,.5)}
+
+.menu-drawer{transition:transform .38s var(--v4-ease)}
+.menu-drawer nav a{position:relative;transition:padding-left .22s ease,color .22s ease}
+.menu-drawer nav a::before{content:"";position:absolute;left:2px;top:50%;width:0;height:1px;background:var(--gold-light);transition:.22s ease}
+.menu-drawer nav a:hover{padding-left:24px;color:var(--gold-light)}
+.menu-drawer nav a:hover::before{width:14px}
+
+@media(max-width:900px){.v4-mini-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){
+  .v4-search-suggestions{position:fixed;left:10px;right:10px;top:150px;max-height:58svh;overflow:auto}
+  .v4-personal-head{align-items:flex-start;flex-direction:column}
+  .v4-mini-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px}
+  .v4-mini-card{flex:0 0 min(78vw,300px);scroll-snap-align:start}
+}
+@media(prefers-reduced-motion:reduce){
+  .v4-search-suggestions,.v4-mini-card,.v4-mini-media img,.menu-drawer{animation:none;transition:none}
+}
+</style>
+
+
+<style id="catalog-v4-part2">
+.v4-compare-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:1600;background:#0b0b0b;color:#fff;padding:14px 18px;border-radius:18px;display:none;gap:12px;align-items:center;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.v4-compare-bar.show{display:flex}
+.v4-compare-btn{position:absolute;left:12px;bottom:12px;width:42px;height:42px;border-radius:50%;border:0;background:#fff;font-weight:900}
+.v4-look{margin-top:12px;padding:10px;border-top:1px solid rgba(20,15,5,.08);font-size:.75rem;color:#766f63}
+</style>
+
+<style id="catalog-v5-part1">
+.v5-ai-banner{margin:24px auto;padding:22px;border-radius:24px;background:linear-gradient(135deg,#0b0b0b,#1a1408);color:#fff;border:1px solid rgba(201,155,60,.25)}
+.v5-ai-banner h2{margin:0 0 8px;font-family:Georgia,serif;font-weight:500}
+.v5-ai-banner p{margin:0;color:#d7cfbf}
+.v5-chip-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.v5-chip{padding:9px 14px;border-radius:999px;border:1px solid rgba(240,216,139,.25);background:rgba(255,255,255,.05);cursor:pointer}
+.v5-chip.active{background:linear-gradient(135deg,#f0d88b,#c99b3c);color:#171006;font-weight:700}
+</style>
+
+
+<style id="catalog-v5-part2">
+.v5-outfit{margin:40px auto;padding:28px;border:1px solid rgba(201,155,60,.18);border-radius:24px;background:#fff;box-shadow:0 18px 40px rgba(0,0,0,.05)}
+.v5-outfit h2{margin:0 0 10px;font-family:Georgia,serif;font-weight:500}
+.v5-outfit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+.v5-outfit-card{padding:18px;border-radius:18px;background:linear-gradient(145deg,#f7f3eb,#ece2cf);border:1px solid rgba(20,15,5,.08)}
+.v5-score{display:inline-block;margin-top:8px;padding:5px 10px;border-radius:999px;background:#111;color:#f0d88b;font-size:.75rem}
+@media(max-width:700px){.v5-outfit-grid{grid-template-columns:1fr}}
+</style>
+
+<style id="catalog-v6-part1">
+.v6-luxury{margin:40px auto;padding:32px;border-radius:28px;background:linear-gradient(135deg,#080808,#171107);color:#fff;border:1px solid rgba(201,155,60,.25)}
+.v6-luxury h2{margin:0;font:500 clamp(2rem,4vw,3.4rem) Georgia,serif}
+.v6-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.v6-box{padding:20px;border-radius:18px;background:rgba(255,255,255,.05);backdrop-filter:blur(10px);border:1px solid rgba(240,216,139,.15)}
+.v6-box strong{display:block;margin-bottom:8px;color:#f0d88b}
+@media(max-width:760px){.v6-grid{grid-template-columns:1fr}}
+</style>
+
+<style id="catalog-v6-part2">
+.v6-dashboard{margin:42px auto;padding:30px;border-radius:26px;background:#faf8f3;border:1px solid rgba(0,0,0,.08)}
+.v6-dashboard h2{margin:0 0 16px;font-family:Georgia,serif}
+.v6-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.v6-stat{padding:18px;border-radius:18px;background:#fff;text-align:center;box-shadow:0 10px 24px rgba(0,0,0,.05)}
+.v6-stat b{display:block;font-size:1.5rem;margin-bottom:6px}
+@media(max-width:760px){.v6-stats{grid-template-columns:repeat(2,1fr)}}
+</style>
+
+
+<style id="catalog-v7-part1">
+.v7-services{margin:42px auto;padding:30px;border-radius:28px;background:linear-gradient(180deg,#fff,#f7f4ee);border:1px solid rgba(0,0,0,.08)}
+.v7-services h2{font-family:Georgia,serif;margin:0 0 18px}
+.v7-service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.v7-service{padding:20px;border-radius:18px;background:#fff;box-shadow:0 12px 28px rgba(0,0,0,.06)}
+.v7-service .tag{display:inline-block;padding:4px 10px;border-radius:999px;background:#111;color:#f0d88b;font-size:.75rem;margin-bottom:10px}
+@media(max-width:760px){.v7-service-grid{grid-template-columns:1fr}}
+</style>
+
+
+<style id="catalog-v7-part2">
+.v7-arrivals{margin:42px auto;padding:30px;border-radius:28px;background:linear-gradient(135deg,#f9f7f2,#efe6d6)}
+.v7-arrivals h2{margin:0 0 10px;font-family:Georgia,serif}
+.v7-arrivals-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.v7-arrival{position:relative;padding:22px;border-radius:18px;background:#fff;box-shadow:0 12px 28px rgba(0,0,0,.06)}
+.v7-badge{position:absolute;top:12px;right:12px;padding:5px 10px;border-radius:999px;background:#111;color:#f0d88b;font-size:.72rem;font-weight:700}
+.v7-progress{height:6px;border-radius:999px;background:#e9dfcb;overflow:hidden;margin-top:14px}
+.v7-progress>span{display:block;height:100%;width:82%;background:linear-gradient(90deg,#c99b3c,#f0d88b)}
+@media(max-width:760px){.v7-arrivals-grid{grid-template-columns:1fr}}
+</style>
+
+
+<style id="catalog-v8-part1">
+.v8-filterbar{margin:40px auto;padding:22px;border-radius:22px;background:#fff;border:1px solid rgba(0,0,0,.08);display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.v8-pill{padding:10px 16px;border-radius:999px;border:1px solid #ddd;background:#fafafa;cursor:pointer}
+.v8-pill.active{background:#111;color:#f0d88b;border-color:#111}
+.v8-status{margin-left:auto;font-size:.9rem;color:#666}
+@media(max-width:760px){.v8-status{width:100%;margin-left:0}}
+</style>
+
+<style id="catalog-v8-part2">
+.v8-compare-modal{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;align-items:center;justify-content:center;z-index:3000}
+.v8-compare-panel{width:min(900px,92vw);background:#fff;border-radius:24px;padding:28px;max-height:80vh;overflow:auto}
+.v8-close{float:right;border:0;background:#111;color:#fff;border-radius:999px;padding:8px 14px;cursor:pointer}
+.v8-table{width:100%;border-collapse:collapse;margin-top:18px}
+.v8-table th,.v8-table td{padding:12px;border-bottom:1px solid #eee;text-align:left}
+</style>
+
+<style id="catalog-v9-part1">
+.v9-ai{margin:42px auto;padding:32px;border-radius:28px;background:linear-gradient(135deg,#0b0b0b,#22180c);color:#fff}
+.v9-ai h2{margin:0 0 10px;font-family:Georgia,serif}
+.v9-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.v9-btn{padding:11px 18px;border-radius:999px;border:1px solid rgba(240,216,139,.35);background:rgba(255,255,255,.06);color:#fff;cursor:pointer}
+.v9-result{margin-top:18px;padding:18px;border-radius:18px;background:rgba(255,255,255,.08);min-height:64px}
+</style>
+
+
+<style id="catalog-v9-part2">
+.v9-reco{margin:42px auto;padding:30px;border-radius:26px;background:linear-gradient(180deg,#fcfbf8,#f2eadb);border:1px solid rgba(0,0,0,.08)}
+.v9-reco h2{margin:0 0 8px;font-family:Georgia,serif}
+.v9-reco-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+.v9-reco-card{padding:18px;border-radius:18px;background:#fff;box-shadow:0 10px 26px rgba(0,0,0,.06)}
+.v9-match{display:inline-block;margin-top:10px;padding:4px 10px;border-radius:999px;background:#111;color:#f0d88b;font-size:.75rem}
+@media(max-width:760px){.v9-reco-grid{grid-template-columns:1fr}}
+</style>
+
+<style id="catalog-v10-part1">
+.v10-checkout{margin:42px auto;padding:30px;border-radius:28px;background:linear-gradient(135deg,#111,#1d1408);color:#fff}
+.v10-checkout h2{margin:0 0 10px;font-family:Georgia,serif}
+.v10-grid{display:grid;grid-template-columns:2fr 1fr;gap:20px}
+.v10-box{background:rgba(255,255,255,.06);padding:20px;border-radius:18px}
+.v10-btn{margin-top:14px;padding:12px 18px;border:none;border-radius:999px;background:#f0d88b;color:#111;font-weight:700;cursor:pointer}
+.v10-note{font-size:.9rem;color:#ddd}
+@media(max-width:760px){.v10-grid{grid-template-columns:1fr}}
+</style>
+
+<style id="catalog-v10-part2">
+.v10-order{margin:42px auto;padding:30px;border-radius:28px;background:#faf8f2;border:1px solid rgba(0,0,0,.08)}
+.v10-order h2{margin:0 0 18px;font-family:Georgia,serif}
+.v10-order-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.v10-card{background:#fff;padding:20px;border-radius:18px;box-shadow:0 10px 24px rgba(0,0,0,.05)}
+.v10-label{font-size:.8rem;color:#777}
+.v10-value{font-size:1.1rem;font-weight:700;margin-top:6px}
+@media(max-width:760px){.v10-order-grid{grid-template-columns:1fr}}
+</style>
+
+
+<style id="catalog-v11-part1">
+.v11-profile{margin:42px auto;padding:30px;border-radius:28px;background:linear-gradient(135deg,#ffffff,#f4efe4);border:1px solid rgba(0,0,0,.08)}
+.v11-head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.v11-badge{padding:8px 14px;border-radius:999px;background:#111;color:#f0d88b;font-weight:700}
+.v11-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.v11-card{background:#fff;border-radius:18px;padding:18px;box-shadow:0 10px 24px rgba(0,0,0,.05)}
+@media(max-width:760px){.v11-grid{grid-template-columns:1fr}}
+</style>
+
+
+<style id="catalog-v11-part2">
+.v11-loyalty{margin:42px auto;padding:30px;border-radius:28px;background:linear-gradient(135deg,#0d0d0d,#24190c);color:#fff}
+.v11-loyalty h2{margin:0 0 8px;font-family:Georgia,serif}
+.v11-loyalty-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-top:20px}
+.v11-loyalty-card{padding:20px;border-radius:18px;background:rgba(255,255,255,.06);border:1px solid rgba(240,216,139,.14)}
+.v11-progress-wrap{height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;margin:14px 0 8px}
+.v11-progress-bar{height:100%;width:0;background:linear-gradient(90deg,#c99b3c,#f0d88b);transition:width .5s ease}
+.v11-notice{margin-top:12px;padding:12px 14px;border-radius:14px;background:rgba(240,216,139,.08);color:#f0d88b}
+.v11-history{display:grid;gap:10px;margin-top:14px}
+.v11-order-item{padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.05);display:flex;justify-content:space-between;gap:12px}
+@media(max-width:760px){.v11-loyalty-grid{grid-template-columns:1fr}}
+</style>
+
+
+<style id="catalog-v12-part1">
+.v12-concierge{margin:42px auto;padding:34px;border-radius:30px;background:linear-gradient(135deg,#0a0a0a,#1f160b);color:#fff}
+.v12-concierge h2{margin:0 0 10px;font-family:Georgia,serif}
+.v12-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.v12-actions button{padding:12px 18px;border-radius:999px;border:1px solid rgba(240,216,139,.35);background:rgba(255,255,255,.06);color:#fff;cursor:pointer}
+.v12-response{margin-top:20px;padding:18px;border-radius:18px;background:rgba(255,255,255,.07);min-height:80px}
+</style>
+
+<style id="catalog-v12-part2">
+.v12-help{margin:42px auto;padding:32px;border-radius:28px;background:#faf8f2;border:1px solid rgba(0,0,0,.08)}
+.v12-help h2{margin:0 0 10px;font-family:Georgia,serif}
+.v12-faq{display:grid;gap:12px;margin-top:18px}
+.v12-item{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.05)}
+.v12-q{padding:16px;font-weight:700;cursor:pointer}
+.v12-a{display:none;padding:0 16px 16px;color:#555}
+.v12-form{margin-top:24px;padding:20px;background:#fff;border-radius:18px}
+.v12-form textarea{width:100%;min-height:90px;padding:12px;border:1px solid #ddd;border-radius:12px}
+.v12-form button{margin-top:12px;padding:12px 18px;border:0;border-radius:999px;background:#111;color:#f0d88b;cursor:pointer}
+</style>
+
+<style id="catalog-v13-part1">
+.v13-notify{margin:42px auto;padding:32px;border-radius:28px;background:linear-gradient(135deg,#111,#22180d);color:#fff}
+.v13-notify h2{margin:0 0 10px;font-family:Georgia,serif}
+.v13-list{display:grid;gap:14px;margin-top:20px}
+.v13-item{display:flex;justify-content:space-between;align-items:center;padding:16px;border-radius:16px;background:rgba(255,255,255,.06)}
+.v13-toggle{appearance:none;width:54px;height:30px;border-radius:999px;background:#555;position:relative;cursor:pointer}
+.v13-toggle:checked{background:#c99b3c}
+.v13-toggle::after{content:'';position:absolute;top:3px;left:3px;width:24px;height:24px;background:#fff;border-radius:50%;transition:.25s}
+.v13-toggle:checked::after{left:27px}
+</style>
+
+<style id="catalog-v13-part2">
+.v13-activity{margin:40px auto;padding:32px;border-radius:28px;background:#0f0f0f;color:#fff}
+.v13-timeline{margin-top:24px;border-left:2px solid #c99b3c;padding-left:22px}
+.v13-event{position:relative;margin:22px 0}
+.v13-event:before{content:"";position:absolute;left:-30px;top:2px;width:14px;height:14px;border-radius:50%;background:#c99b3c}
+.v13-badges{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.v13-badge{padding:10px 18px;border:1px solid #c99b3c;border-radius:999px}
+</style>
+
+<style id="catalog-v13-part3">
+.v13-dashboard{margin:42px auto;padding:34px;border-radius:28px;background:linear-gradient(135deg,#181818,#2a2112);color:#fff}
+.v13-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:22px}
+.v13-card{padding:20px;border-radius:18px;background:rgba(255,255,255,.06);text-align:center}
+.v13-progress{margin-top:24px}
+.v13-bar{height:12px;background:#444;border-radius:999px;overflow:hidden}
+.v13-fill{height:100%;width:35%;background:#c99b3c}
+</style>
+
+<style id="catalog-v13-part4">
+.v13-rec{margin:42px auto;padding:34px;border-radius:28px;background:#151515;color:#fff}
+.v13-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:22px}
+.v13-prod{border:1px solid rgba(201,155,60,.35);border-radius:18px;padding:18px;background:rgba(255,255,255,.04)}
+.v13-tag{display:inline-block;padding:4px 10px;border-radius:999px;background:#c99b3c;color:#111;font-size:.8rem;font-weight:bold;margin-bottom:10px}
+.v13-btn{display:inline-block;margin-top:14px;padding:10px 16px;border:1px solid #c99b3c;border-radius:999px;text-decoration:none;color:#fff}
+</style>
+
+<style id="catalog-v13-part5">
+.v13-wishlist{margin:42px auto;padding:34px;border-radius:28px;background:linear-gradient(135deg,#141414,#20190f);color:#fff}
+.v13-wishlist h2{margin-top:0}
+.v13-wish-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:20px}
+.v13-wish-card{padding:18px;border:1px solid rgba(201,155,60,.35);border-radius:18px;background:rgba(255,255,255,.05)}
+.v13-save{margin-top:12px;padding:10px 18px;border:none;border-radius:999px;background:#c99b3c;color:#111;font-weight:bold;cursor:pointer}
+</style>
+
+<style id="catalog-v13-part6">
+.v13-history{margin:42px auto;padding:34px;border-radius:28px;background:#121212;color:#fff}
+.v13-history-list{display:grid;gap:14px;margin-top:20px}
+.v13-history-item{display:flex;justify-content:space-between;align-items:center;padding:16px;border-radius:16px;background:rgba(255,255,255,.05)}
+.v13-clear{margin-top:18px;padding:10px 18px;border:none;border-radius:999px;background:#c99b3c;color:#111;font-weight:bold;cursor:pointer}
+</style>
+
+<style id="catalog-v13-part7">
+.v13-loyalty{margin:42px auto;padding:34px;border-radius:28px;background:linear-gradient(135deg,#18140d,#2a2214);color:#fff}
+.v13-levels{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:22px}
+.v13-level{padding:18px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid rgba(201,155,60,.35)}
+.v13-current{outline:2px solid #c99b3c}
+.v13-reward{margin-top:20px;padding:14px;border-radius:14px;background:rgba(201,155,60,.12)}
+</style>
+
+<style id="catalog-v13-part8">
+.v13-goals{margin:42px auto;padding:34px;border-radius:28px;background:#111;color:#fff}
+.v13-goals-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:22px}
+.v13-goal{padding:20px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid rgba(201,155,60,.3)}
+.v13-goal-top{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.v13-goal-status{font-size:.8rem;padding:5px 10px;border-radius:999px;background:#c99b3c;color:#111;font-weight:700}
+.v13-goal-bar{height:10px;margin-top:14px;border-radius:999px;background:#3a3a3a;overflow:hidden}
+.v13-goal-fill{height:100%;background:#c99b3c;border-radius:999px}
+.v13-goal small{display:block;margin-top:9px;opacity:.78}
+</style>
+
+<style id="catalog-v13-part9">
+.v13-benefits{margin:42px auto;padding:34px;border-radius:28px;background:linear-gradient(135deg,#121212,#241b0f);color:#fff}
+.v13-benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:22px}
+.v13-benefit{padding:22px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid rgba(201,155,60,.35)}
+.v13-benefit-icon{font-size:1.5rem;margin-bottom:10px}
+.v13-benefit h3{margin:0 0 8px}
+.v13-benefit p{margin:0;opacity:.82}
+.v13-benefit-status{display:inline-block;margin-top:14px;padding:6px 11px;border-radius:999px;background:#c99b3c;color:#111;font-size:.8rem;font-weight:700}
+</style>
+
+<style id="catalog-v13-part10">
+.v13-events{margin:42px auto;padding:34px;border-radius:28px;background:#101010;color:#fff}
+.v13-events-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:22px}
+.v13-event-card{padding:20px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid rgba(201,155,60,.35)}
+.v13-date{display:inline-block;padding:6px 12px;border-radius:999px;background:#c99b3c;color:#111;font-weight:bold;margin-bottom:12px}
+.v13-join{display:inline-block;margin-top:14px;padding:10px 16px;border:1px solid #c99b3c;border-radius:999px;color:#fff;text-decoration:none}
+</style>
+
+<style id="catalog-v13-part11">
+.v13-news{margin:42px auto;padding:34px;border-radius:28px;background:linear-gradient(135deg,#151515,#231b10);color:#fff}
+.v13-news-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:20px}
+.v13-news-card{padding:20px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid rgba(201,155,60,.35)}
+.v13-chip{display:inline-block;padding:5px 10px;border-radius:999px;background:#c99b3c;color:#111;font-weight:700;font-size:.8rem}
+</style>
+
+<style id="catalog-v13-part12">
+.v13-services{margin:42px auto;padding:34px;border-radius:28px;background:#101010;color:#fff}
+.v13-services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:22px}
+.v13-service{padding:20px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid rgba(201,155,60,.35)}
+.v13-service a{display:inline-block;margin-top:12px;color:#c99b3c;text-decoration:none;font-weight:bold}
+</style>
+
+<style id="catalog-v13-part13">
+.v13-profile{margin:42px auto;padding:34px;border-radius:28px;background:linear-gradient(135deg,#131313,#21180f);color:#fff}
+.v13-profile-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:22px}
+.v13-box{padding:20px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid rgba(201,155,60,.35)}
+.v13-box ul{margin:12px 0 0 18px;padding:0}
+.v13-box li{margin:6px 0}
+</style>
+
+<style id="catalog-v13-part14">
+.v13-checklist{margin:42px auto;padding:34px;border-radius:28px;background:#101010;color:#fff}
+.v13-checklist-head{display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
+.v13-checklist-score{padding:8px 14px;border-radius:999px;background:#c99b3c;color:#111;font-weight:700}
+.v13-task-list{display:grid;gap:14px;margin-top:22px}
+.v13-task{display:flex;align-items:center;gap:12px;padding:16px;border-radius:16px;background:rgba(255,255,255,.05);border:1px solid rgba(201,155,60,.25)}
+.v13-task input{width:20px;height:20px;accent-color:#c99b3c}
+.v13-task label{cursor:pointer}
+.v13-complete-bar{height:12px;margin-top:20px;border-radius:999px;background:#3a3a3a;overflow:hidden}
+.v13-complete-fill{height:100%;width:0;background:#c99b3c;transition:width .3s ease}
+</style>
+
+<style id="catalog-v13-part15">
+.v13-searchplus{margin:42px auto;padding:34px;border-radius:28px;background:linear-gradient(135deg,#141414,#231a10);color:#fff}
+.v13-searchbox{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.v13-searchbox input,.v13-searchbox select{padding:12px 14px;border-radius:12px;border:1px solid #555;background:#1b1b1b;color:#fff}
+.v13-searchbox button{padding:12px 18px;border:none;border-radius:999px;background:#c99b3c;color:#111;font-weight:700;cursor:pointer}
+.v13-result{margin-top:18px;padding:16px;border-radius:14px;background:rgba(255,255,255,.05)}
+</style>
+</head>
+
+<body>
+  <!-- Intro: si chiude automaticamente o toccando lo schermo -->
+  <div class="welcome" id="welcome" aria-label="Benvenuti su ÉLITE LC BRAND">
+    <div class="welcome-inner">
+      <img src="logo-elite-lc-brand.png" alt="Logo ÉLITE LC BRAND">
+      <p>Benvenuti su</p>
+      <h1>ÉLITE LC BRAND</h1>
+      <div class="welcome-line"></div>
+      <small>Tocca per entrare</small>
+    </div>
+  </div>
+
+  <div class="announcement">Spedizione gratuita in Italia · Pagamenti sicuri · Reso entro 14 giorni</div>
+
+  <header class="site-header">
+    <div class="header-row">
+      <button class="round-btn" id="menuBtn" type="button" aria-label="Apri menu">☰</button>
+
+      <a class="brand" href="index.html" aria-label="Homepage ÉLITE LC BRAND">
+        <img src="logo-elite-lc-brand.png" alt="ÉLITE LC BRAND">
+      </a>
+
+      <div class="header-actions">
+        <button class="round-btn" id="favoritesBtn" type="button" aria-label="Preferiti">
+          ♡<span id="favCount">0</span>
+        </button>
+        <button class="round-btn" id="cartBtn" type="button" aria-label="Carrello">
+          🛍<span id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+
+    <nav class="desktop-nav" aria-label="Navigazione principale">
+      <a href="#nuovi-arrivi">Novità</a>
+      <a href="#categorie">Categorie</a>
+      <a href="#best-seller">Best seller</a>
+      <a href="#catalogo">Catalogo</a>
+      <a href="admin.html">Area admin</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content reveal">
+        <span class="eyebrow">Collezione privata 2026</span>
+        <h1>Lo stile che lascia il segno.</h1>
+        <p>
+          Una selezione esclusiva di moda maschile per chi cerca qualità,
+          presenza ed eleganza contemporanea.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="#catalogo">Scopri la collezione</a>
+          <a class="btn btn-outline" href="#nuovi-arrivi">Nuovi arrivi</a>
+        </div>
+      </div>
+
+      <div class="hero-showcase reveal">
+        <div class="hero-ring"></div>
+        <img src="logo-elite-lc-brand.png" alt="Logo ÉLITE LC BRAND">
+        <div class="hero-note">
+          <b>Selezione ÉLITE</b>
+          <span>Stile premium scelto con cura.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits reveal">
+      <div><b>Spedizione gratuita</b><span>In tutta Italia</span></div>
+      <div><b>Selezione premium</b><span>Articoli scelti con cura</span></div>
+      <div><b>Assistenza dedicata</b><span>Prima e dopo l’acquisto</span></div>
+    </section>
+
+    <section class="section reveal" id="categorie">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow dark">Esplora</span>
+          <h2>Categorie in evidenza</h2>
+        </div>
+        <a class="section-link" href="#catalogo">Vedi tutto il catalogo</a>
+      </div>
+
+      <div class="category-grid">
+        <a href="#catalogo" data-category-link="T-shirt" data-mark="01">
+          <span>Categoria 01</span><strong>T-shirt</strong><small>Icone essenziali</small>
+        </a>
+        <a href="#catalogo" data-category-link="Scarpe" data-mark="02">
+          <span>Categoria 02</span><strong>Scarpe</strong><small>Passo deciso</small>
+        </a>
+        <a href="#catalogo" data-category-link="Giacche" data-mark="03">
+          <span>Categoria 03</span><strong>Giacche</strong><small>Presenza sartoriale</small>
+        </a>
+        <a href="#catalogo" data-category-link="Accessori" data-mark="04">
+          <span>Categoria 04</span><strong>Accessori</strong><small>Dettagli distintivi</small>
+        </a>
+      </div>
+    </section>
+
+    <section class="dark-section" id="nuovi-arrivi">
+      <div class="section reveal">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Appena arrivati</span>
+            <h2>Nuovi arrivi</h2>
+          </div>
+          <p>Le ultime proposte inserite nel catalogo.</p>
+        </div>
+        <div class="showcase-grid" id="newArrivalsGrid"></div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="best-seller">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow dark">Scelti dai clienti</span>
+          <h2>Best seller</h2>
+        </div>
+        <p>I prodotti più rappresentativi della selezione ÉLITE.</p>
+      </div>
+      <div class="showcase-grid" id="bestSellerGrid"></div>
+    </section>
+
+    <section class="editorial reveal">
+      <div class="editorial-art">
+        <img src="logo-elite-lc-brand.png" alt="Identità ÉLITE LC BRAND">
+      </div>
+      <div class="editorial-copy">
+        <span class="eyebrow">La nostra identità</span>
+        <h2>Eleganza, selezione, carattere.</h2>
+        <p>
+          Ogni articolo racconta un modo di distinguersi. ÉLITE LC BRAND unisce
+          linee pulite, dettagli premium e un’esperienza pensata per il tuo stile.
+        </p>
+        <div><a class="btn btn-gold" href="#catalogo">Entra nella boutique</a></div>
+      </div>
+    </section>
+
+    <section class="catalog-shell reveal" id="catalogo">
+      <div class="catalog-hero">
+        <div class="catalog-title">
+          <span class="eyebrow dark">Boutique digitale</span>
+          <h2>La selezione ÉLITE, senza distrazioni.</h2>
+          <p>
+            Scopri il catalogo in una griglia più pulita e leggibile, progettata
+            per valorizzare ogni articolo e rendere la ricerca immediata anche da iPhone.
+          </p>
+        </div>
+
+        <div class="catalog-summary">
+          <strong id="catalogTotal">—</strong>
+          <span>articoli disponibili nel catalogo</span>
+        </div>
+      </div>
+
+      <button class="mobile-filter-toggle" id="mobileFilterToggle" type="button">Filtri e ordinamento</button>
+      <div class="catalog-filter-panels" id="catalogFilterPanels">
+        <div class="catalog-toolbar" aria-label="Strumenti del catalogo">
+          <div class="search-field"><input id="searchInput" type="search" placeholder="Cerca nome, brand, categoria o descrizione" autocomplete="off"></div>
+          <select id="categoryFilter"><option value="">Tutte le categorie</option></select>
+          <select id="sortFilter">
+            <option value="featured">In evidenza</option><option value="newest">Più recenti</option>
+            <option value="best">Best seller</option><option value="price-asc">Prezzo crescente</option>
+            <option value="price-desc">Prezzo decrescente</option><option value="name">Nome A-Z</option>
+          </select>
+        </div>
+        <div class="advanced-filters">
+          <select id="brandFilter"><option value="">Tutti i brand</option></select>
+          <select id="priceFilter"><option value="">Qualsiasi prezzo</option><option value="0-100">Fino a € 100</option><option value="100-500">Da € 100 a € 500</option><option value="500+">Oltre € 500</option></select>
+          <select id="availabilityFilter"><option value="">Qualsiasi disponibilità</option><option value="available">Disponibili</option><option value="low">Ultimi pezzi</option><option value="out">Esauriti</option></select>
+          <select id="badgeFilter"><option value="">Tutti i badge</option><option value="new">Nuovi arrivi</option><option value="best">Best seller</option><option value="sale">Offerte</option></select>
+          <button class="reset-filters" id="resetFilters" type="button">Azzera filtri</button>
+        </div>
+        <div class="filter-chip-bar">
+          <button class="filter-chip active" data-quick-filter="all">Tutti</button>
+          <button class="filter-chip" data-quick-filter="new">Nuovi</button>
+          <button class="filter-chip" data-quick-filter="best">Best seller</button>
+          <button class="filter-chip" data-quick-filter="available">Disponibili</button>
+          <button class="filter-chip" data-quick-filter="sale">Offerte</button>
+        </div>
+      </div>
+      <div class="catalog-statusbar">
+        <span class="result-pill" id="resultsText">Caricamento prodotti…</span>
+        <span class="active-filter-summary" id="activeFilterSummary">Nessun filtro attivo</span>
+      </div>
+
+      <div class="product-grid" id="productGrid" aria-live="polite">
+        <div class="catalog-skeleton"></div>
+        <div class="catalog-skeleton"></div>
+        <div class="catalog-skeleton"></div>
+      </div>
+
+      <div class="empty-state" id="emptyState" hidden>
+        Nessun prodotto corrisponde alla ricerca. Prova a cambiare le parole utilizzate.
+      </div>
+    </section>
+
+    
+<section class="v4-personal-section reveal" id="v4PersonalArea">
+  <div class="v4-personal-block" id="v4RecentBlock" hidden>
+    <div class="v4-personal-head">
+      <div><span class="eyebrow dark">La tua selezione</span><h2>Visti di recente</h2></div>
+      <p>Riprendi rapidamente gli articoli che hai esplorato.</p>
+    </div>
+    <div class="v4-mini-grid" id="v4RecentGrid"></div>
+  </div>
+  <div class="v4-personal-block" id="v4RecommendedBlock" hidden>
+    <div class="v4-personal-head">
+      <div><span class="eyebrow dark">Scelti per te</span><h2>Potrebbero piacerti</h2></div>
+      <p>Una selezione dinamica ispirata ai prodotti che hai visualizzato.</p>
+    </div>
+    <div class="v4-mini-grid" id="v4RecommendedGrid"></div>
+  </div>
+</section>
+
+
+<section class="section reveal">
+<div class="v5-ai-banner">
+<h2>Personal Shopper ÉLITE</h2>
+<p>Scopri rapidamente articoli in base al tuo stile preferito.</p>
+<div class="v5-chip-row">
+<button class="v5-chip" data-style="casual">Casual</button>
+<button class="v5-chip" data-style="business">Business</button>
+<button class="v5-chip" data-style="luxury">Luxury</button>
+<button class="v5-chip" data-style="street">Street</button>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v5-outfit">
+<h2>Outfit consigliati</h2>
+<p>Combinazioni create per ispirare il tuo prossimo acquisto.</p>
+<div class="v5-outfit-grid" id="v5OutfitGrid">
+<div class="v5-outfit-card"><strong>Look Business</strong><br>Giacca + Camicia + Scarpe<div class="v5-score">Compatibilità 96%</div></div>
+<div class="v5-outfit-card"><strong>Look Luxury</strong><br>Polo + Pantalone + Accessori<div class="v5-score">Compatibilità 94%</div></div>
+<div class="v5-outfit-card"><strong>Look Weekend</strong><br>T-shirt + Sneaker + Borsa<div class="v5-score">Compatibilità 92%</div></div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v6-luxury">
+<h2>Esperienza Boutique ÉLITE</h2>
+<p>Servizi esclusivi pensati per un'esperienza d'acquisto di livello superiore.</p>
+<div class="v6-grid">
+<div class="v6-box"><strong>Consulenza</strong>Personal shopper e suggerimenti dedicati.</div>
+<div class="v6-box"><strong>Packaging Premium</strong>Confezione elegante pronta da regalare.</div>
+<div class="v6-box"><strong>Spedizione Prioritaria</strong>Preparazione rapida degli ordini disponibili.</div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v6-dashboard">
+<h2>Dashboard Cliente</h2>
+<div class="v6-stats">
+<div class="v6-stat"><b id="v6Viewed">0</b>Prodotti visti</div>
+<div class="v6-stat"><b id="v6Wish">0</b>Preferiti</div>
+<div class="v6-stat"><b>VIP</b>Livello account</div>
+<div class="v6-stat"><b>24h</b>Assistenza prioritaria</div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v7-services">
+<h2>Servizi Esclusivi</h2>
+<div class="v7-service-grid">
+<div class="v7-service"><span class="tag">NOVITÀ</span><h3>Click & Collect</h3><p>Ritiro rapido in boutique quando disponibile.</p></div>
+<div class="v7-service"><span class="tag">VIP</span><h3>Prenota un appuntamento</h3><p>Consulenza dedicata con Personal Shopper.</p></div>
+<div class="v7-service"><span class="tag">PREMIUM</span><h3>Gift Experience</h3><p>Messaggio personalizzato e confezione elegante.</p></div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v7-arrivals">
+<h2>Nuovi Arrivi</h2>
+<p>Una selezione in evidenza delle ultime proposte della collezione.</p>
+<div class="v7-arrivals-grid">
+<div class="v7-arrival"><span class="v7-badge">NEW</span><strong>Capsule Collection</strong><p>Essenziali dal design contemporaneo.</p><div class="v7-progress"><span></span></div></div>
+<div class="v7-arrival"><span class="v7-badge">TREND</span><strong>Luxury Essentials</strong><p>Capi versatili per ogni occasione.</p><div class="v7-progress"><span style="width:68%"></span></div></div>
+<div class="v7-arrival"><span class="v7-badge">LIMITED</span><strong>Exclusive Drop</strong><p>Disponibilità limitata.</p><div class="v7-progress"><span style="width:94%"></span></div></div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v8-filterbar">
+<strong>Filtri rapidi</strong>
+<button class="v8-pill" data-filter="new">Nuovi</button>
+<button class="v8-pill" data-filter="luxury">Luxury</button>
+<button class="v8-pill" data-filter="sale">Promo</button>
+<button class="v8-pill" data-filter="top">Top Rated</button>
+<span class="v8-status" id="v8Status">Nessun filtro selezionato</span>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v9-ai">
+<h2>Luxury Style Advisor</h2>
+<p>Ricevi un suggerimento immediato in base all'occasione.</p>
+<div class="v9-actions">
+<button class="v9-btn" data-tip="business">Business</button>
+<button class="v9-btn" data-tip="ceremony">Cerimonia</button>
+<button class="v9-btn" data-tip="weekend">Weekend</button>
+<button class="v9-btn" data-tip="travel">Viaggio</button>
+</div>
+<div class="v9-result" id="v9Result">Seleziona un'occasione per visualizzare un consiglio.</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v9-reco">
+<h2>Suggerimenti personalizzati</h2>
+<p>I consigli vengono aggiornati in base allo stile selezionato nel Luxury Style Advisor.</p>
+<div class="v9-reco-grid" id="v9RecoGrid">
+<div class="v9-reco-card"><strong>Look Premium</strong><p>Seleziona un'occasione per ricevere suggerimenti.</p></div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v10-checkout">
+<h2>Checkout Rapido</h2>
+<div class="v10-grid">
+<div class="v10-box">
+<p>Completa rapidamente il tuo ordine direttamente dalla homepage.</p>
+<button class="v10-btn" id="v10CheckoutBtn">Procedi al checkout</button>
+</div>
+<div class="v10-box">
+<strong>Riepilogo</strong>
+<p class="v10-note">Articoli: <span id="v10Items">0</span></p>
+<p class="v10-note">Preferiti: <span id="v10Favs">0</span></p>
+</div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v10-order">
+<h2>Riepilogo Ordine Premium</h2>
+<div class="v10-order-grid">
+<div class="v10-card">
+<div class="v10-label">Metodo di spedizione</div>
+<div class="v10-value">Express 24/48h</div>
+</div>
+<div class="v10-card">
+<div class="v10-label">Pagamento</div>
+<div class="v10-value">Carta / Apple Pay</div>
+</div>
+<div class="v10-card">
+<div class="v10-label">Codice promo</div>
+<div class="v10-value" id="v10Promo">Nessuno</div>
+<input id="v10PromoInput" placeholder="Inserisci codice" style="margin-top:12px;width:100%;padding:10px;border-radius:10px;border:1px solid #ddd">
+<button id="v10ApplyPromo" style="margin-top:10px;padding:10px 14px;border:0;border-radius:999px;cursor:pointer">Applica</button>
+</div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v11-profile">
+<div class="v11-head">
+<div>
+<h2 style="margin:0;font-family:Georgia,serif;">Area Cliente ÉLITE</h2>
+<p style="margin:.4rem 0 0;color:#666;">Panoramica del tuo account premium.</p>
+</div>
+<div class="v11-badge" id="v11Tier">MEMBER</div>
+</div>
+
+<div class="v11-grid">
+<div class="v11-card">
+<strong>Storico Visite</strong>
+<p><span id="v11Viewed">0</span> prodotti consultati.</p>
+</div>
+
+<div class="v11-card">
+<strong>Wishlist</strong>
+<p><span id="v11Wishlist">0</span> articoli salvati.</p>
+</div>
+
+<div class="v11-card">
+<strong>Codice Promo</strong>
+<p id="v11Promo">Nessuno</p>
+</div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v11-loyalty">
+<h2>Centro Vantaggi & Fedeltà</h2>
+<p>Il tuo percorso verso il prossimo livello ÉLITE.</p>
+
+<div class="v11-loyalty-grid">
+<div class="v11-loyalty-card">
+<strong>Progresso livello</strong>
+<div class="v11-progress-wrap">
+<div class="v11-progress-bar" id="v11ProgressBar"></div>
+</div>
+<div id="v11ProgressText">0% completato</div>
+<div class="v11-notice" id="v11RewardText">Aggiungi prodotti alla wishlist per sbloccare nuovi vantaggi.</div>
+</div>
+
+<div class="v11-loyalty-card">
+<strong>Cronologia ordini</strong>
+<div class="v11-history" id="v11OrderHistory">
+<div class="v11-order-item"><span>Nessun ordine recente</span><span>—</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v12-concierge">
+<h2>ÉLITE Concierge</h2>
+<p>Un assistente dedicato per guidarti nella scelta dei servizi premium.</p>
+<div class="v12-actions">
+<button data-msg="gift">Idee regalo</button>
+<button data-msg="shipping">Spedizione</button>
+<button data-msg="returns">Resi</button>
+<button data-msg="vip">Vantaggi VIP</button>
+</div>
+<div id="v12Response" class="v12-response">Seleziona un argomento per visualizzare un suggerimento.</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v12-help">
+<h2>Centro Assistenza</h2>
+<div class="v12-faq">
+<div class="v12-item"><div class="v12-q">Come funziona la spedizione?</div><div class="v12-a">Le opzioni disponibili dipendono dal checkout configurato nel negozio.</div></div>
+<div class="v12-item"><div class="v12-q">Posso effettuare un reso?</div><div class="v12-a">Consulta le condizioni di reso applicate dal negozio.</div></div>
+<div class="v12-item"><div class="v12-q">Come utilizzo un codice promo?</div><div class="v12-a">Inseriscilo nel riepilogo ordine quando disponibile.</div></div>
+</div>
+<div class="v12-form">
+<strong>Invia una richiesta</strong>
+<textarea id="v12Ticket" placeholder="Scrivi qui la tua richiesta..."></textarea>
+<button id="v12SaveTicket">Salva richiesta</button>
+<div id="v12Saved" style="margin-top:10px;color:#666"></div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v13-notify">
+<h2>Centro Preferenze</h2>
+<p>Personalizza le comunicazioni dell'esperienza ÉLITE.</p>
+<div class="v13-list">
+<div class="v13-item"><span>Nuovi arrivi</span><input class="v13-toggle" type="checkbox" data-key="pref_new"></div>
+<div class="v13-item"><span>Offerte esclusive</span><input class="v13-toggle" type="checkbox" data-key="pref_offers"></div>
+<div class="v13-item"><span>Aggiornamenti ordini</span><input class="v13-toggle" type="checkbox" data-key="pref_orders"></div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v13-activity">
+<h2>Centro Attività</h2>
+<p>Riepilogo delle ultime attività del tuo profilo.</p>
+<div class="v13-timeline">
+<div class="v13-event"><strong>Benvenuto in ÉLITE LC BRAND</strong><br><small>Account inizializzato.</small></div>
+<div class="v13-event"><strong>Preferenze salvate</strong><br><small>Le tue impostazioni vengono memorizzate sul dispositivo.</small></div>
+<div class="v13-event"><strong>Catalogo Premium</strong><br><small>Esplora le nuove collezioni.</small></div>
+</div>
+<div class="v13-badges">
+<span class="v13-badge">Luxury Member</span>
+<span class="v13-badge">Profilo Attivo</span>
+<span class="v13-badge">Esperienza Premium</span>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v13-dashboard">
+<h2>Dashboard Cliente Premium</h2>
+<div class="v13-stats">
+<div class="v13-card"><h3>Livello</h3><p>Gold</p></div>
+<div class="v13-card"><h3>Punti</h3><p>350</p></div>
+<div class="v13-card"><h3>Obiettivo</h3><p>1000</p></div>
+</div>
+<div class="v13-progress">
+<p>Avanzamento fedeltà</p>
+<div class="v13-bar"><div class="v13-fill"></div></div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v13-rec">
+<h2>Raccomandati per te</h2>
+<p>Una selezione esclusiva pensata per valorizzare il tuo stile.</p>
+<div class="v13-grid">
+<div class="v13-prod">
+<span class="v13-tag">Luxury Pick</span>
+<h3>Collezione Signature</h3>
+<p>Design elegante con finiture premium.</p>
+<a href="#catalogo" class="v13-btn">Scopri</a>
+</div>
+<div class="v13-prod">
+<span class="v13-tag">Novità</span>
+<h3>Edizione Limitata</h3>
+<p>Modelli esclusivi disponibili per un periodo limitato.</p>
+<a href="#catalogo" class="v13-btn">Esplora</a>
+</div>
+<div class="v13-prod">
+<span class="v13-tag">Best Seller</span>
+<h3>Selezione Iconica</h3>
+<p>I prodotti più apprezzati dalla community.</p>
+<a href="#catalogo" class="v13-btn">Visualizza</a>
+</div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v13-wishlist">
+<h2>Wishlist Premium</h2>
+<p>Salva i prodotti che desideri rivedere in seguito. Le preferenze vengono memorizzate sul dispositivo.</p>
+<div class="v13-wish-grid">
+<div class="v13-wish-card">
+<h3>Articolo Preferito #1</h3>
+<button class="v13-save" data-wish="wish1">Salva</button>
+</div>
+<div class="v13-wish-card">
+<h3>Articolo Preferito #2</h3>
+<button class="v13-save" data-wish="wish2">Salva</button>
+</div>
+<div class="v13-wish-card">
+<h3>Articolo Preferito #3</h3>
+<button class="v13-save" data-wish="wish3">Salva</button>
+</div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v13-history">
+<h2>Cronologia visualizzazioni</h2>
+<p>Un esempio di cronologia salvata sul dispositivo.</p>
+<div class="v13-history-list" id="v13History"></div>
+<button class="v13-clear" id="v13ClearHistory">Cancella cronologia</button>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v13-loyalty">
+<h2>Centro Fedeltà</h2>
+<p>Segui il tuo percorso nel programma premium ÉLITE LC BRAND.</p>
+
+<div class="v13-levels">
+<div class="v13-level"><strong>Silver</strong><br><small>Accesso iniziale</small></div>
+<div class="v13-level v13-current"><strong>Gold</strong><br><small>Livello attuale</small></div>
+<div class="v13-level"><strong>Black</strong><br><small>Esperienza esclusiva</small></div>
+</div>
+
+<div class="v13-reward">
+<strong>Ricompensa successiva</strong><br>
+Ti mancano 650 punti per raggiungere il livello Black.
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v13-goals">
+<h2>Centro Obiettivi</h2>
+<p>Completa le missioni e avanza nell’esperienza premium ÉLITE LC BRAND.</p>
+
+<div class="v13-goals-grid">
+<div class="v13-goal">
+<div class="v13-goal-top">
+<strong>Esplora il catalogo</strong>
+<span class="v13-goal-status">80%</span>
+</div>
+<div class="v13-goal-bar"><div class="v13-goal-fill" style="width:80%"></div></div>
+<small>Visita almeno cinque collezioni premium.</small>
+</div>
+
+<div class="v13-goal">
+<div class="v13-goal-top">
+<strong>Crea la tua wishlist</strong>
+<span class="v13-goal-status">60%</span>
+</div>
+<div class="v13-goal-bar"><div class="v13-goal-fill" style="width:60%"></div></div>
+<small>Salva tre articoli tra i tuoi preferiti.</small>
+</div>
+
+<div class="v13-goal">
+<div class="v13-goal-top">
+<strong>Profilo completo</strong>
+<span class="v13-goal-status">40%</span>
+</div>
+<div class="v13-goal-bar"><div class="v13-goal-fill" style="width:40%"></div></div>
+<small>Completa le preferenze e i dati del profilo.</small>
+</div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v13-benefits">
+<h2>Vantaggi Premium</h2>
+<p>Scopri i privilegi disponibili con il tuo livello Gold.</p>
+
+<div class="v13-benefits-grid">
+<div class="v13-benefit">
+<div class="v13-benefit-icon">🚚</div>
+<h3>Spedizione prioritaria</h3>
+<p>Ordini elaborati con precedenza rispetto alla spedizione standard.</p>
+<span class="v13-benefit-status">Attivo</span>
+</div>
+
+<div class="v13-benefit">
+<div class="v13-benefit-icon">✨</div>
+<h3>Accesso anticipato</h3>
+<p>Anteprima riservata delle nuove collezioni e delle edizioni limitate.</p>
+<span class="v13-benefit-status">Attivo</span>
+</div>
+
+<div class="v13-benefit">
+<div class="v13-benefit-icon">🎁</div>
+<h3>Premi esclusivi</h3>
+<p>Ricompense speciali sbloccabili attraverso il programma fedeltà.</p>
+<span class="v13-benefit-status">Disponibile</span>
+</div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v13-events">
+<h2>Eventi Esclusivi</h2>
+<p>Esperienze dedicate ai membri premium ÉLITE LC BRAND.</p>
+<div class="v13-events-grid">
+<div class="v13-event-card">
+<span class="v13-date">Settembre</span>
+<h3>Preview Collezione</h3>
+<p>Accesso anticipato alle novità della stagione.</p>
+<a href="#catalogo" class="v13-join">Scopri</a>
+</div>
+<div class="v13-event-card">
+<span class="v13-date">Ottobre</span>
+<h3>Luxury Experience</h3>
+<p>Evento riservato con presentazione delle edizioni limitate.</p>
+<a href="#catalogo" class="v13-join">Partecipa</a>
+</div>
+<div class="v13-event-card">
+<span class="v13-date">Novembre</span>
+<h3>Private Selection</h3>
+<p>Selezione esclusiva per i clienti più fedeli.</p>
+<a href="#catalogo" class="v13-join">Prenota</a>
+</div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v13-news">
+<h2>Novità & Aggiornamenti</h2>
+<p>Scopri le ultime iniziative della maison ÉLITE LC BRAND.</p>
+<div class="v13-news-wrap">
+<div class="v13-news-card"><span class="v13-chip">Nuova Collezione</span><h3>Capsule Luxury</h3><p>Anteprima dedicata ai clienti premium.</p></div>
+<div class="v13-news-card"><span class="v13-chip">Community</span><h3>Style Journal</h3><p>Ispirazioni e consigli per i tuoi look.</p></div>
+<div class="v13-news-card"><span class="v13-chip">Servizi</span><h3>Personal Shopper</h3><p>Esperienza su misura per la selezione dei prodotti.</p></div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v13-services">
+<h2>Servizi Esclusivi</h2>
+<p>Scopri i servizi dedicati ai clienti ÉLITE LC BRAND.</p>
+<div class="v13-services-grid">
+<div class="v13-service">
+<h3>Consulenza di Stile</h3>
+<p>Ricevi suggerimenti personalizzati per creare il tuo look.</p>
+<a href="#catalogo">Scopri di più</a>
+</div>
+<div class="v13-service">
+<h3>Gift Concierge</h3>
+<p>Idee regalo curate con confezioni premium.</p>
+<a href="#catalogo">Esplora</a>
+</div>
+<div class="v13-service">
+<h3>Assistenza Prioritaria</h3>
+<p>Supporto dedicato ai membri premium.</p>
+<a href="#catalogo">Contattaci</a>
+</div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v13-profile">
+<h2>Riepilogo Profilo</h2>
+<p>Panoramica del tuo account premium.</p>
+<div class="v13-profile-grid">
+<div class="v13-box">
+<h3>Stato Account</h3>
+<p><strong>Premium Gold</strong></p>
+<p>Profilo attivo e sincronizzato sul dispositivo.</p>
+</div>
+<div class="v13-box">
+<h3>Preferenze</h3>
+<ul>
+<li>Notifiche personalizzate</li>
+<li>Wishlist salvata</li>
+<li>Cronologia disponibile</li>
+</ul>
+</div>
+<div class="v13-box">
+<h3>Prossimi Passi</h3>
+<ul>
+<li>Completare il profilo</li>
+<li>Raggiungere il livello Black</li>
+<li>Scoprire le nuove collezioni</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v13-checklist">
+<div class="v13-checklist-head">
+<div>
+<h2>Completamento Profilo</h2>
+<p>Completa questi passaggi per sbloccare un'esperienza più personalizzata.</p>
+</div>
+<span class="v13-checklist-score" id="v13ProfileScore">0%</span>
+</div>
+
+<div class="v13-task-list">
+<div class="v13-task">
+<input type="checkbox" id="v13Task1" data-profile-task="preferenze">
+<label for="v13Task1">Imposta le preferenze di comunicazione</label>
+</div>
+<div class="v13-task">
+<input type="checkbox" id="v13Task2" data-profile-task="wishlist">
+<label for="v13Task2">Salva almeno un articolo nella wishlist</label>
+</div>
+<div class="v13-task">
+<input type="checkbox" id="v13Task3" data-profile-task="catalogo">
+<label for="v13Task3">Esplora il catalogo premium</label>
+</div>
+<div class="v13-task">
+<input type="checkbox" id="v13Task4" data-profile-task="assistenza">
+<label for="v13Task4">Consulta il Centro Assistenza</label>
+</div>
+</div>
+
+<div class="v13-complete-bar">
+<div class="v13-complete-fill" id="v13ProfileFill"></div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v13-searchplus">
+<h2>Ricerca Avanzata (Demo)</h2>
+<p>Prova l'interfaccia della futura ricerca prodotti.</p>
+<div class="v13-searchbox">
+<input id="eliteSearchDemo" placeholder="Cerca una collezione...">
+<select id="eliteCategoryDemo">
+<option>Tutte le categorie</option>
+<option>Luxury</option>
+<option>Limited</option>
+<option>Accessories</option>
+</select>
+<button id="eliteSearchBtn">Cerca</button>
+</div>
+<div class="v13-result" id="eliteSearchResult">Inserisci un termine per simulare una ricerca.</div>
+</div>
+</section>
+
+<section class="cta reveal">
+      <h2>Il tuo stile. La tua firma.</h2>
+      <p>
+        Scopri la selezione ÉLITE LC BRAND e salva i tuoi articoli preferiti.
+        Il catalogo viene aggiornato direttamente dal pannello amministratore.
+      </p>
+      <a class="btn btn-gold" href="#catalogo">Esplora adesso</a>
+    </section>
+  </main>
+
+  <footer>
+    <img src="logo-elite-lc-brand.png" alt="ÉLITE LC BRAND">
+    <p>Moda maschile selezionata. Eleganza senza compromessi.</p>
+    <div>
+      <a href="#catalogo">Catalogo</a>
+      <a href="#nuovi-arrivi">Nuovi arrivi</a>
+      <a href="product.html">Pagina prodotto</a>
+      <a href="admin.html">Area amministratore</a>
+      <a href="mailto:info@elitelcbrand.it">Contatti</a>
+    </div>
+    <small>© 2026 ÉLITE LC BRAND</small>
+  </footer>
+
+  <!-- Elementi richiesti da assets/app.js -->
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="drawer menu-drawer" id="menuDrawer" aria-label="Menu">
+    <div class="drawer-head">
+      <img src="logo-elite-lc-brand.png" alt="ÉLITE LC BRAND">
+      <button class="close-btn" type="button" data-close aria-label="Chiudi menu">×</button>
+    </div>
+    <nav>
+      <a href="#nuovi-arrivi">Nuovi arrivi</a>
+      <a href="#best-seller">Best seller</a>
+      <a href="#catalogo">Catalogo</a>
+      <a href="product.html">Pagina prodotto</a>
+      <a href="admin.html">Area amministratore</a>
+    </nav>
+  </aside>
+
+  <aside class="drawer cart-drawer" id="cartDrawer" aria-label="Carrello">
+    <div class="drawer-head">
+      <h2>Il tuo carrello</h2>
+      <button class="close-btn" type="button" data-close aria-label="Chiudi carrello">×</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-total"><span>Totale</span><strong id="cartTotal">€ 0,00</strong></div>
+    <button class="btn btn-gold full" id="checkoutBtn" type="button">Procedi all’ordine</button>
+  </aside>
+
+  <aside class="drawer fav-drawer" id="favDrawer" aria-label="Preferiti">
+    <div class="drawer-head">
+      <h2>I tuoi preferiti</h2>
+      <button class="close-btn" type="button" data-close aria-label="Chiudi preferiti">×</button>
+    </div>
+    <div id="favItems" class="cart-items"></div>
+  </aside>
+
+
+  <!-- Quick View Luxury — Catalogo Premium V3 Parte 1 -->
+  <section class="v3-quickview" id="v3QuickView" aria-hidden="true" aria-label="Anteprima prodotto">
+    <div class="v3-quickview-backdrop" data-v3-qv-close></div>
+    <article class="v3-quickview-panel" role="dialog" aria-modal="true" aria-labelledby="v3QvTitle">
+      <button class="v3-qv-close" type="button" data-v3-qv-close aria-label="Chiudi anteprima">×</button>
+      <div class="v3-qv-media" id="v3QvMedia"></div>
+      <div class="v3-qv-content">
+        <span class="v3-qv-kicker" id="v3QvBrand">ÉLITE Selection</span>
+        <h2 class="v3-qv-title" id="v3QvTitle">Prodotto</h2>
+        <div class="v3-qv-price" id="v3QvPrice">€ 0,00</div>
+        <span class="v3-qv-stock" id="v3QvStock">Disponibile</span>
+        <p class="v3-qv-description" id="v3QvDescription"></p>
+        <div class="v3-qv-ref" id="v3QvRef"></div>
+        <div class="v3-qv-actions">
+          <a id="v3QvDetails" href="product.html">Scheda completa</a>
+          <button id="v3QvAdd" type="button">Aggiungi al carrello</button>
+        </div>
+      </div>
+    </article>
+  </section>
+
+
+  
+<div class="v3-filter-sheet" id="v3FilterSheet">
+ <div class="v3-filter-panel">
+  <div class="v3-filter-header"><h3>Filtri</h3><button id="v3CloseFilters">✕</button></div>
+  <div id="v3FilterMount"></div>
+ </div>
+</div>
+
+
+<div class="v3-add-success" id="v3AddSuccess">✔ Prodotto aggiunto al carrello</div>
+
+<div class="toast" id="toast"></div>
+
+  <!-- Funzioni già esistenti: catalogo, filtri, carrello e preferiti -->
+  <script src="assets/app.js"></script>
+
+  <!-- Catalogo Premium V2 completo (base compatibile) -->
+  <script id="catalog-v2-engine">
+  (() => {
+    const norm=v=>String(v??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+    const controls=()=>({q:searchInput,c:categoryFilter,s:sortFilter,b:brandFilter,p:priceFilter,a:availabilityFilter,g:badgeFilter});
+    const btype=p=>{const b=norm(p.badge);return b.includes('nuov')?'new':b.includes('best')?'best':(b.includes('offert')||b.includes('sale')||b.includes('sconto'))?'sale':''};
+    const avail=p=>p.available!==false&&Number(p.stock??1)>0;
+    function populateBrands(){if(!window.state||!Array.isArray(state.products))return;const values=[...new Set(state.products.map(p=>String(p.brand||'').trim()).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'it'));brandFilter.innerHTML='<option value="">Tutti i brand</option>'+values.map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join('')}
+    window.filtered=function(){
+      const x=controls(),q=norm(x.q.value);let list=[...state.products].filter(p=>{
+        const h=norm([p.name,p.brand,p.category,p.description,p.badge,p.id].join(' '));
+        if(q&&!q.split(/\s+/).every(w=>h.includes(w)))return false;
+        if(x.c.value&&p.category!==x.c.value)return false;if(x.b.value&&p.brand!==x.b.value)return false;
+        const pr=Number(p.price||0);if(x.p.value==='0-100'&&pr>100)return false;if(x.p.value==='100-500'&&(pr<100||pr>500))return false;if(x.p.value==='500+'&&pr<500)return false;
+        const ok=avail(p),st=Number(p.stock??0);if(x.a.value==='available'&&!ok)return false;if(x.a.value==='low'&&!(ok&&st>0&&st<=2))return false;if(x.a.value==='out'&&ok)return false;
+        if(x.g.value&&btype(p)!==x.g.value)return false;return true;
+      });
+      if(x.s.value==='price-asc')list.sort((a,b)=>a.price-b.price);
+      if(x.s.value==='price-desc')list.sort((a,b)=>b.price-a.price);
+      if(x.s.value==='name')list.sort((a,b)=>String(a.name||'').localeCompare(String(b.name||''),'it'));
+      if(x.s.value==='newest')list.sort((a,b)=>Number(btype(b)==='new')-Number(btype(a)==='new'));
+      if(x.s.value==='best')list.sort((a,b)=>Number(btype(b)==='best')-Number(btype(a)==='best'));
+      return list;
+    };
+    const oldCounts=renderCounts;
+    renderCounts=function(){oldCounts();catalogTotal.textContent=state.products.length;populateBrands()};
+    window.renderProducts=function(){
+      const x=controls(),list=filtered(),q=x.q.value.trim();resultsText.textContent=`${list.length} ${list.length===1?'articolo trovato':'articoli trovati'}`;catalogTotal.textContent=state.products.length;emptyState.hidden=!!list.length;
+      const active=[q&&`Ricerca: “${q}”`,x.c.value,x.b.value,x.p.value&&x.p.selectedOptions[0].text,x.a.value&&x.a.selectedOptions[0].text,x.g.value&&x.g.selectedOptions[0].text].filter(Boolean);activeFilterSummary.textContent=active.length?active.join(' · '):'Nessun filtro attivo';
+      productGrid.innerHTML=list.map(p=>{const fav=state.favs.includes(p.id),ok=avail(p),st=Number(p.stock??0),sc=!ok?'out':st>0&&st<=2?'low':'',tx=!ok?'Esaurito':st>0&&st<=2?`Ultimi ${st}`:'Disponibile',im=p.image?`<img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy" decoding="async" onerror="this.remove()">`:'<div class="product-placeholder">LC</div>';
+        return `<article class="product-card"><div class="product-visual">${im}${p.badge?`<span class="badge">${esc(p.badge)}</span>`:''}<button class="heart ${fav?'active':''}" onclick="toggleFav('${esc(p.id)}')">${fav?'♥':'♡'}</button><span class="stock-label ${sc}">${tx}</span></div><div class="product-info"><small>${esc(p.brand||p.category||'ÉLITE Selection')}</small><h3>${esc(p.name||'Prodotto')}</h3><div class="product-meta-line"><div class="price">${money(p.price)}</div><div class="product-ref">Rif. ${esc(p.id)}</div></div><div class="product-actions"><a href="product.html?id=${encodeURIComponent(p.id)}">Dettagli</a><button ${ok?'':'disabled'} onclick="addCart('${esc(p.id)}')">${ok?'Aggiungi':'Esaurito'}</button></div></div></article>`}).join('');
+    };
+    document.querySelectorAll('[data-quick-filter]').forEach(btn=>btn.addEventListener('click',()=>{badgeFilter.value='';availabilityFilter.value='';if(['new','best','sale'].includes(btn.dataset.quickFilter))badgeFilter.value=btn.dataset.quickFilter;if(btn.dataset.quickFilter==='available')availabilityFilter.value='available';document.querySelectorAll('[data-quick-filter]').forEach(b=>b.classList.toggle('active',b===btn));renderProducts()}));
+    ['brandFilter','priceFilter','availabilityFilter','badgeFilter'].forEach(id=>document.getElementById(id).addEventListener('change',renderProducts));
+    resetFilters.addEventListener('click',()=>{Object.values(controls()).forEach(el=>el.value='');sortFilter.value='featured';document.querySelector('[data-quick-filter="all"]').click()});
+    mobileFilterToggle.addEventListener('click',()=>catalogFilterPanels.classList.toggle('collapsed'));
+    const timer=setInterval(()=>{if(window.state&&state.products?.length){clearInterval(timer);populateBrands();renderProducts()}},120);setTimeout(()=>clearInterval(timer),8000);
+  })();
+  </script>
+
+
+  <!-- Funzioni aggiuntive della homepage -->
+  <script>
+    (() => {
+      const moneyHome = value => new Intl.NumberFormat('it-IT', {
+        style: 'currency',
+        currency: 'EUR'
+      }).format(Number(value || 0));
+
+      const escapeHome = value => String(value ?? '').replace(/[&<>"']/g, char => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
+      })[char]);
+
+      function showcaseCard(product) {
+        const image = product.image
+          ? `<img src="${escapeHome(product.image)}" alt="${escapeHome(product.name)}" onerror="this.remove()">`
+          : '<div class="showcase-placeholder">LC</div>';
+
+        return `
+          <article class="showcase-card">
+            <div class="showcase-visual">
+              ${image}
+              ${product.badge ? `<span class="showcase-badge">${escapeHome(product.badge)}</span>` : ''}
+            </div>
+            <div class="showcase-info">
+              <small>${escapeHome(product.brand || product.category || 'ÉLITE Selection')}</small>
+              <h3>${escapeHome(product.name || 'Prodotto')}</h3>
+              <div class="showcase-price">${moneyHome(product.price)}</div>
+              <div class="showcase-actions">
+                <a href="product.html?id=${encodeURIComponent(product.id)}">Dettagli</a>
+                <button type="button" onclick="addCart('${escapeHome(product.id)}')">Aggiungi</button>
+              </div>
+            </div>
+          </article>`;
+      }
+
+      async function populateHomepageCollections() {
+        try {
+          const response = await fetch(`data/products.json?home=${Date.now()}`);
+          if (!response.ok) throw new Error('Catalogo non disponibile');
+
+          const raw = await response.json();
+          const products = (Array.isArray(raw) ? raw : (raw.products || []))
+            .map(product => ({ ...product, price: Number(product.price || 0) }));
+
+          const newest = products.filter(product =>
+            String(product.badge || '').toLowerCase().includes('nuov')
+          );
+          const best = products.filter(product =>
+            String(product.badge || '').toLowerCase().includes('best')
+          );
+
+          const newList = (newest.length ? newest : products).slice(0, 3);
+          const bestList = (best.length ? best : [...products].sort((a, b) => b.price - a.price)).slice(0, 3);
+
+          const newGrid = document.getElementById('newArrivalsGrid');
+          const bestGrid = document.getElementById('bestSellerGrid');
+
+          if (newGrid) {
+            newGrid.innerHTML = newList.length
+              ? newList.map(showcaseCard).join('')
+              : '<p>Nessun nuovo arrivo disponibile.</p>';
+          }
+
+          if (bestGrid) {
+            bestGrid.innerHTML = bestList.length
+              ? bestList.map(showcaseCard).join('')
+              : '<p>Nessun best seller disponibile.</p>';
+          }
+        } catch (error) {
+          const message = '<p>I prodotti saranno mostrati non appena il catalogo sarà disponibile.</p>';
+          const newGrid = document.getElementById('newArrivalsGrid');
+          const bestGrid = document.getElementById('bestSellerGrid');
+          if (newGrid) newGrid.innerHTML = message;
+          if (bestGrid) bestGrid.innerHTML = message;
+        }
+      }
+
+      const welcome = document.getElementById('welcome');
+      if (welcome) {
+        const closeWelcome = () => welcome.classList.add('hide');
+        welcome.addEventListener('click', closeWelcome);
+        setTimeout(closeWelcome, 2500);
+      }
+
+      const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll('.reveal').forEach(element => revealObserver.observe(element));
+      populateHomepageCollections();
+    })();
+  </script>
+
+<script id="catalog-v3-part1-engine">
+(() => {
+  'use strict';
+
+  const byId = id => document.getElementById(id);
+  const qv = byId('v3QuickView');
+  if (!qv) return;
+
+  const qvMedia = byId('v3QvMedia');
+  const qvBrand = byId('v3QvBrand');
+  const qvTitle = byId('v3QvTitle');
+  const qvPrice = byId('v3QvPrice');
+  const qvStock = byId('v3QvStock');
+  const qvDescription = byId('v3QvDescription');
+  const qvRef = byId('v3QvRef');
+  const qvDetails = byId('v3QvDetails');
+  const qvAdd = byId('v3QvAdd');
+  let activeProduct = null;
+  let lastFocused = null;
+
+  const safe = value => typeof esc === 'function'
+    ? esc(value)
+    : String(value ?? '').replace(/[&<>"']/g, c => ({
+        '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'
+      })[c]);
+
+  const isAvailable = product =>
+    product && product.available !== false && Number(product.stock ?? 1) > 0;
+
+  const getImages = product => {
+    const candidates = [
+      product?.image,
+      product?.image2,
+      product?.secondaryImage,
+      ...(Array.isArray(product?.gallery) ? product.gallery : []),
+      ...(Array.isArray(product?.images) ? product.images : [])
+    ];
+    return [...new Set(candidates.map(v => String(v || '').trim()).filter(Boolean))];
+  };
+
+  const availabilityData = product => {
+    const ok = isAvailable(product);
+    const stock = Number(product?.stock ?? 0);
+    if (!ok) return { text:'Esaurito', cls:'out' };
+    if (stock > 0 && stock <= 2) return { text:`Ultimi ${stock}`, cls:'low' };
+    return { text:'Disponibile', cls:'' };
+  };
+
+  function setMainQuickImage(src, button) {
+    const main = qvMedia.querySelector('[data-v3-qv-main]');
+    if (main) {
+      main.src = src;
+      qvMedia.querySelectorAll('.v3-qv-thumb').forEach(el => el.classList.remove('active'));
+      button?.classList.add('active');
+    }
+  }
+
+  function openQuickView(id, trigger) {
+    if (!window.state || !Array.isArray(state.products)) return;
+    const product = state.products.find(item => String(item.id) === String(id));
+    if (!product) return;
+
+    activeProduct = product;
+    lastFocused = trigger || document.activeElement;
+    const images = getImages(product);
+    const stock = availabilityData(product);
+    const mainImage = images[0];
+
+    if (mainImage) {
+      qvMedia.innerHTML = `
+        <img data-v3-qv-main src="${safe(mainImage)}" alt="${safe(product.name || 'Prodotto')}" decoding="async">
+        ${images.length > 1 ? `<div class="v3-qv-thumbs">${images.map((src, index) => `
+          <button class="v3-qv-thumb ${index === 0 ? 'active' : ''}" type="button" data-v3-thumb="${safe(src)}" aria-label="Mostra immagine ${index + 1}">
+            <img src="${safe(src)}" alt="" loading="lazy">
+          </button>`).join('')}</div>` : ''}
+      `;
+    } else {
+      qvMedia.innerHTML = '<div class="v3-qv-placeholder">LC</div>';
+    }
+
+    qvBrand.textContent = product.brand || product.category || 'ÉLITE Selection';
+    qvTitle.textContent = product.name || 'Prodotto';
+    qvPrice.textContent = typeof money === 'function' ? money(product.price) : `€ ${Number(product.price || 0).toFixed(2)}`;
+    qvStock.textContent = stock.text;
+    qvStock.className = `v3-qv-stock ${stock.cls}`.trim();
+    qvDescription.textContent = product.description || 'Una proposta selezionata da ÉLITE LC BRAND, pensata per uno stile contemporaneo e distintivo.';
+    qvRef.textContent = `Rif. ${product.id ?? '—'}`;
+    qvDetails.href = `product.html?id=${encodeURIComponent(product.id)}`;
+    qvAdd.disabled = !isAvailable(product);
+    qvAdd.textContent = isAvailable(product) ? 'Aggiungi al carrello' : 'Esaurito';
+
+    qv.classList.add('open');
+    qv.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('v3-modal-open');
+    setTimeout(() => qv.querySelector('.v3-qv-close')?.focus(), 30);
+  }
+
+  function closeQuickView() {
+    qv.classList.remove('open');
+    qv.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('v3-modal-open');
+    activeProduct = null;
+    lastFocused?.focus?.();
+  }
+
+  qv.addEventListener('click', event => {
+    const close = event.target.closest('[data-v3-qv-close]');
+    if (close) {
+      closeQuickView();
+      return;
+    }
+    const thumb = event.target.closest('[data-v3-thumb]');
+    if (thumb) setMainQuickImage(thumb.dataset.v3Thumb, thumb);
+  });
+
+  qvAdd.addEventListener('click', () => {
+    if (!activeProduct || !isAvailable(activeProduct)) return;
+    if (typeof addCart === 'function') addCart(String(activeProduct.id));
+    qvAdd.classList.add('v3-added');
+    qvAdd.textContent = 'Aggiunto ✓';
+    setTimeout(() => {
+      qvAdd.classList.remove('v3-added');
+      if (activeProduct) qvAdd.textContent = 'Aggiungi al carrello';
+    }, 950);
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && qv.classList.contains('open')) closeQuickView();
+  });
+
+  window.openV3QuickView = openQuickView;
+  window.closeV3QuickView = closeQuickView;
+
+  const previousRenderProducts = window.renderProducts;
+
+  function renderV3Products() {
+    if (!window.state || !Array.isArray(state.products) || typeof filtered !== 'function') {
+      if (typeof previousRenderProducts === 'function') previousRenderProducts();
+      return;
+    }
+
+    const list = filtered();
+    const search = byId('searchInput')?.value?.trim() || '';
+    const controls = {
+      category: byId('categoryFilter'),
+      brand: byId('brandFilter'),
+      price: byId('priceFilter'),
+      availability: byId('availabilityFilter'),
+      badge: byId('badgeFilter')
+    };
+
+    const resultsText = byId('resultsText');
+    const catalogTotal = byId('catalogTotal');
+    const emptyState = byId('emptyState');
+    const productGrid = byId('productGrid');
+    const activeFilterSummary = byId('activeFilterSummary');
+
+    if (!productGrid) return;
+    if (resultsText) resultsText.textContent = `${list.length} ${list.length === 1 ? 'articolo trovato' : 'articoli trovati'}`;
+    if (catalogTotal) catalogTotal.textContent = state.products.length;
+    if (emptyState) emptyState.hidden = Boolean(list.length);
+
+    const active = [
+      search && `Ricerca: “${search}”`,
+      controls.category?.value,
+      controls.brand?.value,
+      controls.price?.value && controls.price.selectedOptions[0]?.text,
+      controls.availability?.value && controls.availability.selectedOptions[0]?.text,
+      controls.badge?.value && controls.badge.selectedOptions[0]?.text
+    ].filter(Boolean);
+    if (activeFilterSummary) activeFilterSummary.textContent = active.length ? active.join(' · ') : 'Nessun filtro attivo';
+
+    productGrid.innerHTML = list.map((product, index) => {
+      const favorite = state.favs.includes(product.id);
+      const available = isAvailable(product);
+      const stock = availabilityData(product);
+      const images = getImages(product);
+      const imageMarkup = images.length
+        ? `<div class="v3-image-stack ${images.length > 1 ? 'has-secondary' : ''}">
+             <img class="v3-image-primary" src="${safe(images[0])}" alt="${safe(product.name)}" loading="lazy" decoding="async" onerror="this.remove()">
+             ${images[1] ? `<img class="v3-image-secondary" src="${safe(images[1])}" alt="" loading="lazy" decoding="async" onerror="this.remove()">` : ''}
+           </div>`
+        : '<div class="product-placeholder">LC</div>';
+
+      return `
+        <article class="product-card v3-card v3-card-enter" style="--v3-index:${Math.min(index, 10)}">
+          <div class="product-visual" role="group" aria-label="${safe(product.name || 'Prodotto')}">
+            ${imageMarkup}
+            ${product.badge ? `<span class="badge">${safe(product.badge)}</span>` : ''}
+            <button class="heart ${favorite ? 'active' : ''}" type="button"
+              aria-label="${favorite ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'}"
+              data-v3-fav="${safe(product.id)}">${favorite ? '♥' : '♡'}</button>
+            <span class="stock-label ${stock.cls}">${stock.text}</span>
+            <button class="v3-quick-trigger" type="button" data-v3-quick="${safe(product.id)}">Quick View</button>
+          </div>
+          <div class="product-info">
+            <small>${safe(product.brand || product.category || 'ÉLITE Selection')}</small>
+            <h3>${safe(product.name || 'Prodotto')}</h3>
+            <div class="product-meta-line">
+              <div class="price">${typeof money === 'function' ? money(product.price) : safe(product.price)}</div>
+              <div class="product-ref">Rif. ${safe(product.id)}</div>
+            </div>
+            <div class="product-actions">
+              <a href="product.html?id=${encodeURIComponent(product.id)}">Dettagli</a>
+              <button class="v3-add-btn" type="button" ${available ? '' : 'disabled'} data-v3-add="${safe(product.id)}">${available ? 'Aggiungi' : 'Esaurito'}</button>
+            </div>
+          </div>
+        </article>`;
+    }).join('');
+  }
+
+  window.renderProducts = renderV3Products;
+
+  document.addEventListener('click', event => {
+    const quick = event.target.closest('[data-v3-quick]');
+    if (quick) {
+      openQuickView(quick.dataset.v3Quick, quick);
+      return;
+    }
+
+    const favorite = event.target.closest('[data-v3-fav]');
+    if (favorite) {
+      favorite.classList.add('v3-pop');
+      setTimeout(() => favorite.classList.remove('v3-pop'), 600);
+      if (typeof toggleFav === 'function') toggleFav(favorite.dataset.v3Fav);
+      return;
+    }
+
+    const add = event.target.closest('[data-v3-add]');
+    if (add && !add.disabled) {
+      if (typeof addCart === 'function') addCart(add.dataset.v3Add);
+      add.classList.add('v3-added');
+      const previous = add.textContent;
+      add.textContent = 'Aggiunto ✓';
+      setTimeout(() => {
+        add.classList.remove('v3-added');
+        add.textContent = previous;
+      }, 950);
+    }
+  });
+
+  const boot = setInterval(() => {
+    if (window.state && Array.isArray(state.products)) {
+      clearInterval(boot);
+      renderV3Products();
+    }
+  }, 120);
+  setTimeout(() => clearInterval(boot), 9000);
+})();
+</script>
+
+
+<script id="catalog-v3-part2a-engine">
+(()=> {
+const t=document.getElementById('mobileFilterToggle');
+const s=document.getElementById('v3FilterSheet');
+const p=document.getElementById('catalogFilterPanels');
+if(t&&s&&p){
+ t.addEventListener('click',()=>{
+   const m=document.getElementById('v3FilterMount');
+   if(!m.hasChildNodes())m.appendChild(p);
+   s.classList.add('open');
+ });
+ document.getElementById('v3CloseFilters').onclick=()=>{
+   document.querySelector('.catalog-shell').insertBefore(p,document.querySelector('.catalog-statusbar'));
+   s.classList.remove('open');
+ };
+ s.addEventListener('click',e=>{if(e.target===s)document.getElementById('v3CloseFilters').click();});
+}
+})();
+</script>
+
+
+<script id="catalog-v3-part2b1-engine">
+(()=> {
+const media=document.getElementById('v3QvMedia');
+if(media){
+ media.addEventListener('click',e=>{
+   if(e.target.tagName==='IMG'){media.classList.toggle('zoom');}
+ });
+}
+window.v3SetGallery=function(images=[]){
+ if(!media)return;
+ const list=images.filter(Boolean);
+ if(!list.length)return;
+ media.innerHTML='<img src="'+list[0]+'" alt=""><div class="v3-qv-thumbs">'+
+ list.map((u,i)=>'<button class="v3-qv-thumb'+(i==0?' active':'')+'" data-src="'+u+'"><img src="'+u+'"></button>').join('')
+ +'</div>';
+ media.querySelectorAll('.v3-qv-thumb').forEach(b=>b.onclick=()=>{
+   media.querySelector('img').src=b.dataset.src;
+   media.querySelectorAll('.v3-qv-thumb').forEach(x=>x.classList.remove('active'));
+   b.classList.add('active');
+ });
+}
+})();
+</script>
+
+
+<script id="catalog-v3-part2b2-engine">
+(()=>{
+const toast=document.getElementById('v3AddSuccess');
+document.addEventListener('click',e=>{
+ const b=e.target.closest('.v3-add-btn,.product-actions button,#v3QvAdd');
+ if(!b||!toast)return;
+ toast.classList.add('show');
+ clearTimeout(window.__eliteToast);
+ window.__eliteToast=setTimeout(()=>toast.classList.remove('show'),1800);
+});
+})();
+</script>
+
+
+<script id="catalog-v4-part1-engine">
+(() => {
+  const STORAGE_KEY = "elite_v4_recent";
+  const maxRecent = 8;
+  const norm = v => String(v ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+  const euro = value => new Intl.NumberFormat("it-IT",{style:"currency",currency:"EUR"}).format(Number(value)||0);
+  const safe = value => String(value ?? "").replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[ch]));
+  const productImage = p => {
+    const values = [p.image,p.image2,p.images?.[0]].flat().filter(Boolean);
+    return values[0] || "";
+  };
+  const productUrl = p => `product.html?id=${encodeURIComponent(p.id ?? "")}`;
+
+  function products(){
+    return window.state && Array.isArray(window.state.products) ? window.state.products : [];
+  }
+
+  function recentIds(){
+    try{
+      const value = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+      return Array.isArray(value) ? value.map(String) : [];
+    }catch{return []}
+  }
+
+  function remember(id){
+    if(id === undefined || id === null || id === "") return;
+    const next = [String(id), ...recentIds().filter(x => x !== String(id))].slice(0,maxRecent);
+    try{localStorage.setItem(STORAGE_KEY,JSON.stringify(next))}catch{}
+    renderPersonal();
+  }
+
+  function miniCard(p){
+    const image = productImage(p);
+    return `<article class="v4-mini-card">
+      <a class="v4-mini-media" href="${productUrl(p)}" data-v4-product="${safe(p.id)}">
+        ${image ? `<img src="${safe(image)}" alt="${safe(p.name || "Prodotto")}" loading="lazy">` : `<span class="v4-mini-placeholder">É</span>`}
+      </a>
+      <div class="v4-mini-copy">
+        <small>${safe(p.brand || p.category || "ÉLITE Selection")}</small>
+        <h3>${safe(p.name || "Prodotto")}</h3>
+        <div class="v4-mini-bottom"><strong>${euro(p.price)}</strong><a href="${productUrl(p)}" data-v4-product="${safe(p.id)}">Scopri</a></div>
+      </div>
+    </article>`;
+  }
+
+  function renderPersonal(){
+    const list = products();
+    if(!list.length) return;
+    const map = new Map(list.map(p => [String(p.id),p]));
+    const recent = recentIds().map(id => map.get(id)).filter(Boolean).slice(0,4);
+    const recentBlock = document.getElementById("v4RecentBlock");
+    const recentGrid = document.getElementById("v4RecentGrid");
+    if(recentBlock && recentGrid){
+      recentBlock.hidden = !recent.length;
+      recentGrid.innerHTML = recent.map(miniCard).join("");
+    }
+
+    const last = recent[0];
+    let recommended = [];
+    if(last){
+      recommended = list.filter(p => String(p.id)!==String(last.id) && (
+        (last.category && p.category===last.category) || (last.brand && p.brand===last.brand)
+      ));
+    }
+    if(recommended.length < 4){
+      const used = new Set(recommended.map(p=>String(p.id)));
+      list.forEach(p => {
+        if(recommended.length < 4 && !used.has(String(p.id)) && (!last || String(p.id)!==String(last.id))){
+          used.add(String(p.id)); recommended.push(p);
+        }
+      });
+    }
+    const block = document.getElementById("v4RecommendedBlock");
+    const grid = document.getElementById("v4RecommendedGrid");
+    if(block && grid){
+      block.hidden = !recommended.length;
+      grid.innerHTML = recommended.slice(0,4).map(miniCard).join("");
+    }
+  }
+
+  function installSearch(){
+    const input = document.getElementById("searchInput");
+    if(!input || input.dataset.v4Ready) return;
+    input.dataset.v4Ready = "1";
+    const parent = input.closest(".search-field");
+    if(!parent) return;
+    parent.classList.add("v4-search-wrap");
+    const box = document.createElement("div");
+    box.className = "v4-search-suggestions";
+    box.id = "v4SearchSuggestions";
+    box.setAttribute("role","listbox");
+    parent.appendChild(box);
+    const hint = document.createElement("small");
+    hint.className = "v4-smart-hint";
+    hint.textContent = "Suggerimenti istantanei per nome, brand e categoria";
+    parent.appendChild(hint);
+
+    const close = () => box.classList.remove("open");
+    const update = () => {
+      const q = norm(input.value);
+      if(q.length < 2){close();box.innerHTML="";return}
+      const matches = products().filter(p => norm([p.name,p.brand,p.category,p.description].join(" ")).includes(q)).slice(0,5);
+      box.innerHTML = matches.length ? matches.map(p => {
+        const image = productImage(p);
+        return `<button type="button" class="v4-suggestion" role="option" data-id="${safe(p.id)}">
+          <span class="v4-suggestion-media">${image?`<img src="${safe(image)}" alt="" loading="lazy">`:"É"}</span>
+          <span class="v4-suggestion-copy"><b>${safe(p.name || "Prodotto")}</b><small>${safe(p.brand || p.category || "ÉLITE Selection")}</small></span>
+          <span class="v4-suggestion-price">${euro(p.price)}</span>
+        </button>`;
+      }).join("") : `<div class="v4-suggestion-empty">Nessun suggerimento immediato.</div>`;
+      box.classList.add("open");
+    };
+    input.addEventListener("input",update);
+    input.addEventListener("focus",update);
+    box.addEventListener("click",e => {
+      const item = e.target.closest(".v4-suggestion");
+      if(!item) return;
+      const p = products().find(x => String(x.id)===String(item.dataset.id));
+      if(!p) return;
+      input.value = p.name || "";
+      input.dispatchEvent(new Event("input",{bubbles:true}));
+      close();
+      const qv = document.querySelector(`.v3-quick-trigger[data-id="${CSS.escape(String(p.id))}"]`);
+      if(qv) qv.click(); else location.href = productUrl(p);
+    });
+    document.addEventListener("click",e => {if(!parent.contains(e.target))close()});
+    input.addEventListener("keydown",e => {if(e.key==="Escape")close()});
+  }
+
+  document.addEventListener("click",e => {
+    const direct = e.target.closest("[data-v4-product]");
+    if(direct) remember(direct.dataset.v4Product);
+    const quick = e.target.closest(".v3-quick-trigger");
+    if(quick) remember(quick.dataset.id);
+    const details = e.target.closest(".product-actions a");
+    if(details){
+      const card = details.closest(".product-card");
+      const trigger = card && card.querySelector(".v3-quick-trigger[data-id]");
+      if(trigger) remember(trigger.dataset.id);
+    }
+  });
+
+  let attempts = 0;
+  const boot = setInterval(() => {
+    attempts++;
+    installSearch();
+    renderPersonal();
+    if((products().length && document.getElementById("searchInput")) || attempts > 80) clearInterval(boot);
+  },250);
+  window.addEventListener("load",() => {installSearch();renderPersonal()});
+})();
+</script>
+
+
+<script id="catalog-v4-part2-engine">
+(()=>{
+const selected=new Set();
+const bar=document.createElement('div');
+bar.className='v4-compare-bar';
+bar.innerHTML='<span id="v4CmpTxt">0 prodotti selezionati</span><button>Confronta</button>';
+document.body.appendChild(bar);
+function refresh(){
+ const t=document.getElementById('v4CmpTxt');
+ t.textContent=selected.size+' prodotti selezionati';
+ bar.classList.toggle('show',selected.size>0);
+}
+document.addEventListener('click',e=>{
+ const b=e.target.closest('.v4-compare-btn');
+ if(!b)return;
+ const id=b.dataset.id;
+ if(selected.has(id)){selected.delete(id);b.textContent='+';}
+ else{selected.add(id);b.textContent='✓';}
+ refresh();
+});
+const boot=setInterval(()=>{
+ document.querySelectorAll('.product-card').forEach((c,i)=>{
+   if(c.querySelector('.v4-compare-btn'))return;
+   const id=(c.querySelector('.v3-quick-trigger')?.dataset.id)||('p'+i);
+   const btn=document.createElement('button');
+   btn.className='v4-compare-btn';
+   btn.dataset.id=id;
+   btn.textContent='+';
+   c.querySelector('.product-visual')?.appendChild(btn);
+   const info=c.querySelector('.product-info');
+   if(info&&!info.querySelector('.v4-look')){
+      const d=document.createElement('div');
+      d.className='v4-look';
+      d.textContent='Shop the Look: suggerimenti coordinati disponibili.';
+      info.appendChild(d);
+   }
+ });
+ if(document.querySelector('.product-card'))clearInterval(boot);
+},300);
+})();
+</script>
+
+<script id="catalog-v5-part1-engine">
+(()=>{document.addEventListener('click',e=>{
+const b=e.target.closest('.v5-chip');if(!b)return;
+document.querySelectorAll('.v5-chip').forEach(x=>x.classList.remove('active'));
+b.classList.add('active');
+const q=document.getElementById('searchInput');
+if(q){
+ const map={casual:'t-shirt',business:'giacca',luxury:'luxury',street:'sneaker'};
+ q.value=map[b.dataset.style]||'';
+ q.dispatchEvent(new Event('input',{bubbles:true}));
+}
+});})();
+</script>
+
+
+<script id="catalog-v5-part2-engine">
+(()=> {
+ const chips=document.querySelectorAll('.v5-chip');
+ const grid=document.getElementById('v5OutfitGrid');
+ if(!grid) return;
+ const looks={
+  casual:[['Relax','T-shirt + Jeans + Sneaker',95],['Urban','Felpa + Sneaker',93],['Travel','Polo + Borsa',91]],
+  business:[['Executive','Giacca + Camicia + Derby',97],['Office','Blazer + Chino',94],['Meeting','Cappotto + Mocassini',92]],
+  luxury:[['Signature','Blazer + Accessori Premium',98],['Evening','Camicia + Orologio',95],['Elite','Total Black',93]],
+  street:[['City','Hoodie + Sneaker',96],['Modern','Bomber + Cargo',94],['Daily','Cap + Backpack',92]]
+ };
+ chips.forEach(c=>c.addEventListener('click',()=>{
+   const data=looks[c.dataset.style];
+   if(!data) return;
+   grid.innerHTML=data.map(x=>`<div class="v5-outfit-card"><strong>${x[0]}</strong><br>${x[1]}<div class="v5-score">Compatibilità ${x[2]}%</div></div>`).join('');
+ }));
+})();
+</script>
+
+<script id="catalog-v6-part1-engine">
+(()=>{document.querySelectorAll('.v6-box').forEach((b,i)=>{
+ b.addEventListener('mouseenter',()=>b.style.transform='translateY(-6px)');
+ b.addEventListener('mouseleave',()=>b.style.transform='');
+ b.style.transition='transform .25s ease';
+});})();
+</script>
+
+<script id="catalog-v6-part2-engine">
+(()=>{
+function update(){
+ try{
+   const viewed=JSON.parse(localStorage.getItem('recentlyViewed')||'[]');
+   const wish=JSON.parse(localStorage.getItem('wishlist')||'[]');
+   const v=document.getElementById('v6Viewed');
+   const w=document.getElementById('v6Wish');
+   if(v)v.textContent=viewed.length;
+   if(w)w.textContent=wish.length;
+ }catch(e){}
+}
+document.addEventListener('DOMContentLoaded',update);
+window.addEventListener('storage',update);
+setTimeout(update,800);
+})();
+</script>
+
+
+<script id="catalog-v7-part1-engine">
+(()=>{
+document.querySelectorAll('.v7-service').forEach(card=>{
+ card.style.transition='transform .25s ease, box-shadow .25s ease';
+ card.addEventListener('mouseenter',()=>{
+   card.style.transform='translateY(-8px)';
+   card.style.boxShadow='0 20px 40px rgba(0,0,0,.12)';
+ });
+ card.addEventListener('mouseleave',()=>{
+   card.style.transform='';
+   card.style.boxShadow='';
+ });
+});
+})();
+</script>
+
+
+<script id="catalog-v7-part2-engine">
+(()=>{
+document.querySelectorAll('.v7-arrival').forEach(card=>{
+ card.style.transition='transform .25s ease';
+ card.addEventListener('mouseenter',()=>card.style.transform='translateY(-6px) scale(1.01)');
+ card.addEventListener('mouseleave',()=>card.style.transform='');
+});
+})();
+</script>
+
+
+<script id="catalog-v8-part1-engine">
+(()=>{
+const status=document.getElementById('v8Status');
+document.querySelectorAll('.v8-pill').forEach(btn=>{
+ btn.addEventListener('click',()=>{
+   document.querySelectorAll('.v8-pill').forEach(b=>b.classList.remove('active'));
+   btn.classList.add('active');
+   if(status) status.textContent='Filtro attivo: '+btn.textContent;
+   const s=document.getElementById('searchInput');
+   if(s){
+     const m={new:'new',luxury:'luxury',sale:'sale',top:'best'};
+     s.value=m[btn.dataset.filter]||'';
+     s.dispatchEvent(new Event('input',{bubbles:true}));
+   }
+ });
+});
+})();
+</script>
+
+<div class="v8-compare-modal" id="v8CompareModal">
+  <div class="v8-compare-panel">
+    <button class="v8-close" id="v8CloseCompare">Chiudi</button>
+    <h2>Confronto prodotti</h2>
+    <table class="v8-table">
+      <thead><tr><th>Caratteristica</th><th>Prodotto A</th><th>Prodotto B</th></tr></thead>
+      <tbody id="v8CompareBody">
+        <tr><td>Prezzo</td><td>—</td><td>—</td></tr>
+        <tr><td>Brand</td><td>—</td><td>—</td></tr>
+        <tr><td>Categoria</td><td>—</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script id="catalog-v8-part2-engine">
+(()=>{
+const modal=document.getElementById('v8CompareModal');
+if(modal){
+ document.getElementById('v8CloseCompare').onclick=()=>modal.style.display='none';
+ document.addEventListener('click',e=>{
+   const btn=e.target.closest('.v4-compare-bar button');
+   if(btn){ modal.style.display='flex'; }
+ });
+ modal.addEventListener('click',e=>{if(e.target===modal) modal.style.display='none';});
+}
+})();
+</script>
+
+<script id="catalog-v9-part1-engine">
+(()=>{
+const tips={
+business:"Blazer, camicia e mocassini per un look elegante e professionale.",
+ceremony:"Abito sartoriale con accessori coordinati per un outfit raffinato.",
+weekend:"Polo, chino e sneaker premium per comfort e stile.",
+travel:"Giacca leggera, t-shirt e borsa da viaggio coordinata."
+};
+const out=document.getElementById('v9Result');
+document.querySelectorAll('.v9-btn').forEach(b=>{
+ b.addEventListener('click',()=>{
+   out.textContent=tips[b.dataset.tip]||"";
+ });
+});
+})();
+</script>
+
+
+<script id="catalog-v9-part2-engine">
+(()=>{
+const grid=document.getElementById('v9RecoGrid');
+const data={
+business:[
+['Blazer Sartoriale','Perfetto per ufficio',97],
+['Camicia Premium','Cotone elegante',95],
+['Mocassini','Finitura classica',93]],
+ceremony:[
+['Abito Elegance','Taglio moderno',98],
+['Cravatta Seta','Dettaglio raffinato',95],
+['Scarpa Oxford','Linea formale',94]],
+weekend:[
+['Polo Luxury','Comfort quotidiano',96],
+['Sneaker Premium','Design urbano',94],
+['Jeans Slim','Vestibilità moderna',92]],
+travel:[
+['Borsone','Capienza ideale',97],
+['Giacca Leggera','Pratica e versatile',94],
+['Sneaker Travel','Comfort prolungato',93]]
+};
+document.querySelectorAll('.v9-btn').forEach(btn=>{
+ btn.addEventListener('click',()=>{
+   const items=data[btn.dataset.tip]||[];
+   grid.innerHTML=items.map(i=>`<div class="v9-reco-card"><strong>${i[0]}</strong><p>${i[1]}</p><span class="v9-match">Compatibilità ${i[2]}%</span></div>`).join('');
+ });
+});
+})();
+</script>
+
+<script id="catalog-v10-part1-engine">
+(()=>{
+function upd(){
+ try{
+  const cart=JSON.parse(localStorage.getItem('cart')||'[]');
+  const wish=JSON.parse(localStorage.getItem('wishlist')||'[]');
+  document.getElementById('v10Items').textContent=cart.length;
+  document.getElementById('v10Favs').textContent=wish.length;
+ }catch(e){}
+}
+upd();
+document.getElementById('v10CheckoutBtn')?.addEventListener('click',()=>{
+ alert('Funzione checkout premium pronta per l\'integrazione.');
+});
+})();
+</script>
+
+<script id="catalog-v10-part2-engine">
+(()=>{
+const input=document.getElementById('v10PromoInput');
+const btn=document.getElementById('v10ApplyPromo');
+const out=document.getElementById('v10Promo');
+if(btn){
+ btn.addEventListener('click',()=>{
+   const code=(input.value||'').trim();
+   if(!code){alert('Inserisci un codice promo');return;}
+   localStorage.setItem('elitePromoCode',code);
+   out.textContent=code;
+ });
+}
+const saved=localStorage.getItem('elitePromoCode');
+if(saved && out){out.textContent=saved;}
+})();
+</script>
+
+
+<script id="catalog-v11-part1-engine">
+(()=>{
+function update(){
+ const viewed=JSON.parse(localStorage.getItem('recentlyViewed')||'[]');
+ const wish=JSON.parse(localStorage.getItem('wishlist')||'[]');
+ const promo=localStorage.getItem('elitePromoCode')||'Nessuno';
+ document.getElementById('v11Viewed').textContent=viewed.length;
+ document.getElementById('v11Wishlist').textContent=wish.length;
+ document.getElementById('v11Promo').textContent=promo;
+ const tier=document.getElementById('v11Tier');
+ tier.textContent=wish.length>=10?'VIP GOLD':wish.length>=5?'VIP':'MEMBER';
+}
+document.addEventListener('DOMContentLoaded',update);
+setTimeout(update,600);
+})();
+</script>
+
+
+<script id="catalog-v11-part2-engine">
+(()=>{
+function safeArray(key){
+ try{
+  const value=JSON.parse(localStorage.getItem(key)||'[]');
+  return Array.isArray(value)?value:[];
+ }catch(e){return [];}
+}
+
+function updateLoyalty(){
+ const wish=safeArray('wishlist');
+ const cart=safeArray('cart');
+ const orders=safeArray('eliteOrders');
+
+ const score=Math.min(100,(wish.length*10)+(cart.length*5));
+ const bar=document.getElementById('v11ProgressBar');
+ const text=document.getElementById('v11ProgressText');
+ const reward=document.getElementById('v11RewardText');
+ const history=document.getElementById('v11OrderHistory');
+
+ if(bar) bar.style.width=score+'%';
+ if(text) text.textContent=score+'% completato';
+
+ if(reward){
+  reward.textContent=score>=100
+   ?'Hai sbloccato il livello ÉLITE GOLD.'
+   :score>=60
+   ?'Sei vicino al livello VIP GOLD.'
+   :score>=30
+   ?'Livello VIP in avvicinamento.'
+   :'Aggiungi prodotti alla wishlist per sbloccare nuovi vantaggi.';
+ }
+
+ if(history){
+  if(orders.length){
+   history.innerHTML=orders.slice(-3).reverse().map((o,i)=>{
+    const code=o.code||('EL-'+String(i+1).padStart(4,'0'));
+    const status=o.status||'In preparazione';
+    return '<div class="v11-order-item"><span>'+code+'</span><span>'+status+'</span></div>';
+   }).join('');
+  }else{
+   history.innerHTML='<div class="v11-order-item"><span>Nessun ordine recente</span><span>—</span></div>';
+  }
+ }
+}
+
+document.addEventListener('DOMContentLoaded',updateLoyalty);
+window.addEventListener('storage',updateLoyalty);
+setTimeout(updateLoyalty,700);
+})();
+</script>
+
+
+<script id="catalog-v12-part1-engine">
+(()=>{
+const answers={
+gift:"Confezione premium e messaggio personalizzato disponibili per gli ordini idonei.",
+shipping:"Controlla il riepilogo ordine per le opzioni di spedizione disponibili.",
+returns:"Puoi predisporre una richiesta di reso secondo le condizioni del negozio.",
+vip:"Accresci la wishlist e l'attività del tuo account per avanzare di livello."
+};
+const box=document.getElementById("v12Response");
+document.querySelectorAll(".v12-actions button").forEach(b=>{
+ b.addEventListener("click",()=>{box.textContent=answers[b.dataset.msg]||"";});
+});
+})();
+</script>
+
+<script id="catalog-v12-part2-engine">
+(()=>{
+document.querySelectorAll('.v12-q').forEach(q=>{
+ q.onclick=()=>{const a=q.nextElementSibling;a.style.display=a.style.display==='block'?'none':'block';};
+});
+const t=document.getElementById('v12Ticket');
+const s=document.getElementById('v12Saved');
+const key='eliteSupportRequest';
+if(localStorage.getItem(key)){t.value=localStorage.getItem(key);s.textContent='Richiesta caricata.';}
+document.getElementById('v12SaveTicket').onclick=()=>{
+ localStorage.setItem(key,t.value);
+ s.textContent='Richiesta salvata localmente.';
+};
+})();
+</script>
+
+<script id="catalog-v13-part1-engine">
+(()=>{
+document.querySelectorAll('.v13-toggle').forEach(t=>{
+ const k=t.dataset.key;
+ t.checked=localStorage.getItem(k)==='1';
+ t.addEventListener('change',()=>localStorage.setItem(k,t.checked?'1':'0'));
+});
+})();
+</script>
+
+<script id="catalog-v13-part5">
+document.querySelectorAll('.v13-save').forEach(btn=>{
+  const k=btn.dataset.wish;
+  if(localStorage.getItem(k)==='1') btn.textContent='Salvato ✓';
+  btn.addEventListener('click',()=>{
+    localStorage.setItem(k,'1');
+    btn.textContent='Salvato ✓';
+  });
+});
+</script>
+
+<script id="catalog-v13-part6">
+(()=>{
+const key='elite_history_demo';
+const box=document.getElementById('v13History');
+let items=JSON.parse(localStorage.getItem(key)||'["Collezione Signature","Edizione Limitata","Selezione Iconica"]');
+function render(){
+ box.innerHTML='';
+ items.forEach(i=>{
+   const d=document.createElement('div');
+   d.className='v13-history-item';
+   d.innerHTML='<span>'+i+'</span><span>✔</span>';
+   box.appendChild(d);
+ });
+ localStorage.setItem(key,JSON.stringify(items));
+}
+render();
+document.getElementById('v13ClearHistory').onclick=()=>{items=[];render();};
+})();
+</script>
+
+<script id="catalog-v13-part14-engine">
+(()=>{
+const boxes=[...document.querySelectorAll('[data-profile-task]')];
+const score=document.getElementById('v13ProfileScore');
+const fill=document.getElementById('v13ProfileFill');
+
+function updateProfileProgress(){
+ const done=boxes.filter(box=>box.checked).length;
+ const percent=Math.round((done/boxes.length)*100);
+ score.textContent=percent+'%';
+ fill.style.width=percent+'%';
+}
+
+boxes.forEach(box=>{
+ const key='elite_profile_task_'+box.dataset.profileTask;
+ box.checked=localStorage.getItem(key)==='1';
+ box.addEventListener('change',()=>{
+  localStorage.setItem(key,box.checked?'1':'0');
+  updateProfileProgress();
+ });
+});
+
+updateProfileProgress();
+})();
+</script>
+
+<script id="catalog-v13-part15-engine">
+(()=>{
+const btn=document.getElementById('eliteSearchBtn');
+btn?.addEventListener('click',()=>{
+ const q=document.getElementById('eliteSearchDemo').value.trim();
+ const c=document.getElementById('eliteCategoryDemo').value;
+ document.getElementById('eliteSearchResult').textContent=
+ q?`Ricerca demo: "${q}" nella categoria "${c}". L'integrazione con il catalogo sarà aggiunta nelle prossime versioni.`:
+ 'Inserisci un termine di ricerca.';
+});
+})();
+</script>
+</body>
+</html>
