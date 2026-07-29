@@ -1324,6 +1324,18 @@ body.v3-modal-open{overflow:hidden}
 @media(max-width:760px){.v7-service-grid{grid-template-columns:1fr}}
 </style>
 
+
+<style id="catalog-v7-part2">
+.v7-arrivals{margin:42px auto;padding:30px;border-radius:28px;background:linear-gradient(135deg,#f9f7f2,#efe6d6)}
+.v7-arrivals h2{margin:0 0 10px;font-family:Georgia,serif}
+.v7-arrivals-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.v7-arrival{position:relative;padding:22px;border-radius:18px;background:#fff;box-shadow:0 12px 28px rgba(0,0,0,.06)}
+.v7-badge{position:absolute;top:12px;right:12px;padding:5px 10px;border-radius:999px;background:#111;color:#f0d88b;font-size:.72rem;font-weight:700}
+.v7-progress{height:6px;border-radius:999px;background:#e9dfcb;overflow:hidden;margin-top:14px}
+.v7-progress>span{display:block;height:100%;width:82%;background:linear-gradient(90deg,#c99b3c,#f0d88b)}
+@media(max-width:760px){.v7-arrivals-grid{grid-template-columns:1fr}}
+</style>
+
 </head>
 
 <body>
@@ -1600,6 +1612,19 @@ body.v3-modal-open{overflow:hidden}
 <div class="v7-service"><span class="tag">NOVITÀ</span><h3>Click & Collect</h3><p>Ritiro rapido in boutique quando disponibile.</p></div>
 <div class="v7-service"><span class="tag">VIP</span><h3>Prenota un appuntamento</h3><p>Consulenza dedicata con Personal Shopper.</p></div>
 <div class="v7-service"><span class="tag">PREMIUM</span><h3>Gift Experience</h3><p>Messaggio personalizzato e confezione elegante.</p></div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v7-arrivals">
+<h2>Nuovi Arrivi</h2>
+<p>Una selezione in evidenza delle ultime proposte della collezione.</p>
+<div class="v7-arrivals-grid">
+<div class="v7-arrival"><span class="v7-badge">NEW</span><strong>Capsule Collection</strong><p>Essenziali dal design contemporaneo.</p><div class="v7-progress"><span></span></div></div>
+<div class="v7-arrival"><span class="v7-badge">TREND</span><strong>Luxury Essentials</strong><p>Capi versatili per ogni occasione.</p><div class="v7-progress"><span style="width:68%"></span></div></div>
+<div class="v7-arrival"><span class="v7-badge">LIMITED</span><strong>Exclusive Drop</strong><p>Disponibilità limitata.</p><div class="v7-progress"><span style="width:94%"></span></div></div>
 </div>
 </div>
 </section>
@@ -2421,6 +2446,17 @@ document.querySelectorAll('.v7-service').forEach(card=>{
    card.style.transform='';
    card.style.boxShadow='';
  });
+});
+})();
+</script>
+
+
+<script id="catalog-v7-part2-engine">
+(()=>{
+document.querySelectorAll('.v7-arrival').forEach(card=>{
+ card.style.transition='transform .25s ease';
+ card.addEventListener('mouseenter',()=>card.style.transform='translateY(-6px) scale(1.01)');
+ card.addEventListener('mouseleave',()=>card.style.transform='');
 });
 })();
 </script>
