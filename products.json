@@ -1,0 +1,46 @@
+[
+  {
+    "id": "lv-firma-ricamata",
+    "name": "T-shirt Louis Vuitton con firma ricamata",
+    "brand": "Louis Vuitton",
+    "category": "T-shirt",
+    "price": 129,
+    "currency": "EUR",
+    "color": "Bianco",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "description": "T-shirt bianca in cotone con firma ricamata in rilievo. Vestibilità comoda, stile contemporaneo e dettagli curati.",
+    "material": "100% cotone",
+    "images": [
+      "images/lv-firma-01-indossata.jpeg",
+      "images/lv-firma-02-frontale.jpeg",
+      "images/lv-firma-03-posteriore.jpeg",
+      "images/lv-firma-04-dettaglio-ricamo.jpeg",
+      "images/lv-firma-05-macro-ricamo.jpeg",
+      "images/lv-firma-06-dettaglio-manica.jpeg",
+      "images/lv-firma-07-piegata.jpeg",
+      "images/lv-firma-08-retro-piegato.jpeg",
+      "images/lv-firma-09-etichetta.jpeg"
+    ],
+    "slug": "t-shirt-louis-vuitton-firma-ricamata",
+    "stock": {
+      "S": 5,
+      "M": 5,
+      "L": 5,
+      "XL": 4,
+      "XXL": 3
+    },
+    "shipping": "Spedizione gratuita in Italia. Consegna stimata in 2-4 giorni lavorativi.",
+    "care": "Lavare seguendo le indicazioni riportate sull'etichetta interna.",
+    "tags": [
+      "nuovo",
+      "best seller",
+      "ricamato"
+    ]
+  }
+]
