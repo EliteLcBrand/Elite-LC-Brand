@@ -1276,6 +1276,16 @@ body.v3-modal-open{overflow:hidden}
 .v4-compare-btn{position:absolute;left:12px;bottom:12px;width:42px;height:42px;border-radius:50%;border:0;background:#fff;font-weight:900}
 .v4-look{margin-top:12px;padding:10px;border-top:1px solid rgba(20,15,5,.08);font-size:.75rem;color:#766f63}
 </style>
+
+<style id="catalog-v5-part1">
+.v5-ai-banner{margin:24px auto;padding:22px;border-radius:24px;background:linear-gradient(135deg,#0b0b0b,#1a1408);color:#fff;border:1px solid rgba(201,155,60,.25)}
+.v5-ai-banner h2{margin:0 0 8px;font-family:Georgia,serif;font-weight:500}
+.v5-ai-banner p{margin:0;color:#d7cfbf}
+.v5-chip-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.v5-chip{padding:9px 14px;border-radius:999px;border:1px solid rgba(240,216,139,.25);background:rgba(255,255,255,.05);cursor:pointer}
+.v5-chip.active{background:linear-gradient(135deg,#f0d88b,#c99b3c);color:#171006;font-weight:700}
+</style>
+
 </head>
 
 <body>
@@ -1489,6 +1499,20 @@ body.v3-modal-open{overflow:hidden}
     </div>
     <div class="v4-mini-grid" id="v4RecommendedGrid"></div>
   </div>
+</section>
+
+
+<section class="section reveal">
+<div class="v5-ai-banner">
+<h2>Personal Shopper ÉLITE</h2>
+<p>Scopri rapidamente articoli in base al tuo stile preferito.</p>
+<div class="v5-chip-row">
+<button class="v5-chip" data-style="casual">Casual</button>
+<button class="v5-chip" data-style="business">Business</button>
+<button class="v5-chip" data-style="luxury">Luxury</button>
+<button class="v5-chip" data-style="street">Street</button>
+</div>
+</div>
 </section>
 
 <section class="cta reveal">
@@ -2234,5 +2258,20 @@ const boot=setInterval(()=>{
 },300);
 })();
 </script>
+
+<script id="catalog-v5-part1-engine">
+(()=>{document.addEventListener('click',e=>{
+const b=e.target.closest('.v5-chip');if(!b)return;
+document.querySelectorAll('.v5-chip').forEach(x=>x.classList.remove('active'));
+b.classList.add('active');
+const q=document.getElementById('searchInput');
+if(q){
+ const map={casual:'t-shirt',business:'giacca',luxury:'luxury',street:'sneaker'};
+ q.value=map[b.dataset.style]||'';
+ q.dispatchEvent(new Event('input',{bubbles:true}));
+}
+});})();
+</script>
+
 </body>
 </html>
