@@ -1295,6 +1295,15 @@ body.v3-modal-open{overflow:hidden}
 .v5-score{display:inline-block;margin-top:8px;padding:5px 10px;border-radius:999px;background:#111;color:#f0d88b;font-size:.75rem}
 @media(max-width:700px){.v5-outfit-grid{grid-template-columns:1fr}}
 </style>
+
+<style id="catalog-v6-part1">
+.v6-luxury{margin:40px auto;padding:32px;border-radius:28px;background:linear-gradient(135deg,#080808,#171107);color:#fff;border:1px solid rgba(201,155,60,.25)}
+.v6-luxury h2{margin:0;font:500 clamp(2rem,4vw,3.4rem) Georgia,serif}
+.v6-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.v6-box{padding:20px;border-radius:18px;background:rgba(255,255,255,.05);backdrop-filter:blur(10px);border:1px solid rgba(240,216,139,.15)}
+.v6-box strong{display:block;margin-bottom:8px;color:#f0d88b}
+@media(max-width:760px){.v6-grid{grid-template-columns:1fr}}
+</style>
 </head>
 
 <body>
@@ -1533,6 +1542,19 @@ body.v3-modal-open{overflow:hidden}
 <div class="v5-outfit-card"><strong>Look Business</strong><br>Giacca + Camicia + Scarpe<div class="v5-score">Compatibilità 96%</div></div>
 <div class="v5-outfit-card"><strong>Look Luxury</strong><br>Polo + Pantalone + Accessori<div class="v5-score">Compatibilità 94%</div></div>
 <div class="v5-outfit-card"><strong>Look Weekend</strong><br>T-shirt + Sneaker + Borsa<div class="v5-score">Compatibilità 92%</div></div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v6-luxury">
+<h2>Esperienza Boutique ÉLITE</h2>
+<p>Servizi esclusivi pensati per un'esperienza d'acquisto di livello superiore.</p>
+<div class="v6-grid">
+<div class="v6-box"><strong>Consulenza</strong>Personal shopper e suggerimenti dedicati.</div>
+<div class="v6-box"><strong>Packaging Premium</strong>Confezione elegante pronta da regalare.</div>
+<div class="v6-box"><strong>Spedizione Prioritaria</strong>Preparazione rapida degli ordini disponibili.</div>
 </div>
 </div>
 </section>
@@ -2313,6 +2335,14 @@ if(q){
    grid.innerHTML=data.map(x=>`<div class="v5-outfit-card"><strong>${x[0]}</strong><br>${x[1]}<div class="v5-score">Compatibilità ${x[2]}%</div></div>`).join('');
  }));
 })();
+</script>
+
+<script id="catalog-v6-part1-engine">
+(()=>{document.querySelectorAll('.v6-box').forEach((b,i)=>{
+ b.addEventListener('mouseenter',()=>b.style.transform='translateY(-6px)');
+ b.addEventListener('mouseleave',()=>b.style.transform='');
+ b.style.transition='transform .25s ease';
+});})();
 </script>
 </body>
 </html>
