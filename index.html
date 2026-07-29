@@ -1370,6 +1370,16 @@ body.v3-modal-open{overflow:hidden}
 .v9-match{display:inline-block;margin-top:10px;padding:4px 10px;border-radius:999px;background:#111;color:#f0d88b;font-size:.75rem}
 @media(max-width:760px){.v9-reco-grid{grid-template-columns:1fr}}
 </style>
+
+<style id="catalog-v10-part1">
+.v10-checkout{margin:42px auto;padding:30px;border-radius:28px;background:linear-gradient(135deg,#111,#1d1408);color:#fff}
+.v10-checkout h2{margin:0 0 10px;font-family:Georgia,serif}
+.v10-grid{display:grid;grid-template-columns:2fr 1fr;gap:20px}
+.v10-box{background:rgba(255,255,255,.06);padding:20px;border-radius:18px}
+.v10-btn{margin-top:14px;padding:12px 18px;border:none;border-radius:999px;background:#f0d88b;color:#111;font-weight:700;cursor:pointer}
+.v10-note{font-size:.9rem;color:#ddd}
+@media(max-width:760px){.v10-grid{grid-template-columns:1fr}}
+</style>
 </head>
 
 <body>
@@ -1697,6 +1707,24 @@ body.v3-modal-open{overflow:hidden}
 <p>I consigli vengono aggiornati in base allo stile selezionato nel Luxury Style Advisor.</p>
 <div class="v9-reco-grid" id="v9RecoGrid">
 <div class="v9-reco-card"><strong>Look Premium</strong><p>Seleziona un'occasione per ricevere suggerimenti.</p></div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v10-checkout">
+<h2>Checkout Rapido</h2>
+<div class="v10-grid">
+<div class="v10-box">
+<p>Completa rapidamente il tuo ordine direttamente dalla homepage.</p>
+<button class="v10-btn" id="v10CheckoutBtn">Procedi al checkout</button>
+</div>
+<div class="v10-box">
+<strong>Riepilogo</strong>
+<p class="v10-note">Articoli: <span id="v10Items">0</span></p>
+<p class="v10-note">Preferiti: <span id="v10Favs">0</span></p>
+</div>
 </div>
 </div>
 </section>
@@ -2626,6 +2654,23 @@ document.querySelectorAll('.v9-btn').forEach(btn=>{
    const items=data[btn.dataset.tip]||[];
    grid.innerHTML=items.map(i=>`<div class="v9-reco-card"><strong>${i[0]}</strong><p>${i[1]}</p><span class="v9-match">Compatibilità ${i[2]}%</span></div>`).join('');
  });
+});
+})();
+</script>
+
+<script id="catalog-v10-part1-engine">
+(()=>{
+function upd(){
+ try{
+  const cart=JSON.parse(localStorage.getItem('cart')||'[]');
+  const wish=JSON.parse(localStorage.getItem('wishlist')||'[]');
+  document.getElementById('v10Items').textContent=cart.length;
+  document.getElementById('v10Favs').textContent=wish.length;
+ }catch(e){}
+}
+upd();
+document.getElementById('v10CheckoutBtn')?.addEventListener('click',()=>{
+ alert('Funzione checkout premium pronta per l\'integrazione.');
 });
 })();
 </script>
