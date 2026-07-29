@@ -1401,6 +1401,20 @@ body.v3-modal-open{overflow:hidden}
 @media(max-width:760px){.v11-grid{grid-template-columns:1fr}}
 </style>
 
+
+<style id="catalog-v11-part2">
+.v11-loyalty{margin:42px auto;padding:30px;border-radius:28px;background:linear-gradient(135deg,#0d0d0d,#24190c);color:#fff}
+.v11-loyalty h2{margin:0 0 8px;font-family:Georgia,serif}
+.v11-loyalty-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-top:20px}
+.v11-loyalty-card{padding:20px;border-radius:18px;background:rgba(255,255,255,.06);border:1px solid rgba(240,216,139,.14)}
+.v11-progress-wrap{height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;margin:14px 0 8px}
+.v11-progress-bar{height:100%;width:0;background:linear-gradient(90deg,#c99b3c,#f0d88b);transition:width .5s ease}
+.v11-notice{margin-top:12px;padding:12px 14px;border-radius:14px;background:rgba(240,216,139,.08);color:#f0d88b}
+.v11-history{display:grid;gap:10px;margin-top:14px}
+.v11-order-item{padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.05);display:flex;justify-content:space-between;gap:12px}
+@media(max-width:760px){.v11-loyalty-grid{grid-template-columns:1fr}}
+</style>
+
 </head>
 
 <body>
@@ -1798,6 +1812,32 @@ body.v3-modal-open{overflow:hidden}
 <div class="v11-card">
 <strong>Codice Promo</strong>
 <p id="v11Promo">Nessuno</p>
+</div>
+</div>
+</div>
+</section>
+
+
+<section class="section reveal">
+<div class="v11-loyalty">
+<h2>Centro Vantaggi & Fedeltà</h2>
+<p>Il tuo percorso verso il prossimo livello ÉLITE.</p>
+
+<div class="v11-loyalty-grid">
+<div class="v11-loyalty-card">
+<strong>Progresso livello</strong>
+<div class="v11-progress-wrap">
+<div class="v11-progress-bar" id="v11ProgressBar"></div>
+</div>
+<div id="v11ProgressText">0% completato</div>
+<div class="v11-notice" id="v11RewardText">Aggiungi prodotti alla wishlist per sbloccare nuovi vantaggi.</div>
+</div>
+
+<div class="v11-loyalty-card">
+<strong>Cronologia ordini</strong>
+<div class="v11-history" id="v11OrderHistory">
+<div class="v11-order-item"><span>Nessun ordine recente</span><span>—</span></div>
+</div>
 </div>
 </div>
 </div>
@@ -2782,6 +2822,59 @@ function update(){
 }
 document.addEventListener('DOMContentLoaded',update);
 setTimeout(update,600);
+})();
+</script>
+
+
+<script id="catalog-v11-part2-engine">
+(()=>{
+function safeArray(key){
+ try{
+  const value=JSON.parse(localStorage.getItem(key)||'[]');
+  return Array.isArray(value)?value:[];
+ }catch(e){return [];}
+}
+
+function updateLoyalty(){
+ const wish=safeArray('wishlist');
+ const cart=safeArray('cart');
+ const orders=safeArray('eliteOrders');
+
+ const score=Math.min(100,(wish.length*10)+(cart.length*5));
+ const bar=document.getElementById('v11ProgressBar');
+ const text=document.getElementById('v11ProgressText');
+ const reward=document.getElementById('v11RewardText');
+ const history=document.getElementById('v11OrderHistory');
+
+ if(bar) bar.style.width=score+'%';
+ if(text) text.textContent=score+'% completato';
+
+ if(reward){
+  reward.textContent=score>=100
+   ?'Hai sbloccato il livello ÉLITE GOLD.'
+   :score>=60
+   ?'Sei vicino al livello VIP GOLD.'
+   :score>=30
+   ?'Livello VIP in avvicinamento.'
+   :'Aggiungi prodotti alla wishlist per sbloccare nuovi vantaggi.';
+ }
+
+ if(history){
+  if(orders.length){
+   history.innerHTML=orders.slice(-3).reverse().map((o,i)=>{
+    const code=o.code||('EL-'+String(i+1).padStart(4,'0'));
+    const status=o.status||'In preparazione';
+    return '<div class="v11-order-item"><span>'+code+'</span><span>'+status+'</span></div>';
+   }).join('');
+  }else{
+   history.innerHTML='<div class="v11-order-item"><span>Nessun ordine recente</span><span>—</span></div>';
+  }
+ }
+}
+
+document.addEventListener('DOMContentLoaded',updateLoyalty);
+window.addEventListener('storage',updateLoyalty);
+setTimeout(updateLoyalty,700);
 })();
 </script>
 
